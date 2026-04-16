@@ -1,9 +1,14 @@
 ---
+import { COPYRIGHT_NAME } from '../consts';
+
 const today = new Date();
 ---
 
 <footer>
-	&copy; {today.getFullYear()} Your name here. All rights reserved.
+	&copy; {today.getFullYear()} {COPYRIGHT_NAME}. 
+  Todos os direitos reservados.
+  <br/>
+  Desenvolvido por <a href="https://ecompjr.com.br" target="_blank">EcompJR</a>.
 	<div class="social-links">
 		<a href="https://m.webtoo.ls/@astro" target="_blank">
 			<span class="sr-only">Follow Astro on Mastodon</span>

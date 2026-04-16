@@ -5,3 +5,6 @@ export const SITE_TITLE = 'Labelu'
 export const SITE_DESCRIPTION = `
     Laboratório de História e Memória da Esquerda e das Lutas Sociais
 `
+export const COPYRIGHT_NAME = `
+    Labelu - Laboratório de História e Memória da Esquerda e das Lutas Sociais
+`
