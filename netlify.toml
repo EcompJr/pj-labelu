@@ -1,0 +1,13 @@
+# Netlify configuration for Astro static site
+[build]
+command = "npm run build"
+publish = "dist"
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+force = false
+
+# If you require SSR/Functions on Netlify, install and configure
+# the @astrojs/netlify adapter instead of relying on a static build.
