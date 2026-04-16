@@ -1,3 +1,9 @@
+
+# Disable this on production
+local_backend: true
+
+# Overview: https://decapcms.org/docs/backends-overview/
+# Github: https://decapcms.org/docs/github-backend/
 backend:
   name: test-repo
 
@@ -17,6 +23,7 @@ public_folder: "src/assets/images"
 
 # === Content collections configuration
 
+# Collections: https://decapcms.org/docs/collection-folder/
 collections:
   - name: "blog"
     label: "Blog"
