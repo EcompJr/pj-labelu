@@ -16,6 +16,9 @@ backend:
   # 2) Set the Authorization callback URL to: https://<your-username>.github.io/ecompjr-labelu/admin/
   # 3) Copy the OAuth App's Client ID here (replace the placeholder below).
   auth_type: implicit
+  # Override the default Netlify auth proxy so the OAuth flow goes to GitHub directly.
+  # This ensures the admin uses GitHub's authorize endpoint instead of api.netlify.com.
+  auth_endpoint: "https://github.com/login/oauth/authorize"
   app_id: "Ov23liRsIw58rTp15Y0D"
 
 
