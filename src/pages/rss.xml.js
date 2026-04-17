@@ -9,8 +9,8 @@ export async function GET(context) {
 		description: SITE_DESCRIPTION,
 		site: context.site,
 		items: posts.map((post) => ({
-			...post.data,
-			link: `blog/${post.id}/`,
-		})),
+				...post.data,
+				link: new URL(`blog/${post.id}/`, context.site).href,
+			})),
 	});
 }

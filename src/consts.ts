@@ -1,6 +1,7 @@
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
+export const REPO = "ecompjr-labelu"
 export const SITE_TITLE = 'Labelu'
 export const SITE_DESCRIPTION = `
     Laboratório de História e Memória da Esquerda e das Lutas Sociais
