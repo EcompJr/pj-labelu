@@ -7,7 +7,7 @@
 # Github: https://decapcms.org/docs/github-backend/
 backend:
   name: github
-  repo: RickBarretto/ecompjr-labelu
+  repo: ecompjr/pj-labelu
   branch: main
 
 

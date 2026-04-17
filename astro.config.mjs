@@ -7,8 +7,8 @@ import { defineConfig, fontProviders } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
 	// Deploying to GitHub Pages under the repository subpath
-	site: 'https://rickbarretto.github.io',
-	base: '/ecompjr-labelu/',
+	site: 'https://ecompjr.github.io',
+	base: '/pj-labelu/',
 	integrations: [mdx(), sitemap()],
 	fonts: [
 		{
