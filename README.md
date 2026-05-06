@@ -59,7 +59,7 @@ This work was developed by [EcompJr](https://ecompjr.com.br/).
 
 ### Our Team
 
-- **Executive Director of Projects**: [RickBarretto](https://github.com/rickbarretto)
+- **Executive Director of Projects**: [Barreto](https://github.com/rickbarretto)
 - **Project Manager**: [Robson Carvalho](https://github.com/Robson-Carvalho)
 - **Project Lead**: [Ítallo Guimarães](https://github.com/ItalloGuimaraes)
 - **Frontend Developer**: [Guilherme Fernandes](https://github.com/DrizinCoder)
