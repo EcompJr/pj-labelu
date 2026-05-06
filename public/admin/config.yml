@@ -3,6 +3,9 @@
 # Overview: https://sveltiacms.app/en/docs/backends
 # Github: https://sveltiacms.app/en/docs/backends/github
 backend:
+  # Comment out github and uncomment test-repo for local tests.
+  # Testing: https://sveltiacms.app/en/docs/backends/test
+  # name: test-repo
   name: github
   repo: ecompjr/pj-labelu
   branch: main
