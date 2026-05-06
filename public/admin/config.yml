@@ -30,7 +30,9 @@ public_folder: "src/assets/images"
 
 # === Content collections configuration
 
-# Collections: https://decapcms.org/docs/collection-folder/
+# Collections: https://sveltiacms.app/en/docs/collections
+# Fields: https://sveltiacms.app/en/docs/fields
+# How-to: https://sveltiacms.app/en/docs/how-tos
 collections:
   - name: "blog"
     label: "Blog"
