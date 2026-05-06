@@ -53,6 +53,19 @@ See `.github/workflows/astro.yml` for more information.
 
 Check out [Astro's documentation](https://docs.astro.build) or jump into their [Discord server](https://astro.build/chat).
 
-## Credit
+## 👷 Developed by
 
-The initial theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+This work was developed by [EcompJr](https://ecompjr.com.br/).
+
+### Our Team
+
+- **Executive Director of Projects**: [RickBarretto](https://github.com/rickbarretto)
+- **Project Manager**: [Robson Carvalho](https://github.com/Robson-Carvalho)
+- **Project Lead**: [Ítallo Guimarães](https://github.com/ItalloGuimaraes)
+- **Frontend Developer**: [Guilherme Fernandes](https://github.com/DrizinCoder)
+- **Frontend Developer**: []()
+
+### Prototype
+
+The initial theme used for prototype was provided by Astro's default theme. 
+This is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
