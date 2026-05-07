@@ -63,7 +63,7 @@ This work was developed by [EcompJr](https://ecompjr.com.br/).
 - **Project Manager**: [Robson Carvalho](https://github.com/Robson-Carvalho)
 - **Project Lead**: [Ítallo Guimarães](https://github.com/ItalloGuimaraes)
 - **Frontend Developer**: [Guilherme Fernandes](https://github.com/DrizinCoder)
-- **Frontend Developer**: []()
+- **Frontend Developer**: [Lucas Guerra](https://github.com/lucasarguerra)
 
 ### Prototype
 
