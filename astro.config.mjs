@@ -1,5 +1,6 @@
 // @ts-check
 
+import icon from 'astro-icon';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig, fontProviders } from 'astro/config';
@@ -9,7 +10,7 @@ export default defineConfig({
 	// Deploying to GitHub Pages under the repository subpath
 	site: 'https://ecompjr.github.io',
 	base: '/pj-labelu/',
-	integrations: [mdx(), sitemap()],
+	integrations: [icon(), mdx(), sitemap()],
 	fonts: [
 		{
 			provider: fontProviders.local(),

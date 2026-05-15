@@ -1,62 +1,158 @@
 ---
-import { SITE_TITLE } from '../consts';
+import { Image } from 'astro:assets';
 import HeaderLink from './HeaderLink.astro';
-
-const basePath = new URL('.', Astro.site).pathname;
+import logoLabelu from '../assets/logo-labelu-header.png';
 ---
 
-<header>
+<header id="main-header">
 	<nav>
-		<h2><a href="/pj-labelu">{SITE_TITLE}</a></h2>
-		<div class="internal-links">
+		<a href="/pj-labelu/" class="header-brand">
+			<Image src={logoLabelu} alt="Logo Labelu" width={100} height={60} />
+		</a>
+
+		<div class="nav-links" id="nav-links">
 			<HeaderLink href="pj-labelu/">Início</HeaderLink>
 			<HeaderLink href="pj-labelu/pesquisas">Pesquisas</HeaderLink>
-			<HeaderLink href="pj-labelu/pesquisadores">Pesquisadores</HeaderLink>
 			<HeaderLink href="pj-labelu/produções">Produções</HeaderLink>
+			<HeaderLink href="pj-labelu/agenda">Agenda</HeaderLink>
+			<HeaderLink href="pj-labelu/pesquisadores">Equipe</HeaderLink>
 			<HeaderLink href="pj-labelu/parcerias">Parcerias</HeaderLink>
 			<HeaderLink href="pj-labelu/acervos">Acervos</HeaderLink>
-			<HeaderLink href="pj-labelu/sobre">Sobre Nós</HeaderLink>
+			<HeaderLink href="pj-labelu/sobre">Sobre</HeaderLink>
 		</div>
+
+		<!-- Burger button: visível apenas em mobile -->
+		<button id="menu-toggle" class="burger-btn" aria-label="Abrir menu" aria-expanded="false">
+			<span class="burger-line"></span>
+			<span class="burger-line"></span>
+			<span class="burger-line"></span>
+		</button>
 	</nav>
 </header>
+
 <style>
 	header {
-		margin: 0;
-		padding: 0 1em;
-		background: white;
-		box-shadow: 0 2px 8px rgba(var(--black), 5%);
-	}
-	h2 {
-		margin: 0;
-		font-size: 1em;
-	}
-
-	h2 a,
-	h2 a.active {
-		text-decoration: none;
+		background: #fff;
+		border-bottom: 3px solid var(--accent);
+		position: sticky;
+		top: 0;
+		z-index: 100;
 	}
 	nav {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		max-width: 1100px;
+		margin: 0 auto;
+		padding: 0.5rem 1.5rem;
 	}
-	nav a {
-		padding: 1em 0.5em;
-		color: var(--black);
-		border-bottom: 4px solid transparent;
-		text-decoration: none;
-	}
-	nav a.active {
-		text-decoration: none;
-		border-bottom-color: var(--accent);
-	}
-	.social-links,
-	.social-links a {
+	.header-brand {
 		display: flex;
+		align-items: center;
+		text-decoration: none;
+		flex-shrink: 0;
 	}
-	@media (max-width: 720px) {
-		.social-links {
+	.header-brand img {
+		border-radius: 0;
+		height: auto;
+	}
+	.nav-links {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+	}
+	.nav-links :global(a) {
+		padding: 0.5em 0.6em;
+		color: var(--accent-dark);
+		font-size: 1rem;
+		text-decoration: none;
+		border-radius: 4px;
+		transition: background 0.15s ease, color 0.15s ease;
+	}
+	.nav-links :global(a:hover) {
+		background: rgba(var(--gray-light), 0.6);
+	}
+	.nav-links :global(a.active) {
+		color: var(--accent-dark);
+		font-weight: 700;
+		text-decoration: none;
+	}
+
+	/* Burger — hidden on desktop */
+	.burger-btn {
+		display: none;
+		flex-direction: column;
+		justify-content: center;
+		gap: 5px;
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0.5rem;
+		z-index: 200;
+	}
+	.burger-line {
+		display: block;
+		width: 24px;
+		height: 2.5px;
+		background: rgb(var(--gray-dark));
+		border-radius: 2px;
+		transition: transform 0.3s ease, opacity 0.3s ease;
+	}
+
+	/* Mobile */
+	@media (max-width: 768px) {
+		.burger-btn {
+			display: flex;
+		}
+		.nav-links {
 			display: none;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			right: 0;
+			flex-direction: column;
+			background: #fff;
+			border-bottom: 3px solid var(--accent);
+			padding: 0.5rem 0;
+			box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+		}
+		.nav-links.open {
+			display: flex;
+		}
+		.nav-links :global(a) {
+			padding: 0.75em 1.5em;
+			font-size: 1.15rem;
+			width: 100%;
+			border-radius: 0;
+		}
+		.nav-links :global(a:hover) {
+			background: rgba(var(--gray-light), 0.4);
 		}
 	}
 </style>
+
+<script>
+	const toggle = document.getElementById('menu-toggle');
+	const navLinks = document.getElementById('nav-links');
+
+	toggle?.addEventListener('click', () => {
+		const isOpen = navLinks?.classList.toggle('open');
+		toggle.setAttribute('aria-expanded', String(isOpen));
+	});
+
+	// Close menu when clicking outside
+	document.addEventListener('click', (e) => {
+		if (!toggle?.contains(e.target as Node) && !navLinks?.contains(e.target as Node)) {
+			navLinks?.classList.remove('open');
+			toggle?.setAttribute('aria-expanded', 'false');
+		}
+	});
+
+	// Close on Escape
+	document.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape') {
+			navLinks?.classList.remove('open');
+			toggle?.setAttribute('aria-expanded', 'false');
+		}
+	});
+</script>

@@ -1,18 +1,9 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 ---
 
-<!doctype html>
-<html lang="ptbr">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>  
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
       Somos, o nome diz, um laboratório – um espaço para o exercício 
       de um trabalho (labor) intelectual: a pesquisa histórica. 
       
@@ -20,7 +11,4 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
       formar bons pesquisadores em História. 
       
       Apresentamos abaixo algumas informações sobre o nosso laboratório.
-    </main>
-		<Footer />
-	</body>
-</html>
+</BaseLayout>

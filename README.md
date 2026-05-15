@@ -1,21 +1,10 @@
-# Astro Starter Kit: Blog
+# 🚩 Labelu
 
-```sh
-npm create astro@latest -- --template blog
-```
+Labelu is an institutional website for the Laboratory of History and Memory of Class Struggle (Laboratório de História e Memória da Luta de Classes) at the State University of Feira de Santana (UEFS). 
+It is a Content Management System (CMS) that serves as a digital showcase and entry point for researchers and individuals interested in academic studies on class struggles and labor movements.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-Features:
-
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and Open Graph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-
-## 🚀 Project Structure
+## ℹ️ Project Structure
 
 Inside of your Astro project, you'll see the following folders and files:
 
@@ -54,10 +43,29 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
+## 🚀 Deploy
+
+Every update at `main` branch will trigger a deploy workflow setup for our Github Actions. The website is deployed under the Github Pages.
+
+See `.github/workflows/astro.yml` for more information.
+
 ## 👀 Want to learn more?
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Check out [Astro's documentation](https://docs.astro.build) or jump into their [Discord server](https://astro.build/chat).
 
-## Credit
+## 👷 Developed by
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+This work was developed by [EcompJr](https://ecompjr.com.br/).
+
+### Our Team
+
+- **Executive Director of Projects**: [Barreto](https://github.com/rickbarretto)
+- **Project Manager**: [Robson Carvalho](https://github.com/Robson-Carvalho)
+- **Project Lead**: [Ítallo Guimarães](https://github.com/ItalloGuimaraes)
+- **Frontend Developer**: [Guilherme Fernandes](https://github.com/DrizinCoder)
+- **Frontend Developer**: [Lucas Guerra](https://github.com/lucasarguerra)
+
+### Prototype
+
+The initial theme used for prototype was provided by Astro's default theme. 
+This is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).

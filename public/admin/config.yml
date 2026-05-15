@@ -1,11 +1,11 @@
 # yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
 
-# Disable this on production
-# local_backend: true
-
-# Overview: https://decapcms.org/docs/backends-overview/
-# Github: https://decapcms.org/docs/github-backend/
+# Overview: https://sveltiacms.app/en/docs/backends
+# Github: https://sveltiacms.app/en/docs/backends/github
 backend:
+  # Comment out github and uncomment test-repo for local tests.
+  # Testing: https://sveltiacms.app/en/docs/backends/test
+  # name: test-repo
   name: github
   repo: rickbarretto/pj-labelu
   branch: main
@@ -13,20 +13,26 @@ backend:
 
 # === Localization settings
 
-locale: pt
+# For now, Svelia does not supports multiple languages, 
+# but you can set the locale for the admin interface.
+# I already submited my interest in adding Brazilian Portuguese translations. 
+# So let's wait this feature be done.
+# Ref.: https://github.com/sveltia/sveltia-cms/issues/724
+# 
+# locale: pt-BR
 
 
 # === Files & Media configuration
 
-# Stored files
+# Media: https://sveltiacms.app/en/docs/media/internal#top-level-configuration
 media_folder: "src/assets/images"
-# Uploaded media
 public_folder: "src/assets/images"
-
 
 # === Content collections configuration
 
-# Collections: https://decapcms.org/docs/collection-folder/
+# Collections: https://sveltiacms.app/en/docs/collections
+# Fields: https://sveltiacms.app/en/docs/fields
+# How-to: https://sveltiacms.app/en/docs/how-tos
 collections:
   - name: "blog"
     label: "Blog"
