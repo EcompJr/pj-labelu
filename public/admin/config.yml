@@ -7,7 +7,7 @@ backend:
   # Testing: https://sveltiacms.app/en/docs/backends/test
   # name: test-repo
   name: github
-  repo: rickbarretto/pj-labelu
+  repo: ecompjr/pj-labelu
   branch: main
 
 
