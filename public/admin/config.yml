@@ -68,3 +68,27 @@ collections:
       - { label: "ORCID", name: "orcid", widget: "string", required: false }
       - { label: "LinkedIn", name: "linkedin", widget: "string", required: false }
       - { label: "Resumo", name: "summary", widget: "text" }
+  - name: "agenda"
+    label: "Agenda"
+    folder: "src/content/agenda"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{titulo}} — {{data}}"
+    sortable_fields:
+      fields: ["data", "titulo"]
+      default:
+        field: "data"
+        direction: "descending"
+    fields:
+      - { label: "Título do Evento", name: "titulo", widget: "string" }
+      - { label: "Categoria", name: "categoria", widget: "string",
+          hint: "Ex: Publicação de Artigo, Seminário, Defesa de Tese" }
+      - { label: "Pauta", name: "pauta", widget: "text",
+          hint: "Breve descrição do evento (máx. 300 caracteres)" }
+      - { label: "Data", name: "data", widget: "datetime",
+          date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Hora", name: "hora", widget: "string", required: false,
+          hint: "Formato HH:MM (ex: 14:30)" }
+      - { label: "Local", name: "local", widget: "string", required: false,
+          hint: "Sala, auditório ou link para evento online" }
+      - { label: "Detalhes", name: "body", widget: "markdown" }
