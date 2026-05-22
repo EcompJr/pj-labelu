@@ -57,7 +57,7 @@ collections:
       - label: Cargo no laboratório
         name: position
         widget: select
-        required: false
+        required: true
         options:
           - Coordenador
           - Coordenadora
