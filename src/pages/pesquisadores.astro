@@ -13,7 +13,7 @@ const pesquisadores = entries.map((e) => ({
   lattes: e.data.lattes,
   orcid: e.data.orcid ?? '',
   linkedin: e.data.linkedin ?? '',
-  image: e.data.image ?? null,
+  profile: e.data.profile ?? null,
 }));
 ---
 
@@ -29,8 +29,8 @@ const pesquisadores = entries.map((e) => ({
 
             <!-- Foto -->
             <div class="card-foto">
-              {p.image ? (
-                <Image src={p.image} alt={`Foto de ${p.name}`} class="foto-img" />
+              {p.profile ? (
+                <Image src={p.profile} alt={`Foto de ${p.name}`} class="foto-img" />
               ) : (
                 <div class="foto-fallback" aria-hidden="true">
                   <svg viewBox="0 0 130 160" xmlns="http://www.w3.org/2000/svg" width="130" height="160">

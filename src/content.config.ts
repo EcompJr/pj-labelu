@@ -27,8 +27,8 @@ const pesquisadores = defineCollection({
 			lattes: z.url(),
 			orcid: z.url().optional(),
 			linkedin: z.url().optional(),
+      profile: z.optional(image()),
 			summary: z.string(),
-			image: z.optional(image()),
 		}),
 });
 
