@@ -9,7 +9,6 @@ const entries = await getCollection('pesquisadores');
 const pesquisadores = entries.map((e) => ({
   name: e.data.name,
   position: e.data.position ?? '',
-  academicLevel: e.data.academicLevel,
   summary: e.data.summary,
   lattes: e.data.lattes,
   orcid: e.data.orcid ?? '',
@@ -49,7 +48,6 @@ const pesquisadores = entries.map((e) => ({
               <div class="card-header">
                 <h2 class="pesquisador-nome">{p.name}</h2>
                 {p.position && <p class="pesquisador-cargo">{p.position}</p>}
-                <p class="pesquisador-grau">{p.academicLevel}</p>
               </div>
 
               <p class="pesquisador-resumo">{p.summary}</p>
