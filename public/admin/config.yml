@@ -82,6 +82,10 @@ collections:
         widget: string
         optional: true
         prefix: "https://linkedin.com/in/"
+      - label: Perfil
+        name: profile
+        widget: image
+        required: false
       - { label: "Resumo", name: "summary", widget: "text" }
   - name: "agenda"
     label: "Agenda"
