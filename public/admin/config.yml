@@ -68,9 +68,18 @@ collections:
           - Estagiário
           - Pesquisador
           - Pesquisadora
-      - { label: "Lattes", name: "lattes", widget: "url" }
-      - { label: "ORCID", name: "orcid", widget: "url", required: false }
-      - { label: "LinkedIn", name: "linkedin", widget: "url", required: false }
+      - label: Lattes
+        name: lattes
+        widget: string
+        prefix: "https://lattes.cnpq.br/"
+      - label: ORCID
+        name: orcid
+        widget: string
+        prefix: "https://orcid.org/"
+      - label: LinkedIn
+        name: linkedin
+        widget: string
+        prefix: "https://linkedin.com/in/"
       - { label: "Resumo", name: "summary", widget: "text" }
   - name: "agenda"
     label: "Agenda"
