@@ -10,18 +10,18 @@ const year = new Date().getFullYear();
 ---
 
 <footer>
-	<div class="footer-content">
-		<div class="footer-section">
+	<main class="footer-content">
+		<section class="footer-section">
 			<Image src={logoUefs} width={64} height={64} class="invert-colors" 
         alt="Logo da Universidade Estadual de Feira de Santana (UEFS)" 
       />
 			<p>Universidade Estadual de Feira de Santana</p>
-		</div>
-		<div class="footer-section">
+		</section>
+		<section class="footer-section">
 			<Image src={logoLabelu} alt="Logo Labelu" width={120} height={64} />
 			<p>Laboratório de História e Memória da Luta de Classes</p>
-		</div>
-		<div class="footer-section">
+		</section>
+		<section class="footer-section">
 			<p class="section-title">Redes Sociais</p>
 			<div class="social-links">
 				<a href="https://www.instagram.com/uefslabelu/" target="_blank" rel="noopener" aria-label="Instagram do Labelu">
@@ -31,11 +31,11 @@ const year = new Date().getFullYear();
 					<Icon name="mdi:youtube" size={28} />
 				</a>
 			</div>
-		</div>
-	</div>
+		</section>
+	</main>
 
 	<!-- Créditos e Copyright -->
-	<div class="footer-bottom">
+	<footer class="footer-bottom">
 		<p class="developed-by">
 			Desenvolvido por
 			<a href="https://ecompjr.com.br" target="_blank" rel="noopener">
@@ -43,7 +43,7 @@ const year = new Date().getFullYear();
 			</a>
 		</p>
 		<p>&copy; {year} {COPYRIGHT_NAME}. Todos os direitos reservados.</p>
-	</div>
+	</footer>
 </footer>
 
 <style>
