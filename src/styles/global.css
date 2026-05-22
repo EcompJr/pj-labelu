@@ -4,6 +4,8 @@
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
 
+@import "tailwindcss";
+
 :root {
 	--accent: #ff2323;
 	--accent-dark: #8a0000;
