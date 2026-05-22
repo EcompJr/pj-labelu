@@ -1,0 +1,257 @@
+---
+import { render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+	evento: CollectionEntry<'agenda'>;
+	/** Whether to show the full rich-text details inline (false = show link to detail page) */
+	expandivel?: boolean;
+}
+
+const { evento, expandivel = false } = Astro.props;
+const { titulo, categoria, pauta, data, hora, local } = evento.data;
+
+const now = new Date();
+const realizado = data.valueOf() < now.valueOf();
+
+const dataFormatada = data.toLocaleDateString('pt-BR', {
+	day: '2-digit',
+	month: 'long',
+	year: 'numeric',
+});
+
+// Build the detail page URL
+const baseUrl = import.meta.env.BASE_URL;
+const eventoUrl = `${baseUrl}agenda/${evento.id}/`;
+
+let Content: any = null;
+if (expandivel) {
+	const rendered = await render(evento);
+	Content = rendered.Content;
+}
+---
+
+<li class="timeline-item">
+	<div class="timeline-marker" aria-hidden="true"></div>
+
+	<article class="timeline-content">
+		<header>
+			<time datetime={data.toISOString().split('T')[0]}>
+				{dataFormatada}
+				{hora && <span class="timeline-hora"> · {hora}</span>}
+			</time>
+			<div class="timeline-badges">
+				{realizado && <span class="badge badge-realizado">Realizado</span>}
+				<span class="badge badge-categoria">{categoria}</span>
+			</div>
+		</header>
+
+		<h2 class="timeline-titulo">
+			<a href={eventoUrl}>{titulo}</a>
+		</h2>
+		<p class="timeline-pauta">{pauta}</p>
+
+		{local && (
+			<p class="timeline-local">
+				<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+				{local}
+			</p>
+		)}
+
+		{expandivel && Content ? (
+			<details class="timeline-detalhes">
+				<summary>Ver detalhes completos</summary>
+				<div class="prose">
+					<Content />
+				</div>
+			</details>
+		) : (
+			<a href={eventoUrl} class="timeline-link">
+				Ver detalhes →
+			</a>
+		)}
+	</article>
+</li>
+
+<style>
+	.timeline-item {
+		position: relative;
+		padding-left: 3rem;
+		padding-bottom: 2.5rem;
+	}
+
+	.timeline-marker {
+		position: absolute;
+		left: 0.55rem;
+		top: 0.35rem;
+		width: 14px;
+		height: 14px;
+		border-radius: 50%;
+		background: var(--accent);
+		border: 3px solid #fff;
+		box-shadow: 0 0 0 2px var(--accent);
+		z-index: 1;
+	}
+
+	.timeline-content {
+		background: #fff;
+		border-radius: 12px;
+		padding: 1.25rem 1.5rem;
+		box-shadow:
+			0 1px 4px rgba(var(--gray), 15%),
+			0 4px 12px rgba(var(--gray), 10%);
+		transition:
+			transform 0.2s ease,
+			box-shadow 0.2s ease;
+	}
+
+	.timeline-content:hover {
+		transform: translateY(-2px);
+		box-shadow:
+			0 4px 12px rgba(var(--gray), 25%),
+			0 8px 24px rgba(var(--gray), 15%);
+	}
+
+	/* ── Header ── */
+	.timeline-content header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.timeline-content time {
+		font-size: 0.85rem;
+		color: rgb(var(--gray));
+		font-weight: 700;
+	}
+
+	.timeline-hora {
+		font-weight: 400;
+	}
+
+	/* ── Badges ── */
+	.timeline-badges {
+		display: flex;
+		gap: 0.4rem;
+		flex-wrap: wrap;
+	}
+
+	.badge {
+		font-size: 0.7rem;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		padding: 0.2rem 0.6rem;
+		border-radius: 999px;
+		font-weight: 600;
+		white-space: nowrap;
+	}
+
+	.badge-categoria {
+		background: rgba(var(--gray-light), 60%);
+		color: rgb(var(--gray-dark));
+	}
+
+	.badge-realizado {
+		background: var(--accent-dark);
+		color: #fff;
+	}
+
+	/* ── Content ── */
+	.timeline-titulo {
+		font-size: 1.3rem;
+		margin: 0.25rem 0 0.5rem;
+	}
+
+	.timeline-titulo a {
+		color: rgb(var(--black));
+		text-decoration: none;
+		transition: color 0.15s ease;
+	}
+
+	.timeline-titulo a:hover {
+		color: var(--accent);
+	}
+
+	.timeline-pauta {
+		font-size: 0.95rem;
+		color: rgb(var(--gray));
+		margin-bottom: 0.75rem;
+		line-height: 1.5;
+	}
+
+	.timeline-local {
+		font-size: 0.85rem;
+		color: rgb(var(--gray));
+		margin-bottom: 0.5rem;
+		display: flex;
+		align-items: center;
+		gap: 0.35rem;
+	}
+
+	.timeline-local svg {
+		flex-shrink: 0;
+		opacity: 0.6;
+	}
+
+	/* ── Detail link ── */
+	.timeline-link {
+		font-size: 0.9rem;
+		color: var(--accent);
+		font-weight: 600;
+		text-decoration: none;
+		display: inline-block;
+		transition: gap 0.15s ease;
+	}
+
+	.timeline-link:hover {
+		text-decoration: underline;
+	}
+
+	/* ── Expandable details ── */
+	.timeline-detalhes summary {
+		font-size: 0.9rem;
+		color: var(--accent);
+		cursor: pointer;
+		font-weight: 600;
+		padding: 0.25rem 0;
+	}
+
+	.timeline-detalhes summary:hover {
+		text-decoration: underline;
+	}
+
+	.timeline-detalhes .prose {
+		margin-top: 1rem;
+		padding-top: 1rem;
+		border-top: 1px solid rgb(var(--gray-light));
+	}
+
+	/* ── Mobile ── */
+	@media (max-width: 720px) {
+		.timeline-item {
+			padding-left: 2.5rem;
+		}
+
+		.timeline-marker {
+			left: 0.35rem;
+			width: 12px;
+			height: 12px;
+		}
+
+		.timeline-content {
+			padding: 1rem;
+		}
+
+		.timeline-content header {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		.timeline-titulo {
+			font-size: 1.15rem;
+		}
+	}
+</style>

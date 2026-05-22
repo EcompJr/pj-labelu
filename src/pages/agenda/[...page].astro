@@ -1,0 +1,214 @@
+---
+import type { GetStaticPaths, Page } from 'astro';
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TimelineEvent from '../../components/TimelineEvent.astro';
+
+export const getStaticPaths = (async ({ paginate }) => {
+	// ── Configuration ──
+	// Flip to 'asc' if you want oldest-first
+	const SORT_ORDER: 'desc' | 'asc' = 'desc';
+	const PAGE_SIZE = 20;
+
+	const eventos = await getCollection('agenda');
+
+	eventos.sort((a, b) => {
+		const diff = a.data.data.valueOf() - b.data.data.valueOf();
+		return SORT_ORDER === 'desc' ? -diff : diff;
+	});
+
+	return paginate(eventos, { pageSize: PAGE_SIZE });
+}) satisfies GetStaticPaths;
+
+interface Props {
+	page: Page<CollectionEntry<'agenda'>>;
+}
+
+const { page } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+
+// ── Group events by Month/Year ──
+type GroupedEvents = { label: string; eventos: CollectionEntry<'agenda'>[] }[];
+
+function groupByMonth(events: CollectionEntry<'agenda'>[]): GroupedEvents {
+	const groups = new Map<string, CollectionEntry<'agenda'>[]>();
+
+	for (const evento of events) {
+		const d = evento.data.data;
+		// Capitalize the first letter of the month
+		const raw = d.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
+		const label = raw.charAt(0).toUpperCase() + raw.slice(1);
+
+		if (!groups.has(label)) groups.set(label, []);
+		groups.get(label)!.push(evento);
+	}
+
+	return Array.from(groups.entries()).map(([label, eventos]) => ({ label, eventos }));
+}
+
+const grouped = groupByMonth(page.data);
+---
+
+<BaseLayout
+	title="Agenda — Labelu"
+	description="Agenda de eventos do Laboratório de História e Memória da Luta de Classes"
+>
+	<section class="agenda-page" aria-labelledby="agenda-heading">
+		<h1 id="agenda-heading">Agenda do Laboratório</h1>
+		<p class="agenda-subtitle">Acompanhe os eventos, seminários, defesas e publicações do Labelu.</p>
+
+		{grouped.map((group) => (
+			<div class="timeline-group">
+				<h2 class="timeline-month-label">{group.label}</h2>
+				<ol class="timeline" role="list">
+					{group.eventos.map((evento) => (
+						<TimelineEvent evento={evento} />
+					))}
+				</ol>
+			</div>
+		))}
+
+		{/* ── Pagination ── */}
+		{(page.url.prev || page.url.next) && (
+			<nav class="pagination" aria-label="Paginação da agenda">
+				{page.url.prev ? (
+					<a href={page.url.prev} class="pagination-link pagination-prev">
+						← Mais recentes
+					</a>
+				) : (
+					<span class="pagination-link pagination-disabled">← Mais recentes</span>
+				)}
+
+				<span class="pagination-info">
+					Página {page.currentPage} de {page.lastPage}
+				</span>
+
+				{page.url.next ? (
+					<a href={page.url.next} class="pagination-link pagination-next">
+						Mais antigos →
+					</a>
+				) : (
+					<span class="pagination-link pagination-disabled">Mais antigos →</span>
+				)}
+			</nav>
+		)}
+	</section>
+</BaseLayout>
+
+<style>
+	.agenda-page {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 2rem 1rem;
+	}
+
+	.agenda-page h1 {
+		font-size: 2.4rem;
+		margin-bottom: 0.25rem;
+	}
+
+	.agenda-subtitle {
+		color: rgb(var(--gray));
+		font-size: 1.05rem;
+		margin-bottom: 2.5rem;
+	}
+
+	/* ── Month/Year Group ── */
+	.timeline-group {
+		margin-bottom: 1rem;
+	}
+
+	.timeline-month-label {
+		font-size: 1rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--accent-dark);
+		padding: 0.5rem 0;
+		margin-bottom: 0.5rem;
+		border-bottom: 2px solid var(--accent);
+		display: inline-block;
+	}
+
+	/* ── Timeline vertical line ── */
+	.timeline {
+		list-style: none;
+		padding: 0;
+		margin: 1rem 0 2rem;
+		position: relative;
+	}
+
+	.timeline::before {
+		content: '';
+		position: absolute;
+		left: 1rem;
+		top: 0;
+		bottom: 0;
+		width: 2px;
+		background: rgb(var(--gray-light));
+	}
+
+	/* ── Pagination ── */
+	.pagination {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1.5rem 0;
+		border-top: 1px solid rgb(var(--gray-light));
+		margin-top: 1rem;
+	}
+
+	.pagination-link {
+		font-size: 0.9rem;
+		font-weight: 600;
+		padding: 0.5rem 1rem;
+		border-radius: 8px;
+		text-decoration: none;
+		transition:
+			background 0.15s ease,
+			color 0.15s ease;
+	}
+
+	a.pagination-link {
+		color: var(--accent);
+		background: rgba(var(--gray-light), 40%);
+	}
+
+	a.pagination-link:hover {
+		background: rgba(var(--gray-light), 80%);
+		color: var(--accent-dark);
+	}
+
+	.pagination-disabled {
+		color: rgb(var(--gray));
+		opacity: 0.4;
+		cursor: default;
+	}
+
+	.pagination-info {
+		font-size: 0.85rem;
+		color: rgb(var(--gray));
+		font-weight: 600;
+	}
+
+	/* ── Mobile ── */
+	@media (max-width: 720px) {
+		.agenda-page h1 {
+			font-size: 1.8rem;
+		}
+
+		.agenda-subtitle {
+			font-size: 0.95rem;
+		}
+
+		.timeline::before {
+			left: 0.75rem;
+		}
+
+		.pagination {
+			flex-direction: column;
+			gap: 0.75rem;
+		}
+	}
+</style>
