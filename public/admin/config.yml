@@ -75,10 +75,12 @@ collections:
       - label: ORCID
         name: orcid
         widget: string
+        optional: true
         prefix: "https://orcid.org/"
       - label: LinkedIn
         name: linkedin
         widget: string
+        optional: true
         prefix: "https://linkedin.com/in/"
       - { label: "Resumo", name: "summary", widget: "text" }
   - name: "agenda"
