@@ -24,9 +24,9 @@ const pesquisadores = defineCollection({
 		z.object({
 			name: z.string(),
 			position: z.string().optional(),
-			lattes: z.string().url(),
-			orcid: z.string().optional(),
-			linkedin: z.string().optional(),
+			lattes: z.url(),
+			orcid: z.url().optional(),
+			linkedin: z.url().optional(),
 			summary: z.string(),
 			image: z.optional(image()),
 		}),
