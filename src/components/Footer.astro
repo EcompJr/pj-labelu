@@ -52,32 +52,39 @@ const year = new Date().getFullYear();
 		color: rgba(255, 255, 255, 0.8);
 		padding: 2.5rem 1.5rem 1.5rem;
 		margin-top: auto;
-	}
-	.footer-content {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		align-items: center;
-		gap: 2rem;
-		max-width: 900px;
-		margin: 0 auto 2rem;
-	}
-	.footer-section {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
-		gap: 0.6rem;
-	}
-	.footer-section img {
-		border-radius: 4px;
-	}
-	.footer-section p {
-		margin: 0;
-		font-size: 0.8rem;
-		line-height: 1.5;
-		max-width: 220px;
-	}
+	
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto 2rem;
+
+      .footer-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 0.6rem;
+
+        img {
+          border-radius: 4px;
+        }
+
+        p {
+          margin: 0;
+          font-size: 0.8rem;
+          line-height: 1.5;
+          max-width: 220px;
+        }
+      }
+
+    }
+  
+  }
+
 	.section-title {
 		font-weight: 700;
 		color: #fff;
