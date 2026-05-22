@@ -54,10 +54,23 @@ collections:
     fields:
       - { label: "Layout", name: "layout", widget: "hidden", default: "researcher" }
       - { label: "Nome completo", name: "name", widget: "string" }
-      - { label: "Cargo no laboratório", name: "position", widget: "string", required: false }
-      - { label: "Lattes", name: "lattes", widget: "string" }
-      - { label: "ORCID", name: "orcid", widget: "string", required: false }
-      - { label: "LinkedIn", name: "linkedin", widget: "string", required: false }
+      - label: Cargo no laboratório
+        name: position
+        widget: select
+        required: false
+        options:
+          - Coordenador
+          - Coordenadora
+          - Vice-Coordenador
+          - Vice-Coordenadora
+          - Analista
+          - Estagiária
+          - Estagiário
+          - Pesquisador
+          - Pesquisadora
+      - { label: "Lattes", name: "lattes", widget: "url" }
+      - { label: "ORCID", name: "orcid", widget: "url", required: false }
+      - { label: "LinkedIn", name: "linkedin", widget: "url", required: false }
       - { label: "Resumo", name: "summary", widget: "text" }
   - name: "agenda"
     label: "Agenda"
