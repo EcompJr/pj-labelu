@@ -24,7 +24,6 @@ const pesquisadores = defineCollection({
 		z.object({
 			name: z.string(),
 			position: z.string().optional(),
-			academicLevel: z.enum(['Graduação', 'Mestrado', 'Doutorado', 'Pós-doutorado', 'Outro']),
 			lattes: z.string().url(),
 			orcid: z.string().optional(),
 			linkedin: z.string().optional(),
