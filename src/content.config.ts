@@ -37,14 +37,11 @@ const agenda = defineCollection({
 	// Load Markdown and MDX files in the `src/content/agenda/` directory.
 	loader: glob({ base: './src/content/agenda', pattern: '**/*.{md,mdx}' }),
 	schema: z.object({
-		titulo: z.string().min(3, 'O título deve ter pelo menos 3 caracteres'),
-		categoria: z.string().min(2, 'A categoria é obrigatória'),
-		pauta: z.string().max(300, 'A pauta deve ter no máximo 300 caracteres'),
+		titulo: z.string(),
+		categoria: z.string(),
+		pauta: z.string(),
 		data: z.coerce.date(),
-		hora: z
-			.string()
-			.regex(/^\d{2}:\d{2}$/, 'Formato esperado: HH:MM')
-			.optional(),
+		hora: z.string().optional(),
 		local: z.string().optional(),
 	}),
 });

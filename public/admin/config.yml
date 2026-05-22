@@ -80,15 +80,18 @@ collections:
         field: "data"
         direction: "descending"
     fields:
-      - { label: "Título do Evento", name: "titulo", widget: "string" }
+      - { label: "Título do Evento", name: "titulo", widget: "string",
+          minlength: 3 }
       - { label: "Categoria", name: "categoria", widget: "string",
+          minlength: 2,
           hint: "Ex: Publicação de Artigo, Seminário, Defesa de Tese" }
       - { label: "Pauta", name: "pauta", widget: "text",
+          maxlength: 300,
           hint: "Breve descrição do evento (máx. 300 caracteres)" }
       - { label: "Data", name: "data", widget: "datetime",
           date_format: "YYYY-MM-DD", time_format: false }
       - { label: "Hora", name: "hora", widget: "string", required: false,
-          hint: "Formato HH:MM (ex: 14:30)" }
+          pattern: ["^\\d{2}:\\d{2}$", "Formato esperado: HH:MM (ex: 14:30)"] }
       - { label: "Local", name: "local", widget: "string", required: false,
           hint: "Sala, auditório ou link para evento online" }
       - { label: "Detalhes", name: "body", widget: "markdown" }
