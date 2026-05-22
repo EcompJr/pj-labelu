@@ -23,7 +23,7 @@ const pesquisadores = defineCollection({
 	schema: ({ image }) =>
 		z.object({
 			name: z.string(),
-			position: z.string().optional(),
+			position: z.string(),
 			lattes: z.url(),
 			orcid: z.url().optional(),
 			linkedin: z.url().optional(),
