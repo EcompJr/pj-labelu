@@ -25,6 +25,14 @@ const year = new Date().getFullYear();
 			<Image src={logoLabelu} alt="Logo Labelu" width={120} height={64} />
 			<p>Laboratório de História e Memória da Luta de Classes</p>
 		</section>
+    <section class="footer-section">
+      <a href="http://www.dchf.uefs.br/" target="_blank" rel="noopener" 
+        aria-label="Departamento de Ciências Humanas e Filosofia (DCHF) da UEFS"
+      >
+        <span class="logotype">DCHF</span>
+        <p>Departamento de Ciências Humanas e Filosofia</p>
+      </a>
+		</section>
 		<section class="footer-section">
 			<p class="section-title">Redes Sociais</p>
 			<div class="social-links">
@@ -60,6 +68,12 @@ const year = new Date().getFullYear();
     a {
       color: white;
       text-decoration: none;
+    }
+
+    logotype {
+      font-weight: bolder;
+      color: #fff;
+      font-size: 1.25rem;
     }
 	
     .footer-content {
