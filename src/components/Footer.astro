@@ -10,21 +10,30 @@ const year = new Date().getFullYear();
 ---
 
 <footer>
-	<div class="footer-content">
-		<!-- Associação Institucional com a UEFS -->
-		<div class="footer-section">
-			<Image src={logoUefs} alt="Logo UEFS" width={64} height={64} class="invert-colors" />
-			<p>Associado à Universidade Estadual de Feira de Santana</p>
-		</div>
-
-		<!-- Nome do Laboratório e logo -->
-		<div class="footer-section">
+	<main class="footer-content">
+		<section class="footer-section">
+      <a href="https://ppgh.uefs.br/grupos-e-nucleos/" target="_blank" rel="noopener" 
+        aria-label="Grupos e Núcleos de Pesquisa da UEFS"
+      >
+        <Image src={logoUefs} width={64} height={64} class="invert-colors" 
+          alt="Logo da Universidade Estadual de Feira de Santana (UEFS)" 
+        />
+        <p>Universidade Estadual de Feira de Santana</p>
+      </a>
+		</section>
+		<section class="footer-section">
 			<Image src={logoLabelu} alt="Logo Labelu" width={120} height={64} />
 			<p>Laboratório de História e Memória da Luta de Classes</p>
-		</div>
-
-		<!-- Redes Sociais -->
-		<div class="footer-section">
+		</section>
+    <section class="footer-section">
+      <a href="http://www.dchf.uefs.br/" target="_blank" rel="noopener" 
+        aria-label="Departamento de Ciências Humanas e Filosofia (DCHF) da UEFS"
+      >
+        <span class="logotype">DCHF</span>
+        <p>Departamento de Ciências Humanas e Filosofia</p>
+      </a>
+		</section>
+		<section class="footer-section">
 			<p class="section-title">Redes Sociais</p>
 			<div class="social-links">
 				<a href="https://www.instagram.com/uefslabelu/" target="_blank" rel="noopener" aria-label="Instagram do Labelu">
@@ -34,11 +43,19 @@ const year = new Date().getFullYear();
 					<Icon name="mdi:youtube" size={28} />
 				</a>
 			</div>
-		</div>
-	</div>
+		</section>
+	</main>
 
 	<!-- Créditos e Copyright -->
-	<div class="footer-bottom">
+	<footer class="footer-bottom">
+    <address>
+      <a href="mailto:lpbpacheco1@uefs.br">lpbpacheco1@uefs.br</a>
+      <a href="https://maps.app.goo.gl/9qCDBbf8MXFwN5hw9" target="_blank" rel="noopener">
+        Prédio de Programa de Pós-Graduação em História (PPGH) -
+        Avenida Transnordestina, S/N - Novo Horizonte
+        CEP 44036-900 - Feira de Santana, Bahia.
+      </a>
+    </address>
 		<p class="developed-by">
 			Desenvolvido por
 			<a href="https://ecompjr.com.br" target="_blank" rel="noopener">
@@ -46,7 +63,7 @@ const year = new Date().getFullYear();
 			</a>
 		</p>
 		<p>&copy; {year} {COPYRIGHT_NAME}. Todos os direitos reservados.</p>
-	</div>
+	</footer>
 </footer>
 
 <style>
@@ -55,32 +72,50 @@ const year = new Date().getFullYear();
 		color: rgba(255, 255, 255, 0.8);
 		padding: 2.5rem 1.5rem 1.5rem;
 		margin-top: auto;
-	}
-	.footer-content {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		align-items: center;
-		gap: 2rem;
-		max-width: 900px;
-		margin: 0 auto 2rem;
-	}
-	.footer-section {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
-		gap: 0.6rem;
-	}
-	.footer-section img {
-		border-radius: 4px;
-	}
-	.footer-section p {
-		margin: 0;
-		font-size: 0.8rem;
-		line-height: 1.5;
-		max-width: 220px;
-	}
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
+    logotype {
+      font-weight: bolder;
+      color: #fff;
+      font-size: 1.25rem;
+    }
+	
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      align-items: center;
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto 2rem;
+
+      .footer-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 0.6rem;
+
+        img {
+          border-radius: 4px;
+        }
+
+        p {
+          margin: 0;
+          font-size: 0.8rem;
+          line-height: 1.5;
+          max-width: 220px;
+        }
+      }
+
+    }
+  
+  }
+
 	.section-title {
 		font-weight: 700;
 		color: #fff;
