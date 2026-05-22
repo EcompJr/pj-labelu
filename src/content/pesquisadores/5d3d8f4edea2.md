@@ -2,7 +2,6 @@
 layout: researcher
 name: João Victor dos Santos Silva
 position: Membro
-academicLevel: Mestrado
 lattes: http://lattes.cnpq.br/4035596535773563
 orcid: ''
 linkedin: ''

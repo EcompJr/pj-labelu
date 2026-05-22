@@ -2,7 +2,6 @@
 layout: researcher
 name: Franciane Nunes dos Santos
 position: Membro
-academicLevel: Graduação
 lattes: http://lattes.cnpq.br/0135754140946005
 orcid: ''
 linkedin: ''
