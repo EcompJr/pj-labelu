@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 
 // Buscar pesquisadores da collection
 const entries = await getCollection('pesquisadores');
@@ -30,7 +31,7 @@ const pesquisadores = entries.map((e) => ({
             <!-- Foto -->
             <div class="card-foto">
               {p.image ? (
-                <img src={p.image} alt={`Foto de ${p.name}`} class="foto-img" />
+                <Image src={p.image} alt={`Foto de ${p.name}`} class="foto-img" />
               ) : (
                 <div class="foto-fallback" aria-hidden="true">
                   <svg viewBox="0 0 130 160" xmlns="http://www.w3.org/2000/svg" width="130" height="160">
