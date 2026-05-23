@@ -19,28 +19,28 @@ interface Props {
 
 const { page } = Astro.props
 
-// ── Group events by Month/Year ──
-type GroupedEvents = { 
+type MonthsEvents = { 
 	label: string 
 	eventos: CollectionEntry<'agenda'>[] 
 }[]
 
-function groupByMonth(events: CollectionEntry<'agenda'>[]): GroupedEvents {
-	const groups = new Map<string, CollectionEntry<'agenda'>[]>()
+function eventsByMonth(events: CollectionEntry<'agenda'>[]): MonthsEvents {
+	const months = new Map<string, CollectionEntry<'agenda'>[]>()
 
 	for (const event of events) {
 		const d = event.data.data
 		const raw = d.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })
 		const label = raw.charAt(0).toUpperCase() + raw.slice(1)
 
-		if (!groups.has(label)) groups.set(label, [])
-		groups.get(label)!.push(event)
+		if (!months.has(label)) months.set(label, [])
+		months.get(label)!.push(event)
 	}
 
-	return Array.from(groups.entries()).map(([label, eventos]) => ({ label, eventos }))
+	return Array.from(months.entries())
+    .map(([label, events]) => ({ label, eventos: events }))
 }
 
-const grouped = groupByMonth(page.data)
+const grouped = eventsByMonth(page.data)
 ---
 
 <BaseLayout
