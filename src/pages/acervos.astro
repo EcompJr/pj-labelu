@@ -2,10 +2,8 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
-// Obtém dinamicamente todos os grupos cadastrados pelo admin no CMS
 const grupos = await getCollection("archive");
 
-// Informações institucionais fixas do laboratório
 const dadosFixos = {
   title: "Acesso ao Acervo Físico",
   email: "lpbpacheco1@uefs.br",
@@ -21,23 +19,34 @@ const dadosFixos = {
   title={`${dadosFixos.title} — Labelu`}
   description="Instruções, horários de funcionamento e formulário de solicitação formal para acessar o acervo físico do Laboratório de História e Memória da Luta de Classes."
 >
-  <section class="acervo-page" aria-labelledby="acervo-heading">
-    <h1 id="acervo-heading">{dadosFixos.title}</h1>
+  <section
+    class="max-w-300 w-full mx-auto px-8 py-12"
+    aria-labelledby="acervo-heading"
+  >
+    <!-- Page title — font, color, tracking all come from @layer base h1 -->
+    <h1 id="acervo-heading" class="text-4xl font-bold mb-8">
+      {dadosFixos.title}
+    </h1>
 
-    <div class="acervo-container">
-      <div class="acervo-instrucoes">
-        <h2>Instruções para o Pedido Formal</h2>
-        <div class="rich-text-content">
-          <p>{dadosFixos.instrucoes}</p>
-        </div>
+    <!-- Instructions + sidebar -->
+    <div class="grid grid-cols-[1.2fr_1fr] gap-12 mb-12 max-[720px]:grid-cols-1">
+      <div>
+        <!-- h2 color must be accent, so we override the base title color here -->
+        <h2 class="text-2xl font-bold text-accent-600 mb-6">
+          Instruções para o Pedido Formal
+        </h2>
+        <!-- p line-height comes from @layer base -->
+        <p>{dadosFixos.instrucoes}</p>
       </div>
 
       <aside
-        class="acervo-sidebar"
+        class="bg-surface p-6 rounded-xl h-fit"
         aria-label="Informações de Contato e Funcionamento"
       >
-        <h2>Contato e Funcionamento</h2>
-        <ul>
+        <h2 class="text-2xl font-bold text-accent-600 mb-6">
+          Contato e Funcionamento
+        </h2>
+        <ul class="list-none p-0 m-0 flex flex-col gap-3">
           <li><strong>📍 Localização:</strong> {dadosFixos.localizacao}</li>
           <li><strong>🕒 Horários:</strong> {dadosFixos.horarios}</li>
           <li><strong>✉️ E-mail:</strong> {dadosFixos.email}</li>
@@ -45,18 +54,26 @@ const dadosFixos = {
       </aside>
     </div>
 
-    <hr class="divider" />
+    <hr class="border-t border-border my-10" />
 
-    <div class="grupos-documentos">
-      <h2>Grupos de Documentos</h2>
-      <div class="grupos-lista">
+    <!-- Document groups -->
+    <div>
+      <h2 class="text-2xl font-bold text-accent-600 mb-6">
+        Grupos de Documentos
+      </h2>
+      <div class="flex flex-col gap-10">
         {
           grupos.map((grupo) => (
-            <article class="grupo-item">
-              <h3 class="grupo-titulo">{grupo.data.title}</h3>
-              <p class="grupo-descricao">{grupo.data.description}</p>
+            <article>
+              <!-- h3 font/tracking/leading from base; only color is custom -->
+              <h3 class="text-xl font-bold text-accent-600 mb-2">
+                {grupo.data.title}
+              </h3>
+              <p class="mb-4">{grupo.data.description}</p>
               <button
-                class="btn-projetos"
+                class="bg-raised text-title rounded-full px-5 py-2 font-bold
+                       text-sm cursor-pointer transition-colors duration-200
+                       hover:bg-border tracking-wide border-none"
                 aria-label={`Ver projetos sobre ${grupo.data.title}`}
               >
                 PROJETOS
@@ -67,219 +84,79 @@ const dadosFixos = {
       </div>
     </div>
 
-    <hr class="divider" />
+    <hr class="border-t border-border my-10" />
 
-    <div class="formulario-acesso">
-      <h2>Solicitação de Acesso</h2>
-      <p>
+    <!-- Access request form -->
+    <div>
+      <h2 class="text-2xl font-bold text-accent-600 mb-3">
+        Solicitação de Acesso
+      </h2>
+      <p class="mb-6">
         Preencha os dados abaixo. Ao clicar em enviar, seu aplicativo de e-mail
         será aberto com o pedido formatado.
       </p>
 
-      <form id="acervo-form" class="form-container">
-        <div class="form-group">
-          <label for="nome">Nome Completo</label>
+      <form id="acervo-form" class="flex flex-col gap-6">
+        <div class="flex flex-col gap-2">
+          <label for="nome" class="font-semibold">Nome Completo</label>
           <input
             type="text"
             id="nome"
             name="nome"
             required
-            class="form-input"
+            class="px-3 py-3 border border-border rounded-md bg-white
+                   focus:outline-none focus:ring-2 focus:ring-accent-500
+                   focus:border-accent-500 transition-shadow duration-150
+                   placeholder:text-secondary-text"
             placeholder="Digite seu nome completo"
           />
         </div>
 
-        <div class="form-group">
-          <label for="email-usuario">Seu E-mail</label>
+        <div class="flex flex-col gap-2">
+          <label for="email-usuario" class="font-semibold">Seu E-mail</label>
           <input
             type="email"
             id="email-usuario"
             name="email-usuario"
             required
-            class="form-input"
+            class="px-3 py-3 border border-border rounded-md bg-white
+                   focus:outline-none focus:ring-2 focus:ring-accent-500
+                   focus:border-accent-500 transition-shadow duration-150
+                   placeholder:text-secondary-text"
             placeholder="seu.email@exemplo.com"
           />
         </div>
 
-        <div class="form-group">
-          <label for="motivo">Motivo do Interesse / Pesquisa</label>
+        <div class="flex flex-col gap-2">
+          <label for="motivo" class="font-semibold">
+            Motivo do Interesse / Pesquisa
+          </label>
           <textarea
             id="motivo"
             name="motivo"
             rows="5"
             required
-            class="form-textarea"
+            class="px-3 py-3 border border-border rounded-md bg-white
+                   focus:outline-none focus:ring-2 focus:ring-accent-500
+                   focus:border-accent-500 transition-shadow duration-150
+                   placeholder:text-secondary-text resize-y"
             placeholder="Explique brevemente sua pesquisa e quais documentos deseja consultar..."
           ></textarea>
         </div>
 
         <button
           type="submit"
-          class="btn-primary"
-          data-destino={dadosFixos.email}>Abrir no e-mail</button
+          class="bg-accent-600 text-white rounded-lg px-6 py-3 font-bold
+                 cursor-pointer w-max transition-colors duration-200
+                 hover:bg-accent-800 border-none max-[720px]:w-full"
+          data-destino={dadosFixos.email}
         >
+          Abrir no e-mail
+        </button>
       </form>
     </div>
   </section>
 </BaseLayout>
-
-<style>
-  .acervo-page {
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 3rem 2rem;
-    box-sizing: border-box;
-  }
-
-  .acervo-page h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 2rem;
-    color: #1a1a1a;
-  }
-
-  .acervo-page h2 {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #902424;
-    margin-bottom: 1.5rem;
-  }
-
-  .acervo-container {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 3rem;
-    margin-bottom: 3rem;
-  }
-
-  .acervo-sidebar {
-    background: #f0f0f0;
-    padding: 1.5rem;
-    border-radius: 8px;
-    height: fit-content;
-  }
-
-  .acervo-sidebar h3 {
-    margin-top: 0;
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-  }
-
-  .acervo-sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-
-  .divider {
-    border: none;
-    border-top: 1px solid #e0e0e0;
-    margin: 2.5rem 0;
-  }
-
-  .grupos-lista {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-  }
-
-  .grupo-titulo {
-    color: #902424;
-    font-size: 1.6rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .grupo-descricao {
-    color: #4a4a4a;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-  }
-
-  .btn-projetos {
-    background-color: #e0e0e0;
-    color: #1a1a1a;
-    border: none;
-    border-radius: 20px;
-    padding: 0.5rem 1.2rem;
-    font-weight: 700;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-
-  .btn-projetos:hover {
-    background-color: #d0d0d0;
-  }
-
-  .form-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-  }
-
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .form-group label {
-    font-weight: 600;
-    color: #333;
-  }
-
-  .form-group input,
-  .form-group textarea {
-    padding: 0.8rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-family: inherit;
-    font-size: 1rem;
-  }
-
-  .btn-primary {
-    background-color: #902424;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 0.8rem 1.5rem;
-    font-weight: bold;
-    font-size: 1rem;
-    cursor: pointer;
-    width: max-content;
-    transition: background-color 0.2s;
-  }
-
-  .btn-primary:hover {
-    background-color: #7a1f1f;
-  }
-
-  @media (max-width: 720px) {
-    .acervo-container {
-      grid-template-columns: 1fr;
-    }
-
-    .btn-primary {
-      width: 100%;
-    }
-  }
-</style>
-
-<style is:global>
-  /* Força o contêiner do layout principal a se expandir apenas quando estiver nesta página */
-  main,
-  .wrapper,
-  .container {
-    max-width: 1200px !important;
-    width: 80% !important;
-    padding: 0 !important;
-  }
-</style>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
@@ -289,8 +166,7 @@ const dadosFixos = {
       form.addEventListener("submit", (e) => {
         e.preventDefault();
 
-        const nome = (document.getElementById("nome") as HTMLInputElement)
-          .value;
+        const nome = (document.getElementById("nome") as HTMLInputElement).value;
         const emailUsuario = (
           document.getElementById("email-usuario") as HTMLInputElement
         ).value;
@@ -298,9 +174,8 @@ const dadosFixos = {
           document.getElementById("motivo") as HTMLTextAreaElement
         ).value;
 
-        const btn = form.querySelector(".btn-primary") as HTMLButtonElement;
-        const emailDestino =
-          btn.getAttribute("data-destino") || "labelu@uefs.br";
+        const btn = form.querySelector("[data-destino]") as HTMLButtonElement;
+        const emailDestino = btn.getAttribute("data-destino") || "labelu@uefs.br";
 
         const subject = encodeURIComponent(
           `Solicitação de Acesso ao Acervo - ${nome}`,
