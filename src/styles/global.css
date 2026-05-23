@@ -5,6 +5,8 @@
  */
 
 @import "tailwindcss";
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
 
 :root {
   --accent: #ff2323;
