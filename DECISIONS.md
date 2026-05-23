@@ -14,7 +14,7 @@ The codebase is split into two repositories: the front end ([pj-labelu-front](ht
 On inspection, many pages, integrations, and backend services are missing—my estimate is the project is under 60% complete.
 In places where features appear implemented, there is little testing or verification, which would require additional time to debug and validate.
 
-**Choosing an approach**
+#### Choosing an approach
 
 We evaluated three options:
 
@@ -25,7 +25,7 @@ We evaluated three options:
 I chose option 3. Astro is well suited for content-focused sites and allows rapid delivery.
 Pairing Astro with a Git-backed CMS removes the need to build a full backend solely to serve mostly static pages, reduces duplication, and lowers the risk of introducing bugs while finishing remaining content.
 
-**Choosing a CMS**
+#### Choosing a CMS
 
 I evaluated several CMS options and selected [Decap CMS](https://decapcms.org/) (formerly Netlify CMS).
 
@@ -38,7 +38,7 @@ I spent a significant amount of time attempting to configure Decap (Netlify CMS)
 Additionally, the setup appears to rely heavily on Netlify-specific features.
 This introduces an undesirable third-party dependency, along with potential drawbacks such as a learning curve for Netlify and possible billing constraints.
 
-**The New CMS**
+#### The New CMS
 
 Thus, I decided to adopt [Sveltia CMS](https://sveltiacms.app/en/).
 It is fully self-hosted and integrates cleanly with GitHub using fine-grained access tokens.
