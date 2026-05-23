@@ -5,17 +5,11 @@ import { getCollection } from 'astro:content'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import TimelineEvent from '../../components/TimelineEvent.astro'
 
+import { sortBy } from '../../lib/vec'
+
 export const getStaticPaths = (async ({ paginate }) => {
-	const SORT_ORDER: 'desc' | 'asc' = 'desc'
-	const PAGE_SIZE = 20
-
-	const schedule = await getCollection('agenda')
-
-	schedule.sort((a, b) => {
-		const diff = a.data.data.valueOf() - b.data.data.valueOf()
-		return SORT_ORDER === 'desc' ? -diff : diff
-	});
-
+  const PAGE_SIZE = 20
+	const schedule = sortBy(await getCollection('agenda'), 'data')
 	return paginate(schedule, { pageSize: PAGE_SIZE })
 }) satisfies GetStaticPaths
 
