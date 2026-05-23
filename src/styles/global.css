@@ -8,15 +8,112 @@
 @plugin "@tailwindcss/forms";
 @plugin "@tailwindcss/typography";
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Literata:opsz,wght@7..72,500;7..72,600;7..72,700&display=swap');
+
 :root {
-  --accent: #ff2323;
-  --accent-dark: #8a0000;
-  --black: 15, 18, 25;
-  --gray: 96, 115, 159;
-  --gray-light: 229, 233, 240;
-  --gray-dark: 34, 41, 57;
-  --gray-gradient: rgba(var(--gray-light), 50%), #fff;
-  --box-shadow:
-    0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
-    0 16px 32px rgba(var(--gray), 33%);
+
+  /* Fonts */
+  --font-body: "Inter", sans-serif;
+  --font-heading: "Literata", serif;
+
+  /* Neutral scale */
+  --color-page: #f9f7f5;
+  --color-surface: #f3f0ec;
+  --color-raised: #e3dfda;
+  --color-border: #d4cec8;
+
+  --color-text-secondary: #8a837d;
+  --color-text-body: #4a4540;
+  --color-text-title: #1a1714;
+
+  /* Accent scale */
+  --color-accent-50: #f7edeb;
+  --color-accent-100: #d8b4ac;
+  --color-accent-300: #c56d5d;
+  --color-accent-500: #a53824;
+  --color-accent-600: #7d2418;
+  --color-accent-800: #5c1208;
+  --color-accent-900: #3b0700;
+
+  /* Semantic aliases */
+  --background: var(--color-page);
+  --foreground: var(--color-text-body);
+
+  --card: var(--color-surface);
+  --card-foreground: var(--color-text-body);
+
+  --popover: var(--color-surface);
+  --popover-foreground: var(--color-text-body);
+
+  --primary: var(--color-accent-600);
+  --primary-foreground: #ffffff;
+
+  --secondary: var(--color-raised);
+  --secondary-foreground: var(--color-text-body);
+
+  --muted: var(--color-surface);
+  --muted-foreground: var(--color-text-secondary);
+
+  --accent: var(--color-accent-600);
+  --accent-foreground: #ffffff;
+
+  --border: var(--color-border);
+  --input: var(--color-border);
+  --ring: var(--color-accent-500);
+
+  --radius: 0.75rem;
+}
+
+@theme {
+  /* Backgrounds */
+  --color-page: #f9f7f5;
+  --color-surface: #f3f0ec;
+  --color-raised: #e3dfda;
+  --color-border: #d4cec8;
+
+  /* Typography */
+  --color-title: #1a1714;
+  --color-body: #4a4540;
+  --color-secondary-text: #8a837d;
+
+  /* Accent palette */
+  --color-accent-50: #f7edeb;
+  --color-accent-100: #d8b4ac;
+  --color-accent-300: #c56d5d;
+  --color-accent-500: #a53824;
+  --color-accent-600: #7d2418;
+  --color-accent-800: #5c1208;
+  --color-accent-900: #3b0700;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    font-family: var(--font-body);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--color-body);
+    background: var(--color-page);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    color: var(--color-title);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+
+  p {
+    line-height: 1.75;
+  }
 }
