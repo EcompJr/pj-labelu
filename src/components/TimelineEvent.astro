@@ -12,8 +12,7 @@ interface Props {
 const { event, expandivel = false } = Astro.props;
 const { title: titulo, category: categoria, agenda: pauta, date: data, time: hora, local } = event.data;
 
-const now = new Date();
-const hasFinished = data.valueOf() < now.valueOf();
+const hasFinished = data.valueOf() < (new Date()).valueOf();
 
 const localDate = data.toLocaleDateString('pt-BR', {
 	day: '2-digit',
