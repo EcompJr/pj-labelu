@@ -6,15 +6,15 @@ type Event = CollectionEntry<'schedule'>;
 
 interface Props {
 	event: Event;
-	expandivel?: boolean;
+	mayOpen?: boolean;
 }
 
-const { event, expandivel = false } = Astro.props;
-const { title: titulo, category: categoria, agenda: pauta, date: data, time: hora, local } = event.data;
+const { event, mayOpen = false } = Astro.props;
+const { title, category, agenda, date, time, local } = event.data;
 
-const hasFinished = data.valueOf() < (new Date()).valueOf();
+const hasFinished = date.valueOf() < (new Date()).valueOf();
 
-const localDate = data.toLocaleDateString('pt-BR', {
+const localDate = date.toLocaleDateString('pt-BR', {
 	day: '2-digit',
 	month: 'long',
 	year: 'numeric',
@@ -25,7 +25,7 @@ const baseUrl = import.meta.env.BASE_URL;
 const eventoUrl = `${baseUrl}agenda/${event.id}/`;
 
 let Content: any = null;
-if (expandivel) {
+if (mayOpen) {
 	const rendered = await render(event);
 	Content = rendered.Content;
 }
@@ -36,20 +36,20 @@ if (expandivel) {
 
 	<article class="timeline-content">
 		<header>
-			<time datetime={data.toISOString().split('T')[0]}>
+			<time datetime={date.toISOString().split('T')[0]}>
 				{localDate}
-				{hora && <span class="timeline-hora"> · {hora}</span>}
+				{time && <span class="timeline-hora"> · {time}</span>}
 			</time>
 			<div class="timeline-badges">
 				{hasFinished && <span class="badge badge-realizado">Realizado</span>}
-				<span class="badge badge-categoria">{categoria}</span>
+				<span class="badge badge-categoria">{category}</span>
 			</div>
 		</header>
 
 		<h2 class="timeline-titulo">
-			<a href={eventoUrl}>{titulo}</a>
+			<a href={eventoUrl}>{title}</a>
 		</h2>
-		<p class="timeline-pauta">{pauta}</p>
+		<p class="timeline-pauta">{agenda}</p>
 
 		{local && (
 			<p class="timeline-local">
@@ -58,7 +58,7 @@ if (expandivel) {
 			</p>
 		)}
 
-		{expandivel && Content ? (
+		{mayOpen && Content ? (
 			<details class="timeline-detalhes">
 				<summary>Ver detalhes completos</summary>
 				<div class="prose">
