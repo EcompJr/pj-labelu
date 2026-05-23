@@ -4,9 +4,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 
-// Buscar pesquisadores da collection
-const entries = await getCollection('team');
-const pesquisadores = entries.map((e) => ({
+const team = (await getCollection('team')).map((e) => ({
   fullname: e.data.fullname,
   role: e.data.role ?? '',
   summary: e.data.summary,
@@ -14,7 +12,7 @@ const pesquisadores = entries.map((e) => ({
   orcid: e.data.orcid ?? '',
   linkedin: e.data.linkedin ?? '',
   profile: e.data.profile ?? null,
-}));
+}))
 ---
 
 <BaseLayout title={`Equipe — ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
@@ -24,7 +22,7 @@ const pesquisadores = entries.map((e) => ({
       <h1 class="equipe-titulo">Equipe</h1>
 
       <ul class="pesquisadores-list" role="list">
-        {pesquisadores.map((p) => (
+        {team.map((p) => (
           <li class="card">
 
             <!-- Foto -->
