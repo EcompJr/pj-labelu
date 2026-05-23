@@ -13,9 +13,9 @@ const { event, expandivel = false } = Astro.props;
 const { title: titulo, category: categoria, agenda: pauta, date: data, time: hora, local } = event.data;
 
 const now = new Date();
-const realizado = data.valueOf() < now.valueOf();
+const hasFinished = data.valueOf() < now.valueOf();
 
-const dataFormatada = data.toLocaleDateString('pt-BR', {
+const localDate = data.toLocaleDateString('pt-BR', {
 	day: '2-digit',
 	month: 'long',
 	year: 'numeric',
@@ -38,11 +38,11 @@ if (expandivel) {
 	<article class="timeline-content">
 		<header>
 			<time datetime={data.toISOString().split('T')[0]}>
-				{dataFormatada}
+				{localDate}
 				{hora && <span class="timeline-hora"> · {hora}</span>}
 			</time>
 			<div class="timeline-badges">
-				{realizado && <span class="badge badge-realizado">Realizado</span>}
+				{hasFinished && <span class="badge badge-realizado">Realizado</span>}
 				<span class="badge badge-categoria">{categoria}</span>
 			</div>
 		</header>
