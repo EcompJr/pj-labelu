@@ -58,7 +58,7 @@ const months = eventsByMonth(page.data)
 				<h2 class="timeline-month-label">{month.label}</h2>
 				<ol class="timeline" role="list">
 					{month.eventos.map((event) => (
-						<TimelineEvent evento={event} />
+						<TimelineEvent event={event} />
 					))}
 				</ol>
 			</div>

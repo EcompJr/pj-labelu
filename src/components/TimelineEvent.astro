@@ -2,15 +2,15 @@
 import { render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 
-type Schedule = CollectionEntry<'schedule'>;
+type Event = CollectionEntry<'schedule'>;
 
 interface Props {
-	evento: Schedule;
+	event: Event;
 	expandivel?: boolean;
 }
 
-const { evento, expandivel = false } = Astro.props;
-const { title: titulo, category: categoria, agenda: pauta, date: data, time: hora, local } = evento.data;
+const { event, expandivel = false } = Astro.props;
+const { title: titulo, category: categoria, agenda: pauta, date: data, time: hora, local } = event.data;
 
 const now = new Date();
 const realizado = data.valueOf() < now.valueOf();
