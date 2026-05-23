@@ -22,12 +22,11 @@ const localDate = date.toLocaleDateString('pt-BR', {
 
 // Build the detail page URL
 const baseUrl = import.meta.env.BASE_URL
-const eventoUrl = `${baseUrl}agenda/${event.id}/`
+const eventUrl = `${baseUrl}agenda/${event.id}/`
 
 let Content: any = null
 if (mayOpen) {
-	const rendered = await render(event)
-	Content = rendered.Content
+	Content = (await render(event)).Content
 }
 ---
 
@@ -47,7 +46,7 @@ if (mayOpen) {
 		</header>
 
 		<h2 class="timeline-titulo">
-			<a href={eventoUrl}>{title}</a>
+			<a href={eventUrl}>{title}</a>
 		</h2>
 		<p class="timeline-pauta">{agenda}</p>
 
@@ -66,7 +65,7 @@ if (mayOpen) {
 				</div>
 			</details>
 		) : (
-			<a href={eventoUrl} class="timeline-link">
+			<a href={eventUrl} class="timeline-link">
 				Ver detalhes →
 			</a>
 		)}
