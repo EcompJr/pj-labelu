@@ -26,7 +26,6 @@ const localizedDate = date.toLocaleDateString("pt-BR", {
 
 const baseUrl = import.meta.env.BASE_URL;
 
-// JSON-LD structured data for the event
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Event",
@@ -35,43 +34,66 @@ const jsonLd = {
   startDate: time
     ? `${date.toISOString().split("T")[0]}T${time}:00`
     : date.toISOString().split("T")[0],
-  eventStatus: hasFinished
-    ? "https://schema.org/EventScheduled"
-    : "https://schema.org/EventScheduled",
-  ...(local && {
-    location: {
-      "@type": "Place",
-      name: local,
-    },
-  }),
+  eventStatus: "https://schema.org/EventScheduled",
+  ...(local && { location: { "@type": "Place", name: local } }),
 };
 ---
 
 <BaseLayout title={`${title} — Agenda — Labelu`} description={agenda}>
-  <article class="evento-page">
-    {/* Breadcrumb */}
-    <nav class="breadcrumb" aria-label="Navegação estrutural">
-      <a href={`${baseUrl}agenda/`}>← Voltar para a Agenda</a>
+  <article class="max-w-180 mx-auto px-4 py-8">
+    <nav class="mb-8" aria-label="Navegação estrutural">
+      <a
+        href={`${baseUrl}agenda/`}
+        class="text-sm font-semibold text-accent-600 no-underline
+               transition-colors duration-150 hover:text-accent-800 hover:underline"
+      >
+        ← Voltar para a Agenda
+      </a>
     </nav>
-
-    <header class="evento-header">
-      <div class="evento-meta">
-        <time datetime={date.toISOString().split("T")[0]}>
+    <header class="mb-6">
+      <div
+        class="flex justify-between items-center flex-wrap gap-2 mb-4
+                  max-[720px]:flex-col max-[720px]:items-start"
+      >
+        <time
+          datetime={date.toISOString().split("T")[0]}
+          class="text-sm text-secondary-text font-bold"
+        >
           {localizedDate}
-          {time && <span class="evento-hora"> · {time}</span>}
+          {time && <span class="font-normal"> · {time}</span>}
         </time>
-        <div class="evento-badges">
-          {hasFinished && <span class="badge badge-realizado">Realizado</span>}
-          <span class="badge badge-categoria">{category}</span>
+
+        <div class="flex gap-1.5 flex-wrap">
+          {
+            hasFinished && (
+              <span
+                class="text-[0.7rem] uppercase tracking-wider px-2.5 py-0.5
+                         rounded-full font-semibold whitespace-nowrap
+                         bg-accent-800 text-white"
+              >
+                Realizado
+              </span>
+            )
+          }
+          <span
+            class="text-[0.7rem] uppercase tracking-wider px-2.5 py-0.5
+                       rounded-full font-semibold whitespace-nowrap
+                       bg-raised text-body"
+          >
+            {category}
+          </span>
         </div>
       </div>
 
-      <h1>{title}</h1>
-      <p class="evento-pauta">{agenda}</p>
+      <!-- h1 font/color/tracking/leading all from @layer base -->
+      <h1 class="text-4xl mb-3 max-[720px]:text-3xl">{title}</h1>
+
+      <!-- agenda summary — leading comes from @layer base p -->
+      <p class="text-lg text-secondary-text mb-3">{agenda}</p>
 
       {
         local && (
-          <p class="evento-local">
+          <p class="text-sm text-secondary-text flex items-center gap-1.5">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -82,194 +104,22 @@ const jsonLd = {
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
+              class="shrink-0 opacity-60"
               aria-hidden="true"
             >
-              <>
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                <circle cx="12" cy="10" r="3" />
-              </>
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
             </svg>
             {local}
           </p>
         )
       }
     </header>
-
-    <hr class="evento-divider" />
-
-    <div class="prose evento-body">
+    <hr class="border-none border-t-2 border-border my-6" />
+    <div class="prose prose-stone max-w-none evento-body">
       <Content />
     </div>
   </article>
 
-  {/* JSON-LD structured data */}
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 </BaseLayout>
-
-<style>
-  .evento-page {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-  }
-
-  /* ── Breadcrumb ── */
-  .breadcrumb {
-    margin-bottom: 2rem;
-  }
-
-  .breadcrumb a {
-    font-size: 0.9rem;
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.15s ease;
-  }
-
-  .breadcrumb a:hover {
-    color: var(--accent-dark);
-    text-decoration: underline;
-  }
-
-  /* ── Header ── */
-  .evento-header {
-    margin-bottom: 1.5rem;
-  }
-
-  .evento-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .evento-meta time {
-    font-size: 0.9rem;
-    color: rgb(var(--gray));
-    font-weight: 700;
-  }
-
-  .evento-hora {
-    font-weight: 400;
-  }
-
-  .evento-badges {
-    display: flex;
-    gap: 0.4rem;
-    flex-wrap: wrap;
-  }
-
-  .badge {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 0.2rem 0.6rem;
-    border-radius: 999px;
-    font-weight: 600;
-    white-space: nowrap;
-  }
-
-  .badge-categoria {
-    background: rgba(var(--gray-light), 60%);
-    color: rgb(var(--gray-dark));
-  }
-
-  .badge-realizado {
-    background: var(--accent-dark);
-    color: #fff;
-  }
-
-  .evento-header h1 {
-    font-size: 2.2rem;
-    line-height: 1.2;
-    margin-bottom: 0.75rem;
-  }
-
-  .evento-pauta {
-    font-size: 1.1rem;
-    color: rgb(var(--gray));
-    line-height: 1.6;
-    margin-bottom: 0.75rem;
-  }
-
-  .evento-local {
-    font-size: 0.95rem;
-    color: rgb(var(--gray));
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
-
-  .evento-local svg {
-    flex-shrink: 0;
-    opacity: 0.6;
-  }
-
-  /* ── Divider ── */
-  .evento-divider {
-    border: none;
-    border-top: 2px solid rgb(var(--gray-light));
-    margin: 1.5rem 0 2rem;
-  }
-
-  /* ── Body ── */
-  .evento-body {
-    color: rgb(var(--gray-dark));
-  }
-
-  .evento-body :global(h2) {
-    font-size: 1.5rem;
-    margin-top: 2rem;
-  }
-
-  .evento-body :global(h3) {
-    font-size: 1.25rem;
-    margin-top: 1.5rem;
-  }
-
-  .evento-body :global(ul),
-  .evento-body :global(ol) {
-    padding-left: 1.5rem;
-  }
-
-  .evento-body :global(li) {
-    margin-bottom: 0.5rem;
-  }
-
-  .evento-body :global(a) {
-    color: var(--accent);
-    text-decoration: underline;
-  }
-
-  .evento-body :global(a:hover) {
-    color: var(--accent-dark);
-  }
-
-  /* Embedded content (iframes, videos) */
-  .evento-body :global(iframe) {
-    width: 100%;
-    max-width: 100%;
-    aspect-ratio: 16 / 9;
-    border-radius: 8px;
-    border: none;
-    margin: 1rem 0;
-  }
-
-  /* ── Mobile ── */
-  @media (max-width: 720px) {
-    .evento-header h1 {
-      font-size: 1.6rem;
-    }
-
-    .evento-meta {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .evento-pauta {
-      font-size: 1rem;
-    }
-  }
-</style>
