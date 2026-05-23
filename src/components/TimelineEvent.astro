@@ -1,33 +1,33 @@
 ---
-import { render } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
 
-type Event = CollectionEntry<'schedule'>;
+type Event = CollectionEntry<'schedule'>
 
 interface Props {
-	event: Event;
-	mayOpen?: boolean;
+	event: Event
+	mayOpen?: boolean
 }
 
-const { event, mayOpen = false } = Astro.props;
-const { title, category, agenda, date, time, local } = event.data;
+const { event, mayOpen = false } = Astro.props
+const { title, category, agenda, date, time, local } = event.data
 
-const hasFinished = date.valueOf() < (new Date()).valueOf();
+const hasFinished = date.valueOf() < (new Date()).valueOf()
 
 const localDate = date.toLocaleDateString('pt-BR', {
 	day: '2-digit',
 	month: 'long',
 	year: 'numeric',
-});
+})
 
 // Build the detail page URL
-const baseUrl = import.meta.env.BASE_URL;
-const eventoUrl = `${baseUrl}agenda/${event.id}/`;
+const baseUrl = import.meta.env.BASE_URL
+const eventoUrl = `${baseUrl}agenda/${event.id}/`
 
-let Content: any = null;
+let Content: any = null
 if (mayOpen) {
-	const rendered = await render(event);
-	Content = rendered.Content;
+	const rendered = await render(event)
+	Content = rendered.Content
 }
 ---
 
