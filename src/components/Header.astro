@@ -4,13 +4,29 @@ import HeaderLink from "./HeaderLink.astro";
 import logoLabelu from "../assets/logo-labelu-header.png";
 ---
 
-<header id="main-header">
-  <nav>
-    <a href="/pj-labelu/" class="header-brand">
-      <Image src={logoLabelu} alt="Logo Labelu" width={100} height={60} />
+<header class="bg-page border-b border-accent-600 sticky top-0 z-50">
+  <nav class="flex items-center justify-between max-w-6xl mx-auto py-2 px-6">
+    <a href="/pj-labelu/" class="flex items-center shrink-0 no-underline">
+      <Image
+        src={logoLabelu}
+        alt="Logo Labelu"
+        width={100}
+        height={60}
+        class="h-auto"
+      />
     </a>
 
-    <div class="nav-links" id="nav-links">
+    <div
+      id="nav-links"
+      class="hidden sm:flex sm:flex-row items-center gap-0.5
+        max-sm:absolute max-sm:top-full max-sm:left-0 max-sm:right-0
+        max-sm:border-b max-sm:border-accent-600
+        max-sm:py-2 max-sm:shadow-sm
+        [&_a]:text-accent-800 [&_a]:no-underline [&_a]:font-medium
+        [&_a]:rounded [&_a]:px-3 [&_a]:py-1.5 [&_a]:text-sm
+        [&_a]:transition-colors [&_a]:duration-150
+        max-sm:[&_a]:w-full max-sm:[&_a]:rounded-none max-sm:[&_a]:px-6 max-sm:[&_a]:py-3 max-sm:[&_a]:text-base"
+    >
       <HeaderLink href="pj-labelu/">Início</HeaderLink>
       <HeaderLink href="pj-labelu/pesquisas">Pesquisas</HeaderLink>
       <HeaderLink href="pj-labelu/produções">Produções</HeaderLink>
@@ -20,150 +36,67 @@ import logoLabelu from "../assets/logo-labelu-header.png";
       <HeaderLink href="pj-labelu/sobre">Sobre</HeaderLink>
     </div>
 
-    <!-- Burger button: visível apenas em mobile -->
     <button
       id="menu-toggle"
-      class="burger-btn"
+      class="sm:hidden flex flex-col justify-center gap-1.5 bg-transparent border-none cursor-pointer p-2"
       aria-label="Abrir menu"
       aria-expanded="false"
     >
-      <span class="burger-line"></span>
-      <span class="burger-line"></span>
-      <span class="burger-line"></span>
+      <span
+        id="line-1"
+        class="block w-6 h-0.5 bg-accent-800 rounded origin-center transition-all duration-300"
+      ></span>
+      <span
+        id="line-2"
+        class="block w-6 h-0.5 bg-accent-800 rounded transition-all duration-300"
+      ></span>
+      <span
+        id="line-3"
+        class="block w-6 h-0.5 bg-accent-800 rounded origin-center transition-all duration-300"
+      ></span>
     </button>
   </nav>
 </header>
 
-<style>
-  header {
-    background: #fff;
-    border-bottom: 3px solid var(--accent);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0.5rem 1.5rem;
-  }
-  .header-brand {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    flex-shrink: 0;
-  }
-  .header-brand img {
-    border-radius: 0;
-    height: auto;
-  }
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-  }
-  .nav-links :global(a) {
-    padding: 0.5em 0.6em;
-    color: var(--accent-dark);
-    font-size: 1rem;
-    text-decoration: none;
-    border-radius: 4px;
-    transition:
-      background 0.15s ease,
-      color 0.15s ease;
-  }
-  .nav-links :global(a:hover) {
-    background: rgba(var(--gray-light), 0.6);
-  }
-  .nav-links :global(a.active) {
-    color: var(--accent-dark);
-    font-weight: 700;
-    text-decoration: none;
-  }
-
-  /* Burger — hidden on desktop */
-  .burger-btn {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-    z-index: 200;
-  }
-  .burger-line {
-    display: block;
-    width: 24px;
-    height: 2.5px;
-    background: rgb(var(--gray-dark));
-    border-radius: 2px;
-    transition:
-      transform 0.3s ease,
-      opacity 0.3s ease;
-  }
-
-  /* Mobile */
-  @media (max-width: 768px) {
-    .burger-btn {
-      display: flex;
-    }
-    .nav-links {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      flex-direction: column;
-      background: #fff;
-      border-bottom: 3px solid var(--accent);
-      padding: 0.5rem 0;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    }
-    .nav-links.open {
-      display: flex;
-    }
-    .nav-links :global(a) {
-      padding: 0.75em 1.5em;
-      font-size: 1.15rem;
-      width: 100%;
-      border-radius: 0;
-    }
-    .nav-links :global(a:hover) {
-      background: rgba(var(--gray-light), 0.4);
-    }
-  }
-</style>
-
 <script>
   const toggle = document.getElementById("menu-toggle");
   const navLinks = document.getElementById("nav-links");
+  const line1 = document.getElementById("line-1");
+  const line2 = document.getElementById("line-2");
+  const line3 = document.getElementById("line-3");
+
+  function openMenu() {
+    navLinks?.classList.remove("hidden");
+    toggle?.setAttribute("aria-expanded", "true");
+    toggle?.setAttribute("aria-label", "Fechar menu");
+    line1?.classList.add("rotate-45", "translate-y-[7px]");
+    line2?.classList.add("opacity-0");
+    line3?.classList.add("-rotate-45", "-translate-y-[7px]");
+  }
+
+  function closeMenu() {
+    navLinks?.classList.add("hidden");
+    toggle?.setAttribute("aria-expanded", "false");
+    toggle?.setAttribute("aria-label", "Abrir menu");
+    line1?.classList.remove("rotate-45", "translate-y-[7px]");
+    line2?.classList.remove("opacity-0");
+    line3?.classList.remove("-rotate-45", "-translate-y-[7px]");
+  }
 
   toggle?.addEventListener("click", () => {
-    const isOpen = navLinks?.classList.toggle("open");
-    toggle.setAttribute("aria-expanded", String(isOpen));
+    toggle.getAttribute("aria-expanded") === "false" ? openMenu() : closeMenu();
   });
 
-  // Close menu when clicking outside
   document.addEventListener("click", (e) => {
     if (
       !toggle?.contains(e.target as Node) &&
       !navLinks?.contains(e.target as Node)
     ) {
-      navLinks?.classList.remove("open");
-      toggle?.setAttribute("aria-expanded", "false");
+      closeMenu();
     }
   });
 
-  // Close on Escape
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      navLinks?.classList.remove("open");
-      toggle?.setAttribute("aria-expanded", "false");
-    }
+    if (e.key === "Escape") closeMenu();
   });
 </script>
