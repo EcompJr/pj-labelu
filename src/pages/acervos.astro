@@ -45,17 +45,13 @@ const dadosFixos = {
 		<div class="grupos-documentos">
 			<h2>Grupos de Documentos</h2>
 			<div class="grupos-lista">
-				{grupos && grupos.length > 0 ? (
-					grupos.map((grupo) => (
-						<article class="grupo-item">
-							<h3 class="grupo-titulo">{grupo?.data?.title || 'Grupo Sem Título'}</h3>
-							<p class="grupo-descricao">{grupo?.data?.description || 'Nenhuma descrição fornecida.'}</p>
-							<button class="btn-projetos" aria-label={`Ver projetos sobre ${grupo?.data?.title || 'este grupo'}`}>PROJETOS</button>
-						</article>
-					))
-				) : (
-					<p>Nenhum grupo de documentos cadastrado no momento.</p>
-				)}
+				{grupos.map((grupo) => (
+					<article class="grupo-item">
+						<h3 class="grupo-titulo">{grupo.data.title}</h3>
+						<p class="grupo-descricao">{grupo.data.description}</p>
+						<button class="btn-projetos" aria-label={`Ver projetos sobre ${grupo.data.title}`}>PROJETOS</button>
+					</article>
+				))}
 			</div>
 		</div>
 
