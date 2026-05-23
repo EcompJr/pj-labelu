@@ -31,8 +31,7 @@ const team = defineCollection({
 		}),
 });
 
-const agenda = defineCollection({
-	// Load Markdown and MDX files in the `src/content/agenda/` directory.
+const schedule = defineCollection({
 	loader: glob({ base: './src/content/agenda', pattern: '**/*.{md,mdx}' }),
 	schema: z.object({
 		title: z.string(),
@@ -44,4 +43,4 @@ const agenda = defineCollection({
 	}),
 });
 
-export const collections = { blog, team, agenda };
+export const collections = { blog, team, schedule };

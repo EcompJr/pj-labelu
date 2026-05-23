@@ -9,24 +9,26 @@ import { sortBy } from '../../lib/vec'
 import { groupBy } from '../../lib/dict'
 import { titled } from '../../lib/text'
 
+type Schedule = CollectionEntry<'schedule'>
+
 export const getStaticPaths = (async ({ paginate }) => {
   const PAGE_SIZE = 20
-	const schedule = sortBy(await getCollection('agenda'), 'data')
+	const schedule = sortBy(await getCollection('schedule'), 'data')
 	return paginate(schedule, { pageSize: PAGE_SIZE })
 }) satisfies GetStaticPaths
 
 interface Props {
-	page: Page<CollectionEntry<'agenda'>>
+	page: Page<Schedule>
 }
 
 const { page } = Astro.props
 
 type MonthsEvents = { 
 	label: string 
-	eventos: CollectionEntry<'agenda'>[] 
+	eventos: Schedule[] 
 }[]
 
-function eventsByMonth(events: CollectionEntry<'agenda'>[]): MonthsEvents {
+function eventsByMonth(events: Schedule[]): MonthsEvents {
   const months = groupBy(events, event => titled(
     event.data.date.toLocaleDateString('pt-BR', { 
       month: 'long', 

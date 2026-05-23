@@ -2,9 +2,10 @@
 import { render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 
+type Schedule = CollectionEntry<'schedule'>;
+
 interface Props {
-	evento: CollectionEntry<'agenda'>;
-	/** Whether to show the full rich-text details inline (false = show link to detail page) */
+	evento: Schedule;
 	expandivel?: boolean;
 }
 
