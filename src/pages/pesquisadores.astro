@@ -5,10 +5,10 @@ import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 
 // Buscar pesquisadores da collection
-const entries = await getCollection('pesquisadores');
+const entries = await getCollection('team');
 const pesquisadores = entries.map((e) => ({
-  name: e.data.name,
-  position: e.data.position ?? '',
+  fullname: e.data.fullname,
+  role: e.data.role ?? '',
   summary: e.data.summary,
   lattes: e.data.lattes,
   orcid: e.data.orcid ?? '',
@@ -30,7 +30,7 @@ const pesquisadores = entries.map((e) => ({
             <!-- Foto -->
             <div class="card-foto">
               {p.profile ? (
-                <Image src={p.profile} alt={`Foto de ${p.name}`} class="foto-img" />
+                <Image src={p.profile} alt={`Foto de ${p.fullname}`} class="foto-img" />
               ) : (
                 <div class="foto-fallback" aria-hidden="true">
                   <svg viewBox="0 0 130 160" xmlns="http://www.w3.org/2000/svg" width="130" height="160">
@@ -46,8 +46,8 @@ const pesquisadores = entries.map((e) => ({
             <div class="card-content">
 
               <div class="card-header">
-                <h2 class="pesquisador-nome">{p.name}</h2>
-                <p class="pesquisador-cargo">{p.position}</p>
+                <h2 class="pesquisador-nome">{p.fullname}</h2>
+                <p class="pesquisador-cargo">{p.role}</p>
                 <a class="pesquisador-cargo" href={p.lattes} target="_blank" rel="noopener noreferrer">
                   Lattes
                 </a>

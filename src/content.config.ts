@@ -17,13 +17,12 @@ const blog = defineCollection({
 		}),
 });
 
-const pesquisadores = defineCollection({
-	// Load Markdown and MDX files in the `src/content/pesquisadores/` directory.
-	loader: glob({ base: './src/content/pesquisadores', pattern: '**/*.{md,mdx}' }),
+const team = defineCollection({
+	loader: glob({ base: './src/content/equipe', pattern: '**/*.{md,mdx}' }),
 	schema: ({ image }) =>
 		z.object({
-			name: z.string(),
-			position: z.string(),
+			fullname: z.string(),
+			role: z.string(),
 			lattes: z.url(),
 			orcid: z.url().optional(),
 			linkedin: z.url().optional(),
@@ -45,4 +44,4 @@ const agenda = defineCollection({
 	}),
 });
 
-export const collections = { blog, pesquisadores, agenda };
+export const collections = { blog, team, agenda };

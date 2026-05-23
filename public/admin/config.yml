@@ -34,18 +34,18 @@ public_folder: "src/assets/images"
 # Fields: https://sveltiacms.app/en/docs/fields
 # How-to: https://sveltiacms.app/en/docs/how-tos
 collections:
-  - name: "pesquisadores"
-    label: "Pesquisadores"
-    folder: "src/content/pesquisadores"
+  - name: team
+    label: Equipe
+    folder: src/content/equipe
     create: true
 
     fields:
       - label: Nome Completo
-        name: name
+        name: fullname
         widget: string
 
       - label: Cargo no laboratório
-        name: position
+        name: role
         widget: select
         required: true
         options:

@@ -1,7 +1,7 @@
 ---
 layout: researcher
-name: João Victor dos Santos Silva
-position: Pesquisador
+fullname: João Victor dos Santos Silva
+role: Pesquisador
 lattes: http://lattes.cnpq.br/4035596535773563
 
 

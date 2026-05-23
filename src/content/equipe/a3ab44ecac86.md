@@ -1,7 +1,7 @@
 ---
 layout: researcher
-name: Franciane Nunes dos Santos
-position: Pesquisadora
+fullname: Franciane Nunes dos Santos
+role: Pesquisadora
 lattes: http://lattes.cnpq.br/0135754140946005
 
 
