@@ -23,11 +23,11 @@ const dataFormatada = data.toLocaleDateString('pt-BR', {
 
 // Build the detail page URL
 const baseUrl = import.meta.env.BASE_URL;
-const eventoUrl = `${baseUrl}agenda/${evento.id}/`;
+const eventoUrl = `${baseUrl}agenda/${event.id}/`;
 
 let Content: any = null;
 if (expandivel) {
-	const rendered = await render(evento);
+	const rendered = await render(event);
 	Content = rendered.Content;
 }
 ---
