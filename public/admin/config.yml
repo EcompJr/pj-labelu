@@ -99,31 +99,6 @@ collections:
         direction: "descending"
 
     fields:
-<<<<<<< HEAD
-      - { label: "Título do Evento", name: "titulo", widget: "string",
-          minlength: 3 }
-      - { label: "Categoria", name: "categoria", widget: "string",
-          minlength: 2,
-          hint: "Ex: Publicação de Artigo, Seminário, Defesa de Tese" }
-      - { label: "Pauta", name: "pauta", widget: "text",
-          maxlength: 300,
-          hint: "Breve descrição do evento (máx. 300 caracteres)" }
-      - { label: "Data", name: "data", widget: "datetime",
-          date_format: "YYYY-MM-DD", time_format: false }
-      - { label: "Hora", name: "hora", widget: "string", required: false,
-          pattern: ["^\\d{2}:\\d{2}$", "Formato esperado: HH:MM (ex: 14:30)"] }
-      - { label: "Local", name: "local", widget: "string", required: false,
-          hint: "Sala, auditório ou link para evento online" }
-      - { label: "Detalhes", name: "body", widget: "markdown" } 
-  - name: "acervo"
-    label: "Grupos de Acervo"
-    folder: "src/content/acervo"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Título do Grupo", name: "title", widget: "string" }
-      - { label: "Descrição do Grupo", name: "description", widget: "text" }
-=======
       - label: Titulo
         name: title
         widget: string
@@ -163,4 +138,11 @@ collections:
         name: body
         widget: markdown
 
->>>>>>> 5c5d3440913978993f5dcaab366951245f4c1d03
+  - name: "acervo"
+    label: "Grupos de Acervo"
+    folder: "src/content/acervo"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título do Grupo", name: "title", widget: "string" }
+      - { label: "Descrição do Grupo", name: "description", widget: "text" }
