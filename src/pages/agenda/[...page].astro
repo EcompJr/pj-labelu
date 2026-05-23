@@ -23,10 +23,7 @@ interface Props {
 
 const { page } = Astro.props;
 
-type MonthsEvents = {
-  label: string;
-  eventos: Schedule[];
-}[];
+type MonthsEvents = { label: string; eventos: Schedule[] }[];
 
 function eventsByMonth(events: Schedule[]): MonthsEvents {
   const months = groupBy(events, (event) =>
@@ -37,11 +34,7 @@ function eventsByMonth(events: Schedule[]): MonthsEvents {
       }),
     ),
   );
-
-  return Object.entries(months).map(([label, eventos]) => ({
-    label,
-    eventos,
-  }));
+  return Object.entries(months).map(([label, eventos]) => ({ label, eventos }));
 }
 
 const months = eventsByMonth(page.data);
@@ -51,17 +44,28 @@ const months = eventsByMonth(page.data);
   title="Agenda — Labelu"
   description="Agenda de eventos do Laboratório de História e Memória da Luta de Classes"
 >
-  <section class="agenda-page" aria-labelledby="agenda-heading">
-    <h1 id="agenda-heading">Agenda do Laboratório</h1>
-    <p class="agenda-subtitle">
+  <section
+    class="max-w-200 mx-auto px-4 py-8"
+    aria-labelledby="agenda-heading"
+  >
+    <!-- h1 font/color/tracking from @layer base -->
+    <h1 id="agenda-heading" class="text-4xl mb-1 max-[720px]:text-3xl">
+      Agenda do Laboratório
+    </h1>
+    <p class="text-secondary-text text-lg mb-10 max-[720px]:text-base">
       Acompanhe os eventos, seminários, defesas e publicações do Labelu.
     </p>
 
     {
       months.map((month) => (
-        <div class="timeline-group">
-          <h2 class="timeline-month-label">{month.label}</h2>
-          <ol class="timeline" role="list">
+        <div class="mb-4">
+          <h2
+            class="text-sm font-bold uppercase tracking-[0.08em] text-accent-800
+                   pb-2 mb-2 border-b-2 border-accent-600 inline-block"
+          >
+            {month.label}
+          </h2>
+          <ol class="timeline list-none p-0 mt-4 mb-8 relative" role="list">
             {month.eventos.map((event) => (
               <TimelineEvent event={event} />
             ))}
@@ -70,30 +74,44 @@ const months = eventsByMonth(page.data);
       ))
     }
 
-    {/* ── Pagination ── */}
+    <!-- Pagination -->
     {
       (page.url.prev || page.url.next) && (
-        <nav class="pagination" aria-label="Paginação da agenda">
+        <nav
+          class="flex justify-between items-center py-6 border-t border-border
+               mt-4 max-[720px]:flex-col max-[720px]:gap-3"
+          aria-label="Paginação da agenda"
+        >
           {page.url.prev ? (
-            <a href={page.url.prev} class="pagination-link pagination-prev">
+            <a
+              href={page.url.prev}
+              class="text-sm font-semibold px-4 py-2 rounded-lg no-underline
+                   text-accent-600 bg-raised transition-colors duration-150
+                   hover:bg-border hover:text-accent-800"
+            >
               ← Mais recentes
             </a>
           ) : (
-            <span class="pagination-link pagination-disabled">
+            <span class="text-sm font-semibold px-4 py-2 text-secondary-text opacity-40 cursor-default">
               ← Mais recentes
             </span>
           )}
 
-          <span class="pagination-info">
+          <span class="text-sm font-semibold text-secondary-text">
             Página {page.currentPage} de {page.lastPage}
           </span>
 
           {page.url.next ? (
-            <a href={page.url.next} class="pagination-link pagination-next">
+            <a
+              href={page.url.next}
+              class="text-sm font-semibold px-4 py-2 rounded-lg no-underline
+                   text-accent-600 bg-raised transition-colors duration-150
+                   hover:bg-border hover:text-accent-800"
+            >
               Mais antigos →
             </a>
           ) : (
-            <span class="pagination-link pagination-disabled">
+            <span class="text-sm font-semibold px-4 py-2 text-secondary-text opacity-40 cursor-default">
               Mais antigos →
             </span>
           )}
@@ -104,48 +122,6 @@ const months = eventsByMonth(page.data);
 </BaseLayout>
 
 <style>
-  .agenda-page {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-  }
-
-  .agenda-page h1 {
-    font-size: 2.4rem;
-    margin-bottom: 0.25rem;
-  }
-
-  .agenda-subtitle {
-    color: rgb(var(--gray));
-    font-size: 1.05rem;
-    margin-bottom: 2.5rem;
-  }
-
-  /* ── Month/Year Group ── */
-  .timeline-group {
-    margin-bottom: 1rem;
-  }
-
-  .timeline-month-label {
-    font-size: 1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--accent-dark);
-    padding: 0.5rem 0;
-    margin-bottom: 0.5rem;
-    border-bottom: 2px solid var(--accent);
-    display: inline-block;
-  }
-
-  /* ── Timeline vertical line ── */
-  .timeline {
-    list-style: none;
-    padding: 0;
-    margin: 1rem 0 2rem;
-    position: relative;
-  }
-
   .timeline::before {
     content: "";
     position: absolute;
@@ -153,69 +129,12 @@ const months = eventsByMonth(page.data);
     top: 0;
     bottom: 0;
     width: 2px;
-    background: rgb(var(--gray-light));
+    background-color: var(--color-border);
   }
 
-  /* ── Pagination ── */
-  .pagination {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 0;
-    border-top: 1px solid rgb(var(--gray-light));
-    margin-top: 1rem;
-  }
-
-  .pagination-link {
-    font-size: 0.9rem;
-    font-weight: 600;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    text-decoration: none;
-    transition:
-      background 0.15s ease,
-      color 0.15s ease;
-  }
-
-  a.pagination-link {
-    color: var(--accent);
-    background: rgba(var(--gray-light), 40%);
-  }
-
-  a.pagination-link:hover {
-    background: rgba(var(--gray-light), 80%);
-    color: var(--accent-dark);
-  }
-
-  .pagination-disabled {
-    color: rgb(var(--gray));
-    opacity: 0.4;
-    cursor: default;
-  }
-
-  .pagination-info {
-    font-size: 0.85rem;
-    color: rgb(var(--gray));
-    font-weight: 600;
-  }
-
-  /* ── Mobile ── */
   @media (max-width: 720px) {
-    .agenda-page h1 {
-      font-size: 1.8rem;
-    }
-
-    .agenda-subtitle {
-      font-size: 0.95rem;
-    }
-
     .timeline::before {
       left: 0.75rem;
-    }
-
-    .pagination {
-      flex-direction: column;
-      gap: 0.75rem;
     }
   }
 </style>
