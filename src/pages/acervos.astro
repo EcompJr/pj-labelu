@@ -1,11 +1,264 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Obtém dinamicamente todos os grupos cadastrados pelo admin no CMS
+const grupos = await getCollection('acervo');
+
+// Informações institucionais fixas do laboratório
+const dadosFixos = {
+    title: 'Acesso ao Acervo Físico',
+    email: 'lpbpacheco1@uefs.br',
+    localizacao: 'Prédio de Programa de Pós-Graduação em História (PPGH) - Campus UEFS',
+    horarios: 'Segunda a Sexta, das 08h às 12h e das 14h às 18h',
+    instrucoes: 'Para solicitar o acesso ao acervo físico do laboratório, preencha o formulário abaixo detalhando os objetivos da sua pesquisa e quais grupos de documentos você pretende consultar. Nossa equipe analisará o pedido e responderá via e-mail.'
+};
 ---
 
-
-<Layout
-	title="Acervos"
-	description="Conheça os acervos disponíveis no nosso laboratório."
-	pubDate={new Date('April 15 2026')}
+<BaseLayout
+	title={`${dadosFixos.title} — Labelu`}
+	description="Instruções, horários de funcionamento e formulário de solicitação formal para acessar o acervo físico do Laboratório de História e Memória da Luta de Classes."
 >
-</Layout>
+	<section class="acervo-page" aria-labelledby="acervo-heading">
+		<h1 id="acervo-heading">{dadosFixos.title}</h1>
+		
+		<div class="acervo-container">
+			<div class="acervo-instrucoes">
+				<h2>Instruções para o Pedido Formal</h2>
+				<div class="rich-text-content">
+					<p>{dadosFixos.instrucoes}</p>
+				</div>
+			</div>
+			
+			<aside class="acervo-sidebar" aria-label="Informações de Contato e Funcionamento">
+				<h2>Contato e Funcionamento</h2>
+				<ul>
+					<li><strong>📍 Localização:</strong> {dadosFixos.localizacao}</li>
+					<li><strong>🕒 Horários:</strong> {dadosFixos.horarios}</li>
+					<li><strong>✉️ E-mail:</strong> {dadosFixos.email}</li>
+				</ul>
+			</aside>
+		</div>
+
+		<hr class="divider" />
+
+		<div class="grupos-documentos">
+			<h2>Grupos de Documentos</h2>
+			<div class="grupos-lista">
+				{grupos.map((grupo) => (
+					<article class="grupo-item">
+						<h3 class="grupo-titulo">{grupo.data.title}</h3>
+						<p class="grupo-descricao">{grupo.data.description}</p>
+						<button class="btn-projetos" aria-label={`Ver projetos sobre ${grupo.data.title}`}>PROJETOS</button>
+					</article>
+				))}
+			</div>
+		</div>
+
+		<hr class="divider" />
+
+		<div class="formulario-acesso">
+			<h2>Solicitação de Acesso</h2>
+			<p>Preencha os dados abaixo. Ao clicar em enviar, seu aplicativo de e-mail será aberto com o pedido formatado.</p>
+			
+			<form id="acervo-form" class="form-container">
+				<div class="form-group">
+					<label for="nome">Nome Completo</label>
+					<input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo" />
+				</div>
+				
+				<div class="form-group">
+					<label for="email-usuario">Seu E-mail</label>
+					<input type="email" id="email-usuario" name="email-usuario" required placeholder="seu.email@exemplo.com" />
+				</div>
+				
+				<div class="form-group">
+					<label for="motivo">Motivo do Interesse / Pesquisa</label>
+					<textarea id="motivo" name="motivo" rows="5" required placeholder="Explique brevemente sua pesquisa e quais documentos deseja consultar..."></textarea>
+				</div>
+
+				<button type="submit" class="btn-primary" data-destino={dadosFixos.email}>Abrir no e-mail</button>
+			</form>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.acervo-page {
+		max-width: 1200px;
+		width: 100%;
+		margin: 0 auto;
+		padding: 3rem 2rem;
+		box-sizing: border-box;
+	}
+
+	.acervo-page h1 {
+		font-size: 2.5rem;
+		font-weight: bold;
+		margin-bottom: 2rem;
+		color: #1a1a1a;
+	}
+
+	.acervo-page h2 {
+		font-size: 1.8rem;
+		font-weight: bold;
+		color: #902424; 
+		margin-bottom: 1.5rem;
+	}
+
+	.acervo-container {
+		display: grid;
+		grid-template-columns: 1.2fr 1fr;
+		gap: 3rem; 
+		margin-bottom: 3rem;
+	}
+
+	.acervo-sidebar {
+		background: #f0f0f0;
+		padding: 1.5rem;
+		border-radius: 8px;
+		height: fit-content;
+	}
+
+	.acervo-sidebar h3 {
+		margin-top: 0;
+		font-size: 1.2rem;
+		margin-bottom: 1rem;
+	}
+
+	.acervo-sidebar ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.8rem;
+	}
+
+	.divider {
+		border: none;
+		border-top: 1px solid #e0e0e0;
+		margin: 2.5rem 0;
+	}
+
+	.grupos-lista {
+		display: flex;
+		flex-direction: column;
+		gap: 2.5rem;
+	}
+
+	.grupo-titulo {
+		color: #902424; 
+		font-size: 1.6rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.grupo-descricao {
+		color: #4a4a4a;
+		line-height: 1.6;
+		margin-bottom: 1rem;
+	}
+
+	.btn-projetos {
+		background-color: #e0e0e0;
+		color: #1a1a1a;
+		border: none;
+		border-radius: 20px;
+		padding: 0.5rem 1.2rem;
+		font-weight: 700;
+		font-size: 0.85rem;
+		cursor: pointer;
+		transition: background-color 0.2s;
+	}
+
+	.btn-projetos:hover {
+		background-color: #d0d0d0;
+	}
+
+	.form-container {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		margin-top: 1.5rem;
+	}
+
+	.form-group {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.form-group label {
+		font-weight: 600;
+		color: #333;
+	}
+
+	.form-group input,
+	.form-group textarea {
+		padding: 0.8rem;
+		border: 1px solid #ccc;
+		border-radius: 6px;
+		font-family: inherit;
+		font-size: 1rem;
+	}
+
+	.btn-primary {
+		background-color: #902424;
+		color: #fff;
+		border: none;
+		border-radius: 8px;
+		padding: 0.8rem 1.5rem;
+		font-weight: bold;
+		font-size: 1rem;
+		cursor: pointer;
+		width: max-content;
+		transition: background-color 0.2s;
+	}
+
+	.btn-primary:hover {
+		background-color: #7a1f1f;
+	}
+
+	@media (max-width: 720px) {
+		.acervo-container {
+			grid-template-columns: 1fr;
+		}
+		
+		.btn-primary {
+			width: 100%;
+		}
+	}
+</style>
+
+<style is:global>
+	/* Força o contêiner do layout principal a se expandir apenas quando estiver nesta página */
+	main, .wrapper, .container {
+		max-width: 1200px !important;
+		width: 80% !important;
+		padding: 0 !important;
+	}
+</style>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const form = document.getElementById('acervo-form') as HTMLFormElement;
+		
+		if (form) {
+			form.addEventListener('submit', (e) => {
+				e.preventDefault();
+				
+				const nome = (document.getElementById('nome') as HTMLInputElement).value;
+				const emailUsuario = (document.getElementById('email-usuario') as HTMLInputElement).value;
+				const motivo = (document.getElementById('motivo') as HTMLTextAreaElement).value;
+				
+				const btn = form.querySelector('.btn-primary') as HTMLButtonElement;
+				const emailDestino = btn.getAttribute('data-destino') || 'labelu@uefs.br';
+
+				const subject = encodeURIComponent(`Solicitação de Acesso ao Acervo - ${nome}`);
+				const body = encodeURIComponent(`Nome: ${nome}\nE-mail de Contato: ${emailUsuario}\n\nMotivo da solicitação e documentos de interesse:\n${motivo}`);
+				
+				window.location.href = `mailto:${emailDestino}?subject=${subject}&body=${body}`;
+			});
+		}
+	});
+</script>

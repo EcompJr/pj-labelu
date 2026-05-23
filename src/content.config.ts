@@ -45,4 +45,13 @@ const agenda = defineCollection({
 	}),
 });
 
-export const collections = { blog, pesquisadores, agenda };
+const acervo = defineCollection({
+    // Load Markdown and MDX files in the `src/content/acervo/` directory.
+    loader: glob({ base: './src/content/acervo', pattern: '**/*.{md,mdx}' }),
+    schema: z.object({
+        title: z.string(),
+        description: z.string(),
+    }),
+});
+
+export const collections = { blog, pesquisadores, agenda, acervo };

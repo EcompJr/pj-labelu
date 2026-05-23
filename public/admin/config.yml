@@ -113,4 +113,12 @@ collections:
           pattern: ["^\\d{2}:\\d{2}$", "Formato esperado: HH:MM (ex: 14:30)"] }
       - { label: "Local", name: "local", widget: "string", required: false,
           hint: "Sala, auditório ou link para evento online" }
-      - { label: "Detalhes", name: "body", widget: "markdown" }
+      - { label: "Detalhes", name: "body", widget: "markdown" } 
+  - name: "acervo"
+    label: "Grupos de Acervo"
+    folder: "src/content/acervo"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título do Grupo", name: "title", widget: "string" }
+      - { label: "Descrição do Grupo", name: "description", widget: "text" }
