@@ -19,7 +19,7 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
   <head>
     <BaseHead title={title} description={description} />
   </head>
-  <body>
+  <body class="flex flex-col min-h-screen">
     <Header />
     <main>
       <slot />
@@ -27,11 +27,3 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
     <Footer />
   </body>
 </html>
-
-<style>
-  body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-</style>
