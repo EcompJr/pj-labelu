@@ -6,19 +6,17 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import TimelineEvent from '../../components/TimelineEvent.astro';
 
 export const getStaticPaths = (async ({ paginate }) => {
-	// ── Configuration ──
-	// Flip to 'asc' if you want oldest-first
 	const SORT_ORDER: 'desc' | 'asc' = 'desc';
 	const PAGE_SIZE = 20;
 
-	const eventos = await getCollection('agenda');
+	const schedule = await getCollection('agenda');
 
-	eventos.sort((a, b) => {
+	schedule.sort((a, b) => {
 		const diff = a.data.data.valueOf() - b.data.data.valueOf();
 		return SORT_ORDER === 'desc' ? -diff : diff;
 	});
 
-	return paginate(eventos, { pageSize: PAGE_SIZE });
+	return paginate(schedule, { pageSize: PAGE_SIZE });
 }) satisfies GetStaticPaths;
 
 interface Props {
@@ -29,19 +27,21 @@ const { page } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
 
 // ── Group events by Month/Year ──
-type GroupedEvents = { label: string; eventos: CollectionEntry<'agenda'>[] }[];
+type GroupedEvents = { 
+	label: string 
+	eventos: CollectionEntry<'agenda'>[] 
+}[]
 
 function groupByMonth(events: CollectionEntry<'agenda'>[]): GroupedEvents {
 	const groups = new Map<string, CollectionEntry<'agenda'>[]>();
 
-	for (const evento of events) {
-		const d = evento.data.data;
-		// Capitalize the first letter of the month
+	for (const event of events) {
+		const d = event.data.data;
 		const raw = d.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
 		const label = raw.charAt(0).toUpperCase() + raw.slice(1);
 
 		if (!groups.has(label)) groups.set(label, []);
-		groups.get(label)!.push(evento);
+		groups.get(label)!.push(event);
 	}
 
 	return Array.from(groups.entries()).map(([label, eventos]) => ({ label, eventos }));
@@ -62,8 +62,8 @@ const grouped = groupByMonth(page.data);
 			<div class="timeline-group">
 				<h2 class="timeline-month-label">{group.label}</h2>
 				<ol class="timeline" role="list">
-					{group.eventos.map((evento) => (
-						<TimelineEvent evento={evento} />
+					{group.eventos.map((event) => (
+						<TimelineEvent evento={event} />
 					))}
 				</ol>
 			</div>
