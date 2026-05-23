@@ -1,9 +1,9 @@
 ---
-titulo: "Seminário: Metodologias em História Oral"
-categoria: "Seminário"
-pauta: "Seminário aberto sobre metodologias contemporâneas em história oral, com participação de pesquisadores convidados de outras universidades."
-data: 2026-05-15
-hora: "14:00"
+title: "Seminário: Metodologias em História Oral"
+category: "Seminário"
+agenda: "Seminário aberto sobre metodologias contemporâneas em história oral, com participação de pesquisadores convidados de outras universidades."
+date: 2026-05-15
+time: "14:00"
 local: "Auditório da UEFS - Módulo 5"
 ---
 

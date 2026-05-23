@@ -28,7 +28,7 @@ type MonthsEvents = {
 
 function eventsByMonth(events: CollectionEntry<'agenda'>[]): MonthsEvents {
   const months = groupBy(events, event => titled(
-    event.data.data.toLocaleDateString('pt-BR', { 
+    event.data.date.toLocaleDateString('pt-BR', { 
       month: 'long', 
       year: 'numeric' 
     })

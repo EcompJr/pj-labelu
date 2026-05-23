@@ -9,7 +9,7 @@ interface Props {
 }
 
 const { evento, expandivel = false } = Astro.props;
-const { titulo, categoria, pauta, data, hora, local } = evento.data;
+const { title: titulo, category: categoria, agenda: pauta, date: data, time: hora, local } = evento.data;
 
 const now = new Date();
 const realizado = data.valueOf() < now.valueOf();

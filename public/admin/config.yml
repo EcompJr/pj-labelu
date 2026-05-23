@@ -85,45 +85,45 @@ collections:
         name: summary
         widget: text
 
-  - name: "agenda"
-    label: "Agenda"
-    folder: "src/content/agenda"
+  - name: schedule
+    label: Agenda
+    folder: src/content/agenda
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    summary: "{{titulo}} — {{data}}"
+    summary: "{{title}} — {{date}}"
 
     sortable_fields:
-      fields: ["data", "titulo"]
+      fields: ["date", "title"]
       default:
-        field: "data"
+        field: "date"
         direction: "descending"
 
     fields:
-      - label: Titulo do Evento
-        name: titulo
+      - label: Titulo
+        name: title
         widget: string
         minlength: 3
 
       - label: Categoria
-        name: categoria
+        name: category
         widget: string
         hint: "Ex: Publicação de Artigo, Seminário, Defesa de Tese"
         required: true
 
       - label: Pauta
-        name: pauta
+        name: agenda
         widget: text
         maxlength: 300
         hint: "Breve descrição do evento (máx. 300 caracteres)"
 
       - label: Data
-        name: data
+        name: date
         widget: datetime
         date_format: "YYYY-MM-DD"
         time_format: false
 
       - label: Hora
-        name: hora
+        name: time
         widget: string
         required: false
         pattern: ["^\\d{2}:\\d{2}$", "Formato esperado: HH:MM (ex: 14:30)"]

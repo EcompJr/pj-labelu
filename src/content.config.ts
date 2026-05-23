@@ -35,11 +35,11 @@ const agenda = defineCollection({
 	// Load Markdown and MDX files in the `src/content/agenda/` directory.
 	loader: glob({ base: './src/content/agenda', pattern: '**/*.{md,mdx}' }),
 	schema: z.object({
-		titulo: z.string(),
-		categoria: z.string(),
-		pauta: z.string(),
-		data: z.coerce.date(),
-		hora: z.string().optional(),
+		title: z.string(),
+		category: z.string(),
+		agenda: z.string(),
+		date: z.coerce.date(),
+		time: z.string().optional(),
 		local: z.string().optional(),
 	}),
 });
