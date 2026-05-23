@@ -1,249 +1,135 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import { getCollection } from 'astro:content';
-import { Image } from 'astro:assets';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 
-const team = (await getCollection('team')).map((e) => ({
+const team = (await getCollection("team")).map((e) => ({
   fullname: e.data.fullname,
-  role: e.data.role ?? '',
+  role: e.data.role ?? "",
   summary: e.data.summary,
   lattes: e.data.lattes,
-  orcid: e.data.orcid ?? '',
-  linkedin: e.data.linkedin ?? '',
+  orcid: e.data.orcid ?? "",
+  linkedin: e.data.linkedin ?? "",
   profile: e.data.profile ?? null,
-}))
+}));
 ---
 
 <BaseLayout title={`Equipe — ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
-  <div class="equipe-wrapper">
-    <div class="equipe-container">
+  <div class="bg-page min-h-screen">
+    <div class="max-w-4xl mx-auto px-6">
+      <header class="pt-16 pb-10">
+        <p
+          class="text-xs tracking-[0.2em] uppercase text-secondary-text font-medium mb-4"
+        >
+          {SITE_TITLE}
+        </p>
+        <h1
+          class="font-heading text-8xl font-bold text-title leading-none tracking-tight mb-8"
+        >
+          Equipe
+        </h1>
+        <div class="h-px bg-border"></div>
+      </header>
 
-      <h1 class="equipe-titulo">Equipe</h1>
+      <ul class="divide-y divide-border pb-24" role="list">
+        {
+          team.map((p, i) => (
+            <li
+              class="group relative flex gap-8 py-10 items-start max-sm:flex-col
+                     before:content-[''] before:absolute before:-left-6 before:inset-y-0
+                     before:w-0.5 before:bg-accent-600 before:scale-y-0 before:origin-top
+                     before:transition-transform before:duration-300
+                     hover:before:scale-y-100"
+            >
+              <span
+                class="pointer-events-none absolute right-0 top-8 font-heading font-bold
+                     leading-none select-none text-8xl text-raised
+                     transition-colors duration-300 group-hover:text-accent-50
+                     max-sm:hidden"
+                aria-hidden="true"
+              >
+                {String(i + 1).padStart(2, "0")}
+              </span>
 
-      <ul class="pesquisadores-list" role="list">
-        {team.map((p) => (
-          <li class="card">
+              <div
+                class="shrink-0 w-28 overflow-hidden bg-raised max-sm:w-full max-sm:h-36"
+                style="aspect-ratio: 3/4;"
+              >
+                {p.profile ? (
+                  <Image
+                    src={p.profile}
+                    alt={`Foto de ${p.fullname}`}
+                    class="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"
+                  />
+                ) : (
+                  <div class="w-full h-full grayscale transition-all duration-300 group-hover:grayscale-0">
+                    <svg
+                      viewBox="0 0 112 150"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-full h-full block"
+                    >
+                      <rect
+                        width="112"
+                        height="150"
+                        fill="var(--color-raised)"
+                      />
+                      <ellipse
+                        cx="56"
+                        cy="54"
+                        rx="22"
+                        ry="24"
+                        fill="var(--color-border)"
+                      />
+                      <ellipse
+                        cx="56"
+                        cy="126"
+                        rx="44"
+                        ry="36"
+                        fill="var(--color-border)"
+                      />
+                    </svg>
+                  </div>
+                )}
+              </div>
 
-            <!-- Foto -->
-            <div class="card-foto">
-              {p.profile ? (
-                <Image src={p.profile} alt={`Foto de ${p.fullname}`} class="foto-img" />
-              ) : (
-                <div class="foto-fallback" aria-hidden="true">
-                  <svg viewBox="0 0 130 160" xmlns="http://www.w3.org/2000/svg" width="130" height="160">
-                    <rect width="130" height="160" fill="#d4d4d4"/>
-                    <ellipse cx="65" cy="58" rx="26" ry="28" fill="#a3a3a3"/>
-                    <ellipse cx="65" cy="136" rx="50" ry="40" fill="#a3a3a3"/>
-                  </svg>
+              <div class="flex-1 min-w-0 pr-24 flex flex-col gap-3 max-sm:pr-0">
+                <div>
+                  <h2 class="font-heading text-2xl font-semibold text-title leading-tight">
+                    {p.fullname}
+                  </h2>
+                  <p class="mt-1 text-xs uppercase tracking-widest text-secondary-text font-medium">
+                    {p.role}
+                  </p>
                 </div>
-              )}
-            </div>
 
-            <!-- Conteúdo -->
-            <div class="card-content">
+                <p class="text-sm text-body leading-relaxed line-clamp-3">
+                  {p.summary}
+                </p>
 
-              <div class="card-header">
-                <h2 class="pesquisador-nome">{p.fullname}</h2>
-                <p class="pesquisador-cargo">{p.role}</p>
-                <a class="pesquisador-cargo" href={p.lattes} target="_blank" rel="noopener noreferrer">
-                  Lattes
-                </a>
+                <div class="flex items-center gap-6 pt-1">
+                  <a
+                    href={p.lattes}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-xs font-semibold text-accent-600 hover:text-accent-800 transition-colors duration-150"
+                  >
+                    Currículo Lattes ↗
+                  </a>
+                  <a
+                    href="#"
+                    class="text-xs font-semibold uppercase tracking-widest text-secondary-text
+                         border-b border-border pb-px
+                         hover:text-accent-600 hover:border-accent-600 transition-colors duration-150"
+                  >
+                    Ver Produções
+                  </a>
+                </div>
               </div>
-              <p class="pesquisador-resumo">{p.summary}</p>
-
-              <div class="card-actions">
-                <a href="#" class="btn-produções">Ver Produções</a>
-              </div>
-
-            </div>
-          </li>
-        ))}
+            </li>
+          ))
+        }
       </ul>
-
     </div>
   </div>
 </BaseLayout>
-
-<style>
-  :global(main) {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 0 !important;
-  }
-
-  .equipe-wrapper {
-    background-color: #efefef;
-    min-height: 100vh;
-    padding: 3rem 1.5rem 5rem;
-  }
-
-  .equipe-container {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .equipe-titulo {
-    font-size: 1.8rem;
-    font-weight: 900;
-    color: var(--accent);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    margin: 0 0 2rem 0;
-    line-height: 1;
-  }
-
-  .pesquisadores-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-  }
-
-  .card {
-    background: #ffffff;
-    border-radius: 2px;
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    overflow: hidden;
-  }
-
-  .card-foto {
-    flex-shrink: 0;
-    width: 130px;
-    background-color: #d4d4d4;
-  }
-
-  .foto-img {
-    width: 130px;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    border-radius: 0;
-  }
-
-  .foto-fallback {
-    width: 130px;
-    height: 100%;
-    display: block;
-  }
-
-  .foto-fallback svg {
-    display: block;
-    width: 130px;
-    height: 100%;
-  }
-
-  .card-content {
-    flex: 1;
-    min-width: 0;
-    padding: 1.25rem 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-  }
-
-  .card-header {
-    display: flex;
-    flex-direction: column;
-    gap: 0.05rem;
-  }
-
-  .pesquisador-nome {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--accent);
-    margin: 0;
-    line-height: 1.3;
-  }
-
-  .pesquisador-cargo {
-    font-size: 0.75rem;
-    color: rgb(var(--gray-dark));
-    margin: 0;
-    line-height: 1.4;
-  }
-
-  .pesquisador-grau {
-    font-size: 0.7rem;
-    color: rgb(var(--gray));
-    margin: 0;
-    line-height: 1.4;
-  }
-
-  .pesquisador-resumo {
-    font-size: 0.75rem;
-    color: rgb(var(--gray-dark));
-    line-height: 1.6;
-    margin: 0.1rem 0 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .card-actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 0.4rem;
-    flex-wrap: wrap;
-  }
-
-  .link-ver-mais {
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    color: rgb(var(--gray));
-    text-decoration: none;
-    transition: color 0.15s;
-  }
-
-  .link-ver-mais:hover {
-    color: var(--accent);
-  }
-
-  .btn-produções {
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    color: rgb(var(--gray-dark));
-    border: 1.5px solid rgb(var(--gray-dark));
-    padding: 0.28rem 0.7rem;
-    border-radius: 2px;
-    text-decoration: none;
-    transition: background-color 0.15s, color 0.15s, border-color 0.15s;
-    white-space: nowrap;
-  }
-
-  .btn-produções:hover {
-    background-color: var(--accent);
-    border-color: var(--accent);
-    color: #fff;
-  }
-
-  @media (max-width: 560px) {
-    .card {
-      flex-direction: column;
-    }
-
-    .card-foto {
-      width: 100%;
-      height: 140px;
-    }
-
-    .foto-img {
-      width: 100%;
-      height: 140px;
-    }
-
-    .foto-fallback,
-    .foto-fallback svg {
-      width: 100%;
-      height: 140px;
-    }
-  }
-</style>
