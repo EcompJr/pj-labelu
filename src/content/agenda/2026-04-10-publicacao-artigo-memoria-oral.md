@@ -1,9 +1,9 @@
 ---
-titulo: "Publicação do Artigo: Memória Oral e Resistência"
-categoria: "Publicação de Artigo"
-pauta: "Publicação do artigo sobre memória oral e resistência no interior da Bahia, resultado de dois anos de pesquisa de campo com comunidades rurais."
-data: 2026-04-10
-hora: "10:00"
+title: "Publicação do Artigo: Memória Oral e Resistência"
+category: "Publicação de Artigo"
+agenda: "Publicação do artigo sobre memória oral e resistência no interior da Bahia, resultado de dois anos de pesquisa de campo com comunidades rurais."
+date: 2026-04-10
+time: "10:00"
 local: "Revista Brasileira de História Social"
 ---
 

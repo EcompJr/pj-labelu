@@ -17,13 +17,12 @@ const blog = defineCollection({
 		}),
 });
 
-const pesquisadores = defineCollection({
-	// Load Markdown and MDX files in the `src/content/pesquisadores/` directory.
-	loader: glob({ base: './src/content/pesquisadores', pattern: '**/*.{md,mdx}' }),
+const team = defineCollection({
+	loader: glob({ base: './src/content/equipe', pattern: '**/*.{md,mdx}' }),
 	schema: ({ image }) =>
 		z.object({
-			name: z.string(),
-			position: z.string(),
+			fullname: z.string(),
+			role: z.string(),
 			lattes: z.url(),
 			orcid: z.url().optional(),
 			linkedin: z.url().optional(),
@@ -32,20 +31,19 @@ const pesquisadores = defineCollection({
 		}),
 });
 
-const agenda = defineCollection({
-	// Load Markdown and MDX files in the `src/content/agenda/` directory.
+const schedule = defineCollection({
 	loader: glob({ base: './src/content/agenda', pattern: '**/*.{md,mdx}' }),
 	schema: z.object({
-		titulo: z.string(),
-		categoria: z.string(),
-		pauta: z.string(),
-		data: z.coerce.date(),
-		hora: z.string().optional(),
+		title: z.string(),
+		category: z.string(),
+		agenda: z.string(),
+		date: z.coerce.date(),
+		time: z.string().optional(),
 		local: z.string().optional(),
 	}),
 });
 
-const acervo = defineCollection({
+const archive = defineCollection({
     // Load Markdown and MDX files in the `src/content/acervo/` directory.
     loader: glob({ base: './src/content/acervo', pattern: '**/*.{md,mdx}' }),
     schema: z.object({
@@ -54,4 +52,4 @@ const acervo = defineCollection({
     }),
 });
 
-export const collections = { blog, pesquisadores, agenda, acervo };
+export const collections = { blog, team, schedule, archive };

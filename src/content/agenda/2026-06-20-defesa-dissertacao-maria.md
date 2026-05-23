@@ -1,9 +1,9 @@
 ---
-titulo: "Defesa de Dissertação: Maria Silva"
-categoria: "Defesa de Dissertação"
-pauta: "Defesa de dissertação de mestrado sobre movimentos sociais e educação popular na região sisaleira da Bahia."
-data: 2026-06-20
-hora: "09:00"
+title: "Defesa de Dissertação: Maria Silva"
+category: "Defesa de Dissertação"
+agenda: "Defesa de dissertação de mestrado sobre movimentos sociais e educação popular na região sisaleira da Bahia."
+date: 2026-06-20
+time: "09:00"
 local: "Sala de Defesas - Prédio de Pós-Graduação, UEFS"
 ---
 

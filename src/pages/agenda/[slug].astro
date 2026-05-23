@@ -2,24 +2,22 @@
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-export async function getStaticPaths() {
-	const eventos = await getCollection('agenda');
-	return eventos.map((evento) => ({
+export const getStaticPaths = async () =>(await getCollection('schedule'))
+	.map((evento) => ({
 		params: { slug: evento.id },
 		props: evento,
-	}));
-}
+	}))
 
-type Props = CollectionEntry<'agenda'>;
+type Props = CollectionEntry<'schedule'>;
 
-const evento = Astro.props;
-const { titulo, categoria, pauta, data, hora, local } = evento.data;
-const { Content } = await render(evento);
+const event = Astro.props;
+const { title, category, agenda, date, time, local } = event.data;
+const { Content } = await render(event);
 
 const now = new Date();
-const realizado = data.valueOf() < now.valueOf();
+const hasFinished = date.valueOf() < now.valueOf();
 
-const dataFormatada = data.toLocaleDateString('pt-BR', {
+const localizedDate = date.toLocaleDateString('pt-BR', {
 	weekday: 'long',
 	day: '2-digit',
 	month: 'long',
@@ -32,10 +30,10 @@ const baseUrl = import.meta.env.BASE_URL;
 const jsonLd = {
 	'@context': 'https://schema.org',
 	'@type': 'Event',
-	name: titulo,
-	description: pauta,
-	startDate: hora ? `${data.toISOString().split('T')[0]}T${hora}:00` : data.toISOString().split('T')[0],
-	eventStatus: realizado
+	name: title,
+	description: agenda,
+	startDate: time ? `${date.toISOString().split('T')[0]}T${time}:00` : date.toISOString().split('T')[0],
+	eventStatus: hasFinished
 		? 'https://schema.org/EventScheduled'
 		: 'https://schema.org/EventScheduled',
 	...(local && {
@@ -47,7 +45,7 @@ const jsonLd = {
 };
 ---
 
-<BaseLayout title={`${titulo} — Agenda — Labelu`} description={pauta}>
+<BaseLayout title={`${title} — Agenda — Labelu`} description={agenda}>
 	<article class="evento-page">
 		{/* Breadcrumb */}
 		<nav class="breadcrumb" aria-label="Navegação estrutural">
@@ -56,18 +54,18 @@ const jsonLd = {
 
 		<header class="evento-header">
 			<div class="evento-meta">
-				<time datetime={data.toISOString().split('T')[0]}>
-					{dataFormatada}
-					{hora && <span class="evento-hora"> · {hora}</span>}
+				<time datetime={date.toISOString().split('T')[0]}>
+					{localizedDate}
+					{time && <span class="evento-hora"> · {time}</span>}
 				</time>
 				<div class="evento-badges">
-					{realizado && <span class="badge badge-realizado">Realizado</span>}
-					<span class="badge badge-categoria">{categoria}</span>
+					{hasFinished && <span class="badge badge-realizado">Realizado</span>}
+					<span class="badge badge-categoria">{category}</span>
 				</div>
 			</div>
 
-			<h1>{titulo}</h1>
-			<p class="evento-pauta">{pauta}</p>
+			<h1>{title}</h1>
+			<p class="evento-pauta">{agenda}</p>
 
 			{local && (
 				<p class="evento-local">

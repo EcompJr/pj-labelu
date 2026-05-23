@@ -34,28 +34,18 @@ public_folder: "src/assets/images"
 # Fields: https://sveltiacms.app/en/docs/fields
 # How-to: https://sveltiacms.app/en/docs/how-tos
 collections:
-  - name: "blog"
-    label: "Blog"
-    folder: "src/content/blog"
-    create: true 
-    fields:
-      - { label: "Layout", name: "layout", widget: "hidden", default: "blog" }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "string" }
-      - { label: "Publish Date", name: "pubDate", widget: "datetime" }
-      - { label: "Updated Date", name: "updatedDate", widget: "datetime", required: false }
-      - { label: "Featured Image", name: "heroImage", widget: "image" }
-      - { label: "Rating (scale of 1-5)", name: "rating", widget: "number" }
-      - { label: "Body", name: "body", widget: "markdown" }
-  - name: "pesquisadores"
-    label: "Pesquisadores"
-    folder: "src/content/pesquisadores"
+  - name: team
+    label: Equipe
+    folder: src/content/equipe
     create: true
+
     fields:
-      - { label: "Layout", name: "layout", widget: "hidden", default: "researcher" }
-      - { label: "Nome completo", name: "name", widget: "string" }
+      - label: Nome Completo
+        name: fullname
+        widget: string
+
       - label: Cargo no laboratório
-        name: position
+        name: role
         widget: select
         required: true
         options:
@@ -68,37 +58,48 @@ collections:
           - Estagiário
           - Pesquisador
           - Pesquisadora
+
       - label: Lattes
         name: lattes
         widget: string
         prefix: "https://lattes.cnpq.br/"
+
       - label: ORCID
         name: orcid
         widget: string
         required: false
         prefix: "https://orcid.org/"
+
       - label: LinkedIn
         name: linkedin
         widget: string
         required: false
         prefix: "https://linkedin.com/in/"
+
       - label: Perfil
         name: profile
         widget: image
         required: false
-      - { label: "Resumo", name: "summary", widget: "text" }
-  - name: "agenda"
-    label: "Agenda"
-    folder: "src/content/agenda"
+
+      - label: Resumo
+        name: summary
+        widget: text
+
+  - name: schedule
+    label: Agenda
+    folder: src/content/agenda
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    summary: "{{titulo}} — {{data}}"
+    summary: "{{title}} — {{date}}"
+
     sortable_fields:
-      fields: ["data", "titulo"]
+      fields: ["date", "title"]
       default:
-        field: "data"
+        field: "date"
         direction: "descending"
+
     fields:
+<<<<<<< HEAD
       - { label: "Título do Evento", name: "titulo", widget: "string",
           minlength: 3 }
       - { label: "Categoria", name: "categoria", widget: "string",
@@ -122,3 +123,44 @@ collections:
     fields:
       - { label: "Título do Grupo", name: "title", widget: "string" }
       - { label: "Descrição do Grupo", name: "description", widget: "text" }
+=======
+      - label: Titulo
+        name: title
+        widget: string
+        minlength: 3
+
+      - label: Categoria
+        name: category
+        widget: string
+        hint: "Ex: Publicação de Artigo, Seminário, Defesa de Tese"
+        required: true
+
+      - label: Pauta
+        name: agenda
+        widget: text
+        maxlength: 300
+        hint: "Breve descrição do evento (máx. 300 caracteres)"
+
+      - label: Data
+        name: date
+        widget: datetime
+        date_format: "YYYY-MM-DD"
+        time_format: false
+
+      - label: Hora
+        name: time
+        widget: string
+        required: false
+        pattern: ["^\\d{2}:\\d{2}$", "Formato esperado: HH:MM (ex: 14:30)"]
+
+      - label: Local
+        name: local
+        widget: string
+        required: false
+        hint: "Sala, auditório ou link para evento online"
+
+      - label: Detalhes
+        name: body
+        widget: markdown
+
+>>>>>>> 5c5d3440913978993f5dcaab366951245f4c1d03

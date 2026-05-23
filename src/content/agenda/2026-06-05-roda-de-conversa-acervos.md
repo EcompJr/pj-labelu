@@ -1,9 +1,9 @@
 ---
-titulo: "Roda de Conversa: Preservação de Acervos Históricos"
-categoria: "Evento"
-pauta: "Roda de conversa sobre técnicas de preservação e digitalização de acervos históricos em instituições públicas."
-data: 2026-06-05
-hora: "15:00"
+title: "Roda de Conversa: Preservação de Acervos Históricos"
+category: "Evento"
+agenda: "Roda de conversa sobre técnicas de preservação e digitalização de acervos históricos em instituições públicas."
+date: 2026-06-05
+time: "15:00"
 local: "Biblioteca Central da UEFS"
 ---
 
