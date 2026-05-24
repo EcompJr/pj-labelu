@@ -49,7 +49,7 @@ const research = defineCollection({
   }),
 })
 
-const pesquisas = defineCollection({
+const researchLine = defineCollection({
   loader: glob({ base: './src/content/linhas-de-pesquisas', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
     title: z.string(),
@@ -57,4 +57,4 @@ const pesquisas = defineCollection({
   }),
 })
 
-export const collections = { team, schedule, archive, research, pesquisas }
+export const collections = { team, schedule, archive, research, researchLine }
