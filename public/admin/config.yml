@@ -9,6 +9,9 @@ backend:
   name: github
   repo: ecompjr/pj-labelu
   branch: main
+  auth_methods:
+    - oauth
+    - token
 
 # === Localization settings
 
