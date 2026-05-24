@@ -1,0 +1,86 @@
+---
+import type { GetStaticPaths, Page } from "astro";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+
+import ContentLayout from "../../layouts/ContentLayout.astro";
+import PesquisaCard from "../../components/PesquisaCard.astro";
+
+type Research = CollectionEntry<"research">;
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const PAGE_SIZE = 20;
+
+  const pesquisas = (await getCollection("research")).sort(
+    (a, b) => b.data.endYear - a.data.endYear,
+  );
+
+  return paginate(pesquisas, { pageSize: PAGE_SIZE });
+}) satisfies GetStaticPaths;
+
+interface Props {
+  page: Page<Research>;
+}
+
+const { page } = Astro.props;
+---
+
+<ContentLayout
+  title="Pesquisas"
+  description="Conheça as pesquisas desenvolvidas pelo Laboratório de História e Memória da Luta de Classes"
+>
+  <ul class="space-y-6 mt-8 pb-24" role="list">
+    {
+      page.data.map((pesquisa) => (
+        <li>
+          <PesquisaCard pesquisa={pesquisa} />
+        </li>
+      ))
+    }
+  </ul>
+
+  {/* Pagination */}
+  {
+    (page.url.prev || page.url.next) && (
+      <nav
+        class="flex justify-between items-center py-6 border-t border-border
+              mt-4 max-[720px]:flex-col max-[720px]:gap-3"
+        aria-label="Paginação das pesquisas"
+      >
+        {page.url.prev ? (
+          <a
+            href={page.url.prev}
+            class="text-sm font-semibold px-4 py-2 rounded-lg no-underline
+                  text-accent-600 bg-raised transition-colors duration-150
+                  hover:bg-border hover:text-accent-800"
+          >
+            ← Mais recentes
+          </a>
+        ) : (
+          <span class="text-sm font-semibold px-4 py-2 text-secondary-text opacity-40 cursor-default">
+            ← Mais recentes
+          </span>
+        )}
+
+        <span class="text-sm font-semibold text-secondary-text">
+          Página {page.currentPage} de {page.lastPage}
+        </span>
+
+        {page.url.next ? (
+          <a
+            href={page.url.next}
+            class="text-sm font-semibold px-4 py-2 rounded-lg no-underline
+                  text-accent-600 bg-raised transition-colors duration-150
+                  hover:bg-border hover:text-accent-800"
+          >
+            Mais antigas →
+          </a>
+        ) : (
+          <span class="text-sm font-semibold px-4 py-2 text-secondary-text opacity-40 cursor-default">
+            Mais antigas →
+          </span>
+        )}
+      </nav>
+    )
+  }
+</ContentLayout>

@@ -179,14 +179,83 @@ collections:
         name: body
         widget: markdown
 
+  - name: research
+    label: Pesquisas
+    folder: src/content/pesquisas
+    create: true
+    identifier_field: title
+    summary: "{{title}} ({{startYear}}–{{endYear}})"
+
+    sortable_fields:
+      fields: ["endYear", "title"]
+      default:
+        field: "endYear"
+        direction: "descending"
+
+    fields:
+      - label: Título da Pesquisa
+        name: title
+        widget: string
+        minlength: 5
+
+      - label: Linha de Pesquisa
+        name: researchLine
+        widget: select
+        options:
+          - História do Trabalho
+          - Movimentos Sociais
+          - Educação Popular
+          - Memória e Patrimônio
+          - História Oral
+
+      - label: Ano de Início
+        name: startYear
+        widget: number
+        value_type: int
+        min: 1990
+        max: 2100
+
+      - label: Ano de Conclusão
+        name: endYear
+        widget: number
+        value_type: int
+        min: 1990
+        max: 2100
+
+      - label: Ementa
+        name: summary
+        widget: text
+        maxlength: 500
+        hint: "Breve descrição da pesquisa (máx. 500 caracteres)"
+
+      - label: Publicação
+        name: publication
+        widget: string
+        required: false
+        hint: "Link para PDF ou artigo publicado"
+
+      - label: Pesquisadores
+        name: researchers
+        widget: relation
+        collection: team
+        search_fields: ["fullname"]
+        value_field: "{{slug}}"
+        display_fields: ["fullname"]
+        multiple: true
+
+      - label: Detalhes
+        name: body
+        widget: markdown
+
   - name: research_lines
     label: "Linhas de Pesquisa"
-    folder: "src/content/pesquisas"
+    folder: "src/content/linhas-de-pesquisa"
     create: true
     slug: "{{slug}}"
     identifier_field: title
     sortable_fields:
       - title
+
     fields:
       - label: Título
         name: title
