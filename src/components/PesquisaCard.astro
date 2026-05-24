@@ -37,7 +37,7 @@ if (hasStartYear) {
 
 // Resolve researcher IDs to full team member data
 const resolvedResearchers = (
-  await Promise.all(researchers.map((id) => getEntry("team", id)))
+  await Promise.all(researchers?.map((id) => getEntry("team", id)) || [])
 ).filter(Boolean);
 ---
 
