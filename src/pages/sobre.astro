@@ -1,109 +1,219 @@
 ---
+import { Image } from "astro:assets";
+
 import Layout from "../layouts/BaseLayout.astro";
+import logo from "../assets/logo-labelu-about.png";
 ---
 
 <Layout title="Sobre" description="Somos um laboratório de pesquisa histórica">
-  <article class="prose mx-auto py-12">
-    <h1 class="text-3xl font-bold mb-4">Sobre o Labelu</h1>
-    <p>
-      Somos, o nome diz, um laboratório – um espaço para o exercício de um
-      trabalho (labor) intelectual: a pesquisa histórica. Existimos há 21 anos
-      anos fazendo pesquisa e ajudando a formar bons pesquisadores em História.
-      Apresentamos abaixo algumas informações sobre o nosso laboratório.
-    </p>
+  {/* Hero Section */}
+  <section class="bg-raised px-6 py-20 mb-12">
+    <div
+      class="mx-auto max-w-6xl flex flex-col md:flex-row items-center gap-12 md:gap-16"
+    >
+      <div class="shrink-0 w-full md:w-2/5">
+        <Image src={logo} alt="Labelu" class="w-full h-auto" />
+      </div>
+      <div class="flex-1">
+        <h1
+          class="font-heading text-3xl md:text-4xl font-bold text-title leading-tight"
+        >
+          Laboratório de História e Memória da Luta de Classes
+        </h1>
+      </div>
+    </div>
+  </section>
 
-    <h2>Objetivos</h2>
+  <div class="mx-auto max-w-4xl px-6 pb-24">
+    {/* Quem Somos Section */}
+    <section class="mb-16">
+      <h2
+        class="font-heading text-2xl font-bold text-accent-600 uppercase tracking-wider mb-6"
+      >
+        Quem Somos
+      </h2>
+      <p class="text-base text-body leading-relaxed mb-4">
+        Somos, o nome diz, um laboratório – um espaço para o exercício de um
+        trabalho (labor) intelectual: a pesquisa histórica. Existimos há 21 anos
+        fazendo pesquisa e ajudando a formar bons pesquisadores em História.
+      </p>
+    </section>
 
-    <p>
-      Nosso objetivo principal é pesquisar a história e preservar a memória das
-      lutas sociais e da esquerda. Compreendemos a história como um vasto e
-      diversificado campo de conflitos sociais que se manifestam em terrenos
-      distintos e que, por isso mesmo, se expressam através de formas e
-      linguagens muito variadas. Para nós, no entanto, toda diversidade presente
-      nas lutas sociais não apaga as conexões dos acontecimentos históricos
-      singulares com a totalidade de relações sociais em que eles estão
-      inscritos.
-    </p>
+    {/* Objetivos Section */}
+    <section class="mb-16">
+      <h2
+        class="font-heading text-2xl font-bold text-accent-600 uppercase tracking-wider mb-6"
+      >
+        Objetivos
+      </h2>
+      <p class="text-base text-body leading-relaxed mb-4">
+        Nosso objetivo principal é pesquisar a história e preservar a memória
+        das lutas sociais e da esquerda. Compreendemos a história como um vasto
+        e diversificado campo de conflitos sociais que se manifestam em terrenos
+        distintos e que, por isso mesmo, se expressam através de formas e
+        linguagens muito variadas. Para nós, no entanto, toda diversidade
+        presente nas lutas sociais não apaga as conexões dos acontecimentos
+        históricos singulares com a totalidade de relações sociais em que eles
+        estão inscritos.
+      </p>
+      <p class="text-base text-body leading-relaxed mb-4">
+        Nossos estudos dialogam intensamente com a História Social. Estamos
+        interessados em conhecer os sujeitos envolvidos nas lutas, tanto os
+        dominantes quando os subalternos. Investigamos suas estratégias e formas
+        de agir, os espaços em que atuam, a memória que constroem de si mesmos e
+        de suas práticas, os limites, contradições e antagonismos com os quais
+        se defrontam. Também nos interessam o debate historiográfico e teórico
+        sobre as lutas sociais e o estudo da dimensão sócio-política envolvida
+        na ação dos intelectuais.
+      </p>
+      <p class="text-base text-body leading-relaxed mb-4">
+        Já existe uma produção acadêmica significativa oriunda das pesquisas
+        desenvolvidas no laboratório: dissertações de mestrado e TCCs, artigos
+        publicados em revistas e coletâneas, comunicações apresentadas em
+        eventos. O <i>Labelu</i> publicou em 2012 o livro Lutas Sociais, Intelectuais
+        e Poder e também já organizou dezenas de seminários e espaços de debate, com
+        participação de sua equipe e convidados.
+      </p>
+      <p class="text-base text-body leading-relaxed">
+        A memória é outro foco. Mesmo sem a pretensão de tornar-se um centro de
+        documentação, o <i>Labelu</i> já identificou, recolheu, tratou, organizou
+        e disponibilizou para consulta um conjunto significativo de acervos documentais,
+        dentre os quais estão: Arquivo do DCE/UEFS; Acervo Aristeu Nogueira; Arquivo
+        Victor Meyer (POLOP); Acervo da Associação das Entidades de Feira de Santana
+        (ADEFS); Acervo Gerinaldo Costa, documentos da Comissão Estadual da Verdade
+        (BA).
+      </p>
+    </section>
 
-    <p>
-      Nossos estudos dialogam intensamente com a História Social. Estamos
-      interessados em conhecer os sujeitos envolvidos nas lutas, tanto os
-      dominantes quando os subalternos. Investigamos suas estratégias e formas
-      de agir, os espaços em que atuam, a memória que constroem de si mesmos e
-      de suas práticas, os limites, contradições e antagonismos com os quais se
-      defrontam. Também nos interessam o debate historiográfico e teórico sobre
-      as lutas sociais e o estudo da dimensão sócio-política envolvida na ação
-      dos intelectuais.
-    </p>
+    {/* Participantes Section */}
+    <section class="mb-16">
+      <h2
+        class="font-heading text-2xl font-bold text-accent-600 uppercase tracking-wider mb-6"
+      >
+        Participantes
+      </h2>
+      <p class="text-base text-body leading-relaxed mb-4">
+        O <i>Labelu</i> é um laboratório de pesquisa, não um grupo de discussão. A
+        primeira condição para fazer parte do <i>Labelu</i> é ter um projeto de pesquisa,
+        mesmo que em fase inicial de desenvolvimento, com alguma relação com a temática
+        geral do laboratório. Por isso, no <i>Labelu</i>, somos todos
+        pesquisadores: alunos de graduação e do mestrado, ex-alunos, docentes e
+        funcionário universitário, professores do ensino fundamental, médio e
+        superior.
+      </p>
+      <p class="text-base text-body leading-relaxed">
+        Neste momento estamos estruturando linhas de pesquisa, uma organização
+        que permitirá intensificar a colaboração entre pesquisas cujas
+        problemáticas sejam próximas. A segunda condição para participar do <i
+          >Labelu</i
+        > é comprometer-se com os espaços coletivos de estudo e discussão e com a
+        repartição das tarefas cotidianas do laboratório.
+      </p>
+    </section>
 
-    <p>
-      Já existe uma produção acadêmica significativa oriunda das pesquisas
-      desenvolvidas no laboratório: dissertações de mestrado e TCCs, artigos
-      publicados em revistas e coletâneas, comunicações apresentadas em eventos.
-      O <i>Labelu</i> publicou em 2012 o livro Lutas Sociais, Intelectuais e Poder
-      e também já organizou dezenas de seminários e espaços de debate, com participação
-      de sua equipe e convidados.
-    </p>
+    {/* Funcionamento Section */}
+    <section class="mb-16">
+      <h2
+        class="font-heading text-2xl font-bold text-accent-600 uppercase tracking-wider mb-6"
+      >
+        Funcionamento
+      </h2>
+      <p class="text-base text-body leading-relaxed mb-4">
+        O trabalho coletivo é uma característica do <i>Labelu</i>. O laboratório
+        é conduzido de forma colegiada pela equipe, que é composta por todos os
+        pesquisadores, e tudo é decidido e encaminhado coletivamente. Projetos e
+        resultados das pesquisas dos membros são regularmente submetidos à
+        discussão coletiva.
+      </p>
+      <p class="text-base text-body leading-relaxed">
+        Para tanto realizamos reuniões semanais, que são também o espaço para o
+        estudo de textos que consideramos importantes e úteis às pesquisas e
+        para as deliberações e encaminhamentos sobre todos os aspectos práticos
+        que envolvem o funcionamento do laboratório.
+      </p>
+    </section>
 
-    <p>
-      A memória é outro foco. Mesmo sem a pretensão de tornar-se um centro de
-      documentação, o
-      <i>Labelu</i> já identificou, recolheu, tratou, organizou e disponibilizou para
-      consulta um conjunto significativo de acervos documentais, dentre os quais estão:
-      Arquivo do DCE/UEFS; Acervo Aristeu Nogueira; Arquivo Victor Meyer (POLOP);
-      Acervo da Associação das Entidades de Feira de Santana (ADEFS); Acervo Gerinaldo
-      Costa, documentos da Comissão Estadual da Verdade (BA).
-    </p>
+    {/* Recursos Section */}
+    <section class="mb-16">
+      <h2
+        class="font-heading text-2xl font-bold text-accent-600 uppercase tracking-wider mb-6"
+      >
+        Recursos
+      </h2>
+      <p class="text-base text-body leading-relaxed mb-4">
+        O <i>Labelu</i> está instalado em sala própria, no prédio do Mestrado de História
+        (anexo do módulo 7) equipado com carteiras individuais, mesa de reunião e
+        cadeiras, armário, estantes, computadores, impressora. Além dos acervos documentais
+        dispomos de alguns acervos bibliográficos obtidos por doação, dentre os quais
+        a biblioteca de Chico Pinto.
+      </p>
+      <p class="text-base text-body leading-relaxed">
+        Os três projetos coletivos disponibilizam bolsas de IC periodicamente.
+        Um funcionário historiador trabalha no laboratório e é membro da equipe.
+      </p>
+    </section>
 
-    <h2>Participantes</h2>
+    {/* Contato Section */}
+    <section>
+      <h2
+        class="font-heading text-2xl font-bold text-accent-600 uppercase tracking-wider mb-6"
+      >
+        Contato
+      </h2>
+      <div class="mb-8">
+        <p class="text-sm text-body mb-2">
+          <span class="font-semibold">Email:</span> contato@labelu.org
+        </p>
+        <p class="text-sm text-body mb-2">
+          <span class="font-semibold">Telefone:</span> (00) 0000-0000
+        </p>
+        <p class="text-sm text-body">
+          <span class="font-semibold">Endereço:</span> Rua Exemplo, 123 — Cidade/Estado
+        </p>
+      </div>
 
-    <p>
-      O <i>Labelu</i> é um laboratório de pesquisa, não um grupo de discussão. A primeira
-      condição para fazer parte do <i>Labelu</i> é ter um projeto de pesquisa, mesmo
-      que em fase inicial de desenvolvimento, com alguma relação com a temática geral
-      do laboratório. Por isso, no <i>Labelu</i>, somos todos pesquisadores:
-      alunos de graduação e do mestrado, ex-alunos, docentes e funcionário
-      universitário, professores do ensino fundamental, médio e superior.
-    </p>
+      {/* Social Media */}
+      <div class="flex items-center gap-6">
+        <a
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="transition-transform duration-200 hover:scale-110"
+          aria-label="Instagram"
+        >
+          <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 0C5.37 0 0 5.37 0 12c0 6.63 5.37 12 12 12s12-5.37 12-12S18.63 0 12 0zm0 22c-5.52 0-10-4.48-10-10S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10zm5-11c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5zM7 12c0-2.66 2.34-5 5-5s5 2.34 5 5-2.34 5-5 5-5-2.34-5-5z"
+            ></path>
+          </svg>
+        </a>
 
-    <p>
-      Neste momento estamos estruturando linhas de pesquisa, uma organização que
-      permitirá intensificar a colaboração entre pesquisas cujas problemáticas
-      sejam próximas. A segunda condição para participar do <i>Labelu</i> é comprometer-se
-      com os espaços coletivos de estudo e discussão e com a repartição das tarefas
-      cotidianas do laboratório.
-    </p>
+        <a
+          href="mailto:contato@labelu.org"
+          class="transition-transform duration-200 hover:scale-110"
+          aria-label="Email"
+        >
+          <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+            ></path>
+          </svg>
+        </a>
 
-    <h2>Funcionamento</h2>
-
-    <p>
-      O trabalho coletivo é uma característica do <i>Labelu</i>. O laboratório é
-      conduzido de forma colegiada pela equipe, que é composta por todos os
-      pesquisadores, e tudo é decidido e encaminhado coletivamente. Projetos e
-      resultados das pesquisas dos membros são regularmente submetidos à
-      discussão coletiva.
-    </p>
-
-    <p>
-      Para tanto realizamos reuniões semanais, que são também o espaço para o
-      estudo de textos que consideramos importantes e úteis às pesquisas e para
-      as deliberações e encaminhamentos sobre todos os aspectos práticos que
-      envolvem o funcionamento do laboratório.
-    </p>
-
-    <h2>Recursos</h2>
-
-    <p>
-      O <i><i>Labelu</i></i> está instalado em sala própria, no prédio do Mestrado
-      de História (anexo do módulo 7) equipado com carteiras individuais, mesa de
-      reunião e cadeiras, armário, estantes, computadores, impressora. Além dos acervos
-      documentais dispomos de alguns acervos bibliográficos obtidos por doação, dentre
-      os quais a biblioteca de Chico Pinto.
-    </p>
-
-    <p>
-      Os três projetos coletivos disponibilizam bolsas de IC periodicamente. Um
-      funcionário historiador trabalha no laboratório e é membro da equipe.
-    </p>
-  </article>
+        <a
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="transition-transform duration-200 hover:scale-110"
+          aria-label="YouTube"
+        >
+          <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M19.615 3.175c-3.674-.492-11.556-.492-15.23 0C2.314 3.642 1.846 5.193 1.977 8.54c.173 4.643.652 6.587 1.408 7.996.756 1.408 2.536 2.717 4.16 2.971 3.93.524 12.693.451 16.622-.049 1.577-.24 3.407-.919 4.164-2.328.756-1.409 1.235-3.353 1.408-7.996-.131-3.347-.599-4.898-1.408-5.365zm-11.615 12.825V6.362l6.597 4.819-6.597 4.819z"
+            ></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </div>
 </Layout>
