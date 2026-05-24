@@ -82,35 +82,12 @@ const team = (await getCollection("team"))
                     src={p.profile}
                     alt={`Foto de ${p.fullname}`}
                     class="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"
-                  />
-                ) : (
-                  <div class="w-full h-full grayscale transition-all duration-300 group-hover:grayscale-0">
-                    <svg
-                      viewBox="0 0 112 150"
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="w-full h-full block"
-                    >
-                      <rect
-                        width="112"
-                        height="150"
-                        fill="var(--color-raised)"
-                      />
-                      <ellipse
-                        cx="56"
-                        cy="54"
-                        rx="22"
-                        ry="24"
-                        fill="var(--color-border)"
-                      />
-                      <ellipse
-                        cx="56"
-                        cy="126"
-                        rx="44"
-                        ry="36"
-                        fill="var(--color-border)"
-                      />
-                    </svg>
-                  </div>
+                    />
+                  ) : (
+                  <img
+                    src={`https://api.dicebear.com/9.x/lorelei-neutral/svg?backgroundColor=ffd5dc,ffffff,ffdfbf&backgroundType=solid,gradientLinear&backgroundRotation=0,360,-50,-30,-110,50&randomizeIds=true&seed=${p.fullname}`}
+                    class="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"
+                    alt="avatar" />
                 )}
               </div>
 
