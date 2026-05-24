@@ -222,8 +222,7 @@ collections:
 
       - label: Ementa
         name: summary
-        widget: text
-        hint: "Breve descrição da pesquisa (máx. 500 caracteres)"
+        widget: markdown
 
       - label: Publicação
         name: publication
