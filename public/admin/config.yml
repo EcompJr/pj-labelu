@@ -187,10 +187,12 @@ collections:
     summary: "{{title}} ({{startYear}}-{{endYear}})"
 
     sortable_fields:
-      fields: ["endYear", "title"]
+      fields:
+        - endYear
+        - title
       default:
-        field: "endYear"
-        direction: "descending"
+        field: endYear
+        direction: descending
 
     fields:
       - label: Título da Pesquisa
@@ -210,15 +212,13 @@ collections:
         name: startYear
         widget: number
         value_type: int
-        min: 1990
-        max: 2100
+        required: false
 
       - label: Ano de Conclusão
         name: endYear
         widget: number
         value_type: int
-        min: 1990
-        max: 2100
+        required: false
 
       - label: Ementa
         name: summary
