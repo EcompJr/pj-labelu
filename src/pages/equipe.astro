@@ -4,19 +4,36 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 
-import { sortBy } from "../lib/vec";
+const roleOrder = [
+  "Coordenador",
+  "Coordenadora",
+  "Vice-Coordenador",
+  "Vice-Coordenadora",
+  "Pesquisador",
+  "Pesquisadora",
+  "Analista",
+  "Estagiária",
+  "Estagiário",
+];
 
-const rawTeam = (await getCollection("team")).map((e) => ({
-  fullname: e.data.fullname,
-  role: e.data.role ?? "",
-  summary: e.body,
-  lattes: e.data.lattes,
-  orcid: e.data.orcid ?? "",
-  linkedin: e.data.linkedin ?? "",
-  profile: e.data.profile ?? null,
-}))
+const team = (await getCollection("team"))
+  .map((e) => ({
+    fullname: e.data.fullname,
+    role: e.data.role ?? "",
+    summary: e.body,
+    lattes: e.data.lattes,
+    orcid: e.data.orcid ?? "",
+    linkedin: e.data.linkedin ?? "",
+    profile: e.data.profile ?? null,
+  }))
+  .sort((a, b) => {
+    const rolePrecedence =
+      roleOrder.indexOf(a.role) - roleOrder.indexOf(b.role);
 
-const team = sortBy(rawTeam, 'fullname')
+    return rolePrecedence !== 0
+      ? rolePrecedence
+      : a.fullname.localeCompare(b.fullname);
+  });
 ---
 
 <BaseLayout title={`Equipe — ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
