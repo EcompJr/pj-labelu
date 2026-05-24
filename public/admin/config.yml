@@ -42,6 +42,14 @@ collections:
     identifier_field: fullname
     thumbnail: profile
 
+    sortable_fields:
+      fields:
+        - role
+        - fullname
+      default:
+        field: role
+        direction: descending
+
     fields:
       - label: Nome Completo
         name: fullname
