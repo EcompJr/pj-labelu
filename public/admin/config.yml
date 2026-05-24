@@ -29,6 +29,11 @@ backend:
 media_folder: "src/assets/images"
 public_folder: "src/assets/images"
 
+app_title: LABELU
+logo:
+  src: src/assets/logo-labelu-header.png
+  show_in_header: true
+
 # === Content collections configuration
 
 # Collections: https://sveltiacms.app/en/docs/collections
