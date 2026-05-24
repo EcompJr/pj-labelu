@@ -34,4 +34,19 @@ const archive = defineCollection({
   }),
 })
 
-export const collections = { team, schedule, archive }
+const research = defineCollection({
+  loader: glob({ base: './src/content/pesquisas', pattern: '**/*.{md,mdx}' }),
+  // Validation is enforced at the CMS level (config.yml).
+  // This schema only defines types for TypeScript safety.
+  schema: z.object({
+    title: z.string(),
+    researchLine: z.string(),
+    startYear: z.number(),
+    endYear: z.number(),
+    summary: z.string(),
+    publication: z.string().optional(),
+    researchers: z.array(z.string()),
+  }),
+})
+
+export const collections = { team, schedule, archive, research }
