@@ -45,6 +45,13 @@ collections:
     sortable_fields:
       - fullname
 
+    view_groups:
+      groups:
+        - name: roles
+          field: role
+          label: Cargo
+      default: year
+
     fields:
       - label: Nome Completo
         name: fullname
