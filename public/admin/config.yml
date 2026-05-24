@@ -228,6 +228,7 @@ collections:
         name: publication
         widget: string
         required: false
+        prefix: "https://"
         hint: "Link para PDF ou artigo publicado"
 
       - label: Pesquisadores
