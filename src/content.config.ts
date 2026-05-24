@@ -50,7 +50,7 @@ const research = defineCollection({
 })
 
 const researchLine = defineCollection({
-  loader: glob({ base: './src/content/linhas-de-pesquisas', pattern: '**/*.{md,mdx}' }),
+  loader: glob({ base: './src/content/linhas-de-pesquisa', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
     title: z.string(),
     order: z.number().optional(),
