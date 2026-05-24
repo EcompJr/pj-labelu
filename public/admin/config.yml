@@ -199,14 +199,12 @@ collections:
         minlength: 5
 
       - label: Linha de Pesquisa
-        name: researchLine
-        widget: select
-        options:
-          - História do Trabalho
-          - Movimentos Sociais
-          - Educação Popular
-          - Memória e Patrimônio
-          - História Oral
+        name: line
+        widget: relation
+        collection: research_lines
+        search_fields: ["title"]
+        value_field: "{{slug}}"
+        display_fields: ["title"]
 
       - label: Ano de Início
         name: startYear
