@@ -4,8 +4,7 @@ researchLine: "Intelectuais, Estado e classes dominantes"
 startYear: 2025
 endYear: 2027
 summary: "Investigação sobre o funcionamento das agências de intercâmbio dos Estados Unidos em Salvador, analisando como a USIA atuava no consulado e em escritório próprio do USIS no centro da cidade."
-researchers:
-  - 768d1bbf657c
+researchers: []
 ---
 
 Para compreender como circularam ideias e interpretações sobre a subversão e a atuação de agentes culturais em Salvador, observamos como as agências de intercâmbio direto dos Estados Unidos e Brasil funcionavam no consulado de Salvador e em escritório próprio do **USIS – United States Information Agency**, no centro da cidade, além de um posto na Universidade Federal da Bahia.

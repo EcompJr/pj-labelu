@@ -4,8 +4,7 @@ researchLine: "Intelectuais, Estado e classes dominantes"
 startYear: 2022
 endYear: 2026
 summary: "Pesquisa sobre os diversos sujeitos que atuaram na região sul da Bahia apoiando ou resistindo à ditadura civil-militar, confrontando a memória hegemônica de passividade dos trabalhadores da região."
-researchers:
-  - a6175a05ce7f
+researchers: []
 ---
 
 Podemos afirmar que existe na região sul da Bahia, em especial no trecho Ilhéus-Itabuna, uma memória pautada no senso comum de que não houve resistência ou que a ação da ditadura civil-militar não foi significativa. Trata-se de entender que grupos sociais consolidaram memórias que tornaram hegemônicas um "texto da memória" de passividade dos trabalhadores da região, empenhados que estavam no progresso da lavoura cacaueira.

@@ -4,8 +4,7 @@ researchLine: "Intelectuais, Estado e classes dominantes"
 startYear: 2020
 endYear: 2025
 summary: "Investigação sobre a formação da CHESF a partir das ideias de aproveitamento da cachoeira Paulo Afonso, analisando interesses nacionais e internacionais e o uso da TVA como modelo para o vale do São Francisco."
-researchers:
-  - 2771deba27b9
+researchers: []
 ---
 
 A investigação sobre a formação da **Companhia Hidrelétrica do São Francisco (CHESF)**, a partir das ideias de "aproveitamento" da cachoeira Paulo Afonso, atravessando a elaboração do projeto de intervenção que culminou na inauguração da primeira usina em 1955, foi o fio condutor deste trabalho.

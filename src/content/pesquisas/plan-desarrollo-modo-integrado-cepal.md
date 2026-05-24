@@ -4,8 +4,7 @@ researchLine: "Intelectuais, Estado e classes dominantes"
 startYear: 2024
 endYear: 2027
 summary: "Análise da emergência, circulação e transformação do paradigma de planificação do desenvolvimento impulsado pela CEPAL, com comparações regionais entre Brasil, Chile e Argentina nos anos 1960-70."
-researchers:
-  - 24f5e17699bf
+researchers: []
 ---
 
 La investigación se inscribe en las transformaciones geopolíticas de la segunda mitad del siglo XX, en el marco de la Guerra Fría y sus efectos diferenciados en América Latina. Lejos de concebir la región como un espacio periférico subordinado a la lógica bipolar, se adopta una perspectiva transnacional que reconoce la agencia de los actores latinoamericanos y la especificidad de la denominada "Guerra Fría interamericana".

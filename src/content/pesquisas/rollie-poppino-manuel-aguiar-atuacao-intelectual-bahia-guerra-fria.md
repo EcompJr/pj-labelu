@@ -4,8 +4,7 @@ researchLine: "Intelectuais, Estado e classes dominantes"
 startYear: 2022
 endYear: 2026
 summary: "Estudo sobre o papel de intelectuais que, durante a Guerra Fria, participaram de intercâmbios culturais entre Brasil e Estados Unidos, com foco na atuação de Manuel Pinto de Aguiar e Rollie E. Poppino na Bahia."
-researchers:
-  - 768d1bbf657c
+researchers: []
 ---
 
 O estudo busca aprofundar a discussão sobre o papel de intelectuais que, durante a Guerra Fria, participaram de intercâmbios culturais, facilitados por acordos diplomáticos entre Brasil e Estados Unidos na conjuntura, ocorrendo através de financiamento público ou do patrocínio de fundações privadas.

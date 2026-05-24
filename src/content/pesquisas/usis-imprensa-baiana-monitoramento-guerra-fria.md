@@ -4,8 +4,7 @@ researchLine: "Intelectuais, Estado e classes dominantes"
 startYear: 2024
 endYear: 2026
 summary: "Investigação da atuação da USIS na Bahia com foco na relação entre a agência norte-americana e a imprensa baiana, mapeando o monitoramento da produção intelectual e cultural no estado."
-researchers:
-  - b673a91984dd
+researchers: []
 ---
 
 Tem como objetivo investigar a atuação da **United States Information Agency (USIS)** na Bahia durante o período da Guerra Fria no recorte de 1955 a 1976, com foco na relação entre a agência norte-americana e a imprensa baiana.

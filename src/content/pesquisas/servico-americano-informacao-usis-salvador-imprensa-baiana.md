@@ -4,8 +4,7 @@ researchLine: "Intelectuais, Estado e classes dominantes"
 startYear: 2024
 endYear: 2026
 summary: "Investigação sobre como os Estados Unidos monitoravam e influenciavam a imprensa baiana por meio da USIS, analisando as relações entre jornalistas, empresários e agentes estadunidenses."
-researchers:
-  - b673a91984dd
+researchers: []
 ---
 
 Busca aprofundar o estudo sobre a atuação da **United States Information Service (USIS)** na Bahia durante a Guerra Fria com recorte de 1964 a 1985. Entendendo a Guerra Fria não apenas um conflito militar, mas também uma disputa ideológica e cultural entre Estados Unidos e União Soviética, na qual a imprensa e a produção intelectual tiveram papel importante na formação da opinião pública.
