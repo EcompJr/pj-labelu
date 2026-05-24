@@ -141,11 +141,9 @@ const jsonLd = {
             {resolvedResearchers.map((r, i) => (
               <>
                 <a
-                  href={r?.data.lattes}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href=`${baseUrl}/equipe/${r?.id}`
                   class="text-accent-600 no-underline hover:underline font-medium"
-                  title={`Currículo Lattes de ${r?.data.fullname}`}
+                  title={`Perfil de ${r?.data.fullname}`}
                 >
                   {r?.data.fullname}
                 </a>
