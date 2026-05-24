@@ -37,7 +37,7 @@ logo:
 slug:
   encoding: unicode
   clean_accents: true
-  sanitize_replacement: '-'
+  sanitize_replacement: "-"
   trim: true
   lowercase: true
   timezone: utc
@@ -244,5 +244,21 @@ collections:
         multiple: true
 
       - label: Detalhes
+
+  - name: research_lines
+    label: "Linhas de Pesquisa"
+    folder: "src/content/pesquisas"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: title
+    sortable_fields:
+      - title
+
+    fields:
+      - label: Título
+        name: title
+        widget: string
+
+      - label: Descrição
         name: body
         widget: markdown

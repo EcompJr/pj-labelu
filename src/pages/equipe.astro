@@ -1,19 +1,18 @@
 ---
 import ContentLayout from "../layouts/ContentLayout.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 
 const roleOrder = [
-  "Coordenador",
-  "Coordenadora",
-  "Vice-Coordenador",
-  "Vice-Coordenadora",
-  "Pesquisador",
-  "Pesquisadora",
-  "Analista",
-  "Estagiária",
-  "Estagiário",
+  { label: "Coordenador", weight: 0 },
+  { label: "Coordenadora", weight: 0 },
+  { label: "Vice-Coordenador", weight: 1 },
+  { label: "Vice-Coordenadora", weight: 1 },
+  { label: "Pesquisador", weight: 2 },
+  { label: "Pesquisadora", weight: 2 },
+  { label: "Analista", weight: 3 },
+  { label: "Estagiário", weight: 4 },
+  { label: "Estagiária", weight: 4 },
 ];
 
 const team = (await getCollection("team"))
@@ -28,7 +27,8 @@ const team = (await getCollection("team"))
   }))
   .sort((a, b) => {
     const rolePrecedence =
-      roleOrder.indexOf(a.role) - roleOrder.indexOf(b.role);
+      (roleOrder.find((r) => r.label === a.role)?.weight ?? 99) -
+      (roleOrder.find((r) => r.label === b.role)?.weight ?? 99);
 
     return rolePrecedence !== 0
       ? rolePrecedence

@@ -1,0 +1,65 @@
+---
+import { Image } from "astro:assets";
+import ContentLayout from "../layouts/ContentLayout.astro";
+
+import artwork1 from "../assets/images/404-1.png";
+import artwork2 from "../assets/images/404-2.png";
+import artwork3 from "../assets/images/404-3.png";
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+
+const artworks = [artwork1, artwork2, artwork3];
+const baseUrl = import.meta.env.BASE_URL || "/";
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <BaseHead
+      title="404 · Página não encontrada"
+      description="A página que você procurou não existe. Tente outra rota ou volte para a página inicial."
+    />
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <main
+      class="min-h-screen max-w-4xl flex-1 flex flex-col items-center justify-center px-6 py-12 mx-auto w-full"
+    >
+      <h1 class="text-center text-4xl mb-1 max-[720px]:text-3xl">
+        Página Não Encontrada
+      </h1>
+      {
+        artworks.map((src, i) => (
+          <Image
+            class="h-auto w-full mix-blend-multiply opacity-95"
+            class:list={[i !== 0 && "hidden"]}
+            src={src}
+            alt="Ilustração de Máquinário Quebrado ao estilo de gravuras da Revolução Industrial · Página Não Encontrada"
+            widths={[400, 800, 1200]}
+            sizes="100vw"
+            loading="eager"
+            fetchpriority="high"
+            data-artwork
+          />
+        ))
+      }
+      <a
+        href={baseUrl}
+        class="block text-center text-title underline hover:text-accent-500 transition-colors duration-150"
+      >
+        Volta para a página inicial
+      </a>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<script>
+  const artworks =
+    document.querySelectorAll<HTMLImageElement>("[data-artwork]");
+
+  const picked = Math.floor(Math.random() * artworks.length);
+
+  artworks.forEach((el, i) => {
+    el.classList.toggle("hidden", i !== picked);
+  });
+</script>
