@@ -38,12 +38,12 @@ const research = defineCollection({
   loader: glob({ base: './src/content/pesquisas', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
     title: z.string(),
-    researchLine: z.string(),
-    startYear: z.number(),
-    endYear: z.number(),
+    line: z.string(),
+    startYear: z.number().nullable().optional(),
+    endYear: z.number().nullable().optional(),
     summary: z.string(),
     publication: z.string().optional(),
-    researchers: z.array(z.string()),
+    researchers: z.array(z.string()).optional(),
   }),
 })
 
