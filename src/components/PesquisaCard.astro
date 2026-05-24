@@ -31,7 +31,7 @@ if (hasStartYear) {
   if (hasEndYear) {
     dateDisplay = `${startYear} – ${endYear}`;
   } else {
-    dateDisplay = `${startYear} – ${currentYear}`;
+    dateDisplay = `${startYear} – atual`;
   }
 }
 
@@ -45,14 +45,15 @@ const resolvedResearchers = (
   class="group relative bg-surface rounded-xl px-6 py-5 shadow-sm
          hover:-translate-y-0.5 hover:shadow-md transition-all duration-200"
 >
-  <header class="flex justify-between items-center flex-wrap gap-2 mb-2">
-    {
-      dateDisplay && (
-        <span class="text-sm text-secondary-text font-bold">{dateDisplay}</span>
-      )
-    }
-
-    <div class="flex gap-1.5 flex-wrap">
+  <header class="flex justify-between items-start gap-4 mb-2">
+    <div class="flex flex-col gap-1.5">
+      {
+        dateDisplay && (
+          <span class="text-sm text-secondary-text font-bold">
+            {dateDisplay}
+          </span>
+        )
+      }
       {
         hasStartYear &&
           (isOngoing ? (
@@ -65,13 +66,14 @@ const resolvedResearchers = (
             </span>
           ))
       }
-      <span
-        class="text-xs uppercase tracking-wide px-2.5 py-0.5 rounded-full
-               font-semibold whitespace-nowrap bg-raised text-body"
-      >
-        {researchLineTitle}
-      </span>
     </div>
+
+    <span
+      class="text-xs uppercase tracking-wide px-2.5 py-0.5 rounded-full
+             font-semibold whitespace-nowrap bg-raised text-body"
+    >
+      {researchLineTitle}
+    </span>
   </header>
 
   <h2 class="text-xl font-semibold mt-1 mb-2">
