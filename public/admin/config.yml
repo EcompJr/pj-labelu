@@ -244,6 +244,8 @@ collections:
         multiple: true
 
       - label: Detalhes
+        name: body
+        widget: markdown
 
   - name: research_lines
     label: "Linhas de Pesquisa"
