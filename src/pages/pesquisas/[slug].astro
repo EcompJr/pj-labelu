@@ -46,7 +46,7 @@ if (hasStartYear) {
 
 // Resolve researcher IDs to full team member data
 const resolvedResearchers = (
-  await Promise.all(researchers.map((id) => getEntry("team", id)))
+  await Promise.all(researchers?.map((id) => getEntry("team", id)) || [])
 ).filter(Boolean);
 
 // JSON-LD structured data
@@ -59,8 +59,8 @@ const jsonLd = {
   ...(publication && { url: publication }),
   author: resolvedResearchers.map((r) => ({
     "@type": "Person",
-    name: r.data.fullname,
-    ...(r.data.lattes && { url: r.data.lattes }),
+    name: r?.data.fullname,
+    ...(r?.data.lattes && { url: r?.data.lattes }),
   })),
 };
 ---
@@ -69,7 +69,7 @@ const jsonLd = {
   <article class="max-w-180 mx-auto px-4 py-8">
     <nav class="mb-8" aria-label="Navegação estrutural">
       <a
-        href={`${baseUrl}pesquisas/`}
+        href={`${baseUrl}/pesquisas/`}
         class="text-sm font-semibold text-accent-600 no-underline
                transition-colors duration-150 hover:text-accent-800 hover:underline"
       >
@@ -107,7 +107,7 @@ const jsonLd = {
 
         <span
           class="text-[0.7rem] uppercase tracking-wider px-2.5 py-0.5
-                     rounded-full font-semibold bg-raised text-body flex-shrink-0"
+                     rounded-full font-semibold bg-raised text-body shrink-0"
         >
           {researchLineTitle}
         </span>
@@ -141,13 +141,13 @@ const jsonLd = {
             {resolvedResearchers.map((r, i) => (
               <>
                 <a
-                  href={r.data.lattes}
+                  href={r?.data.lattes}
                   target="_blank"
                   rel="noopener noreferrer"
                   class="text-accent-600 no-underline hover:underline font-medium"
-                  title={`Currículo Lattes de ${r.data.fullname}`}
+                  title={`Currículo Lattes de ${r?.data.fullname}`}
                 >
-                  {r.data.fullname}
+                  {r?.data.fullname}
                 </a>
                 {i < resolvedResearchers.length - 1 && (
                   <span class="text-border" aria-hidden="true">
