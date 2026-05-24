@@ -249,7 +249,7 @@ collections:
 
   - name: research_lines
     label: "Linhas de Pesquisa"
-    folder: "src/content/pesquisas"
+    folder: "src/content/linhas-de-pesquisa"
     create: true
     slug: "{{slug}}"
     identifier_field: title
