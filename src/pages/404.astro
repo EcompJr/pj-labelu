@@ -1,0 +1,39 @@
+---
+import ContentLayout from "../layouts/ContentLayout.astro";
+
+const base = import.meta.env.BASE_URL;
+
+const artworkPaths = [
+  `${base}assets/images/404/404-1.png`,
+  `${base}assets/images/404/404-2.png`,
+  `${base}assets/images/404/404-3.png`,
+];
+---
+
+<ContentLayout
+  title="404 · Página não encontrada"
+  description="A página que você procurou não existe. Tente outra rota ou volte para a página inicial."
+>
+  <div class="bg-page">
+    <img
+      class="h-auto w-full mix-blend-multiply opacity-95"
+      src={artworkPaths[0]}
+      alt="Ilustração de Máquinário Quebrado ao estilo de gravuras da Revolução Industrial · Página 404"
+      width="1536"
+      height="1024"
+      data-artwork
+    />
+  </div>
+</ContentLayout>
+
+<script is:inline define:vars={{ artworkPaths }}>
+  const artwork = document.querySelector("[data-artwork]");
+
+  const pickRandomArtwork = () => {
+    const nextArtwork =
+      artworkPaths[Math.floor(Math.random() * artworkPaths.length)];
+    artwork.src = nextArtwork;
+  };
+
+  pickRandomArtwork();
+</script>
