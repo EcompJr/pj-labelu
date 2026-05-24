@@ -27,8 +27,8 @@ const team = (await getCollection("team"))
   }))
   .sort((a, b) => {
     const rolePrecedence =
-      roleOrder.findIndex((role) => role.label === a.role) -
-      roleOrder.findIndex((role) => role.label === b.role);
+      (roleOrder.find((r) => r.label === a.role)?.weight ?? 99) -
+      (roleOrder.find((r) => r.label === b.role)?.weight ?? 99);
 
     return rolePrecedence !== 0
       ? rolePrecedence
