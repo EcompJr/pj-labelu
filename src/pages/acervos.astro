@@ -1,42 +1,33 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import ContentLayout from "../layouts/ContentLayout.astro";
 import { getCollection } from "astro:content";
 
 const grupos = await getCollection("archive");
 
 const dadosFixos = {
-  title: "Acesso ao Acervo Físico",
   email: "lpbpacheco1@uefs.br",
   localizacao:
     "Prédio de Programa de Pós-Graduação em História (PPGH) - Campus UEFS",
-  horarios: "Segunda a Sexta, das 08h às 12h e das 14h às 18h",
-  instrucoes:
-    "Para solicitar o acesso ao acervo físico do laboratório, preencha o formulário abaixo detalhando os objetivos da sua pesquisa e quais grupos de documentos você pretende consultar. Nossa equipe analisará o pedido e responderá via e-mail.",
+  horarios: "Segunda a Sexta, das 08h às 12h e das 14h às 18h"
 };
 ---
 
-<BaseLayout
-  title={`${dadosFixos.title} — Labelu`}
+<ContentLayout
+  title="Acesso ao Acervo Físico"
   description="Instruções, horários de funcionamento e formulário de solicitação formal para acessar o acervo físico do Laboratório de História e Memória da Luta de Classes."
 >
-  <section
-    class="max-w-300 w-full mx-auto px-8 py-12"
-    aria-labelledby="acervo-heading"
-  >
-    <!-- Page title — font, color, tracking all come from @layer base h1 -->
-    <h1 id="acervo-heading" class="text-4xl font-bold mb-8">
-      {dadosFixos.title}
-    </h1>
-
-    <!-- Instructions + sidebar -->
     <div class="grid grid-cols-[1.2fr_1fr] gap-12 mb-12 max-[720px]:grid-cols-1">
       <div>
-        <!-- h2 color must be accent, so we override the base title color here -->
         <h2 class="text-2xl font-bold text-accent-600 mb-6">
           Instruções para o Pedido Formal
         </h2>
-        <!-- p line-height comes from @layer base -->
-        <p>{dadosFixos.instrucoes}</p>
+        <p>
+          Para solicitar o acesso ao acervo físico do laboratório,
+          preencha o formulário abaixo detalhando os objetivos da sua pesquisa e
+          quais grupos de documentos você pretende consultar.
+          <br />
+          Nossa equipe analisará o pedido e responderá via e-mail.
+        </p>
       </div>
 
       <aside
@@ -56,7 +47,6 @@ const dadosFixos = {
 
     <hr class="border-t border-border my-10" />
 
-    <!-- Document groups -->
     <div>
       <h2 class="text-2xl font-bold text-accent-600 mb-6">
         Grupos de Documentos
@@ -86,7 +76,6 @@ const dadosFixos = {
 
     <hr class="border-t border-border my-10" />
 
-    <!-- Access request form -->
     <div>
       <h2 class="text-2xl font-bold text-accent-600 mb-3">
         Solicitação de Acesso
@@ -156,7 +145,7 @@ const dadosFixos = {
       </form>
     </div>
   </section>
-</BaseLayout>
+</ContentLayout>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
