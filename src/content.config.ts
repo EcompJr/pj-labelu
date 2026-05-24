@@ -12,7 +12,6 @@ const team = defineCollection({
       orcid: z.url().optional(),
       linkedin: z.url().optional(),
       profile: z.optional(image()),
-      summary: z.string(),
     }),
 })
 

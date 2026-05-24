@@ -80,8 +80,8 @@ collections:
         required: false
 
       - label: Resumo
-        name: summary
-        widget: text
+        name: body
+        widget: markdown
 
   - name: schedule
     label: Agenda

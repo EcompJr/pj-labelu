@@ -7,7 +7,7 @@ import { Image } from "astro:assets";
 const team = (await getCollection("team")).map((e) => ({
   fullname: e.data.fullname,
   role: e.data.role ?? "",
-  summary: e.data.summary,
+  summary: e.body,
   lattes: e.data.lattes,
   orcid: e.data.orcid ?? "",
   linkedin: e.data.linkedin ?? "",
