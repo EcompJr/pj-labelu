@@ -4,7 +4,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 
-const team = (await getCollection("team")).map((e) => ({
+import { sortBy } from "../lib/vec";
+
+const rawTeam = (await getCollection("team")).map((e) => ({
   fullname: e.data.fullname,
   role: e.data.role ?? "",
   summary: e.body,
@@ -12,7 +14,9 @@ const team = (await getCollection("team")).map((e) => ({
   orcid: e.data.orcid ?? "",
   linkedin: e.data.linkedin ?? "",
   profile: e.data.profile ?? null,
-}));
+}))
+
+const team = sortBy(rawTeam, 'fullname')
 ---
 
 <BaseLayout title={`Equipe — ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
