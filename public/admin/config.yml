@@ -39,6 +39,7 @@ collections:
     label: Equipe
     folder: src/content/equipe
     create: true
+    identifier_field: fullname
 
     fields:
       - label: Nome Completo
