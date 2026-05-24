@@ -117,7 +117,7 @@ const resolvedResearchers = (
         {resolvedResearchers.map((r, i) => (
           <>
             <a
-              href={r?.data.lattes}
+              href={`${baseUrl}/equipe/${r?.id}`}
               target="_blank"
               rel="noopener noreferrer"
               class="text-accent-600 no-underline hover:underline font-medium"
