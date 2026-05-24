@@ -5,3 +5,5 @@ export const REPO = "pj-labelu"
 export const SITE_TITLE = 'Labelu'
 export const SITE_DESCRIPTION = "Laboratório de História e Memória da Luta de Classes"
 export const COPYRIGHT_NAME = "Labelu - Laboratório de História e Memória da Luta de Classes"
+export const LOCATION = "Localização Prédio do Mestrado de História,  Anexo do Módulo 7, UEFS, Novo Horizonte, Avenida Transnordestina ..."
+export const CONTACT_EMAIL = "uefslabelu@gmail.com"
