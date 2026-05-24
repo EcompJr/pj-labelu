@@ -34,6 +34,15 @@ logo:
   src: /pj-labelu/assets/logo-labelu-header.png
   show_in_header: true
 
+slug:
+  encoding: unicode
+  clean_accents: true
+  sanitize_replacement: '-'
+  trim: true
+  lowercase: true
+  timezone: utc
+  maxlength: 64
+
 # === Content collections configuration
 
 # Collections: https://sveltiacms.app/en/docs/collections
