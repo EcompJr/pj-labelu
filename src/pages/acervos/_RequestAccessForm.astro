@@ -33,17 +33,19 @@ const { id } = Astro.props;
   </section>
 
   <section class="flex flex-col gap-2 my-2">
-    <label for="email-usuario" class="font-semibold">Seu E-mail</label>
+    <label for="telefone-usuario" class="font-semibold">
+      Telefone de Contato
+    </label>
     <input
-      type="email"
-      id="email-usuario"
-      name="email-usuario"
+      type="tel"
+      id="telefone-usuario"
+      name="telefone-usuario"
       required
       class="px-3 py-3 border border-border rounded-md bg-white
               focus:outline-none focus:ring-2 focus:ring-accent-500
               focus:border-accent-500 transition-shadow duration-150
               placeholder:text-secondary-text"
-      placeholder="seu.email@exemplo.com"
+      placeholder="+55 (75) 91122-3344"
     />
   </section>
 
@@ -87,8 +89,8 @@ const { id } = Astro.props;
 
         const nome = (document.getElementById("nome") as HTMLInputElement)
           .value;
-        const emailUsuario = (
-          document.getElementById("email-usuario") as HTMLInputElement
+        const telefoneUsuario = (
+          document.getElementById("telefone-usuario") as HTMLInputElement
         ).value;
         const motivo = (
           document.getElementById("motivo") as HTMLTextAreaElement
@@ -101,7 +103,7 @@ const { id } = Astro.props;
           `Solicitação de Acesso ao Acervo - ${nome}`,
         );
         const body = encodeURIComponent(
-          `Nome: ${nome}\nE-mail de Contato: ${emailUsuario}\n\nMotivo da solicitação e documentos de interesse:\n${motivo}`,
+          `Nome: ${nome}\nTelefone de Contato: ${telefoneUsuario}\n\nMotivo da solicitação e documentos de interesse:\n${motivo}`,
         );
 
         window.open(
