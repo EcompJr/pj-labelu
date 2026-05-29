@@ -2,10 +2,12 @@
 import { CONTACT_EMAIL } from "../../consts";
 
 import H2 from "./_H2.astro";
+
+const { id } = Astro.props;
 ---
 
 <form
-  id="solicitacao-de-acesso"
+  id={id}
   aria-label="Formulário de Solicitação de Acesso ao Acervo"
   class="flex flex-col"
 >
