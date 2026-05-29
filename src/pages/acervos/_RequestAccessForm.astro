@@ -1,19 +1,21 @@
 ---
 import { CONTACT_EMAIL } from "../../consts";
+
+import H2 from "./_H2.astro";
 ---
 
 <form
   id="solicitacao-de-acesso"
   aria-label="Formulário de Solicitação de Acesso ao Acervo"
-  class="flex flex-col gap-6"
+  class="flex flex-col"
 >
-  <h2 class="text-2xl font-bold text-accent-600">Solicitação de Acesso</h2>
+  <H2>Solicitação de Acesso</H2>
   <p>
     Preencha os dados abaixo. Ao clicar em enviar, seu aplicativo de e-mail será
     aberto com o pedido formatado.
   </p>
 
-  <section class="flex flex-col gap-2">
+  <section class="flex flex-col gap-2 my-2">
     <label for="nome" class="font-semibold">Nome Completo</label>
     <input
       type="text"
@@ -28,7 +30,7 @@ import { CONTACT_EMAIL } from "../../consts";
     />
   </section>
 
-  <section class="flex flex-col gap-2">
+  <section class="flex flex-col gap-2 my-2">
     <label for="email-usuario" class="font-semibold">Seu E-mail</label>
     <input
       type="email"
@@ -43,7 +45,7 @@ import { CONTACT_EMAIL } from "../../consts";
     />
   </section>
 
-  <section class="flex flex-col gap-2">
+  <section class="flex flex-col gap-2 my-2">
     <label for="motivo" class="font-semibold">
       Motivo do Interesse / Pesquisa
     </label>
@@ -62,7 +64,7 @@ import { CONTACT_EMAIL } from "../../consts";
 
   <button
     type="submit"
-    class="bg-accent-600 text-white rounded-lg px-6 py-3 font-bold
+    class="bg-accent-600 text-white rounded-lg px-6 my-2 py-3 font-bold
             cursor-pointer w-max transition-colors duration-200
             hover:bg-accent-800 border-none max-[720px]:w-full"
     data-destino={CONTACT_EMAIL}
