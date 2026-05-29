@@ -5,6 +5,7 @@ import { getCollection } from "astro:content";
 
 import Section from "./_Section.astro";
 import Hr from "./_Hr.astro";
+import RequestAcessForm from "./_RequestAcessForm.astro";
 
 const grupos = await getCollection("archive");
 
@@ -55,111 +56,7 @@ const dadosFixos = {
 
     <Hr/>
 
-    <form
-      id="solicitacao-de-acesso"
-      aria-label="Formulário de Solicitação de Acesso ao Acervo"
-      class="flex flex-col gap-6"
-    >
-      <h2 class="text-2xl font-bold text-accent-600">Solicitação de Acesso</h2>
-      <p>
-        Preencha os dados abaixo. Ao clicar em enviar, seu aplicativo de e-mail
-        será aberto com o pedido formatado.
-      </p>
-
-      <section class="flex flex-col gap-2">
-        <label for="nome" class="font-semibold">Nome Completo</label>
-        <input
-          type="text"
-          id="nome"
-          name="nome"
-          required
-          class="px-3 py-3 border border-border rounded-md bg-white
-              focus:outline-none focus:ring-2 focus:ring-accent-500
-              focus:border-accent-500 transition-shadow duration-150
-              placeholder:text-secondary-text"
-          placeholder="Digite seu nome completo"
-        />
-      </section>
-
-      <section class="flex flex-col gap-2">
-        <label for="email-usuario" class="font-semibold">Seu E-mail</label>
-        <input
-          type="email"
-          id="email-usuario"
-          name="email-usuario"
-          required
-          class="px-3 py-3 border border-border rounded-md bg-white
-              focus:outline-none focus:ring-2 focus:ring-accent-500
-              focus:border-accent-500 transition-shadow duration-150
-              placeholder:text-secondary-text"
-          placeholder="seu.email@exemplo.com"
-        />
-      </section>
-
-      <section class="flex flex-col gap-2">
-        <label for="motivo" class="font-semibold">
-          Motivo do Interesse / Pesquisa
-        </label>
-        <textarea
-          id="motivo"
-          name="motivo"
-          rows="5"
-          required
-          class="px-3 py-3 border border-border rounded-md bg-white
-              focus:outline-none focus:ring-2 focus:ring-accent-500
-              focus:border-accent-500 transition-shadow duration-150
-              placeholder:text-secondary-text resize-y"
-          placeholder="Explique brevemente sua pesquisa e quais documentos deseja consultar..."
-        ></textarea>
-      </section>
-
-      <button
-        type="submit"
-        class="bg-accent-600 text-white rounded-lg px-6 py-3 font-bold
-            cursor-pointer w-max transition-colors duration-200
-            hover:bg-accent-800 border-none max-[720px]:w-full"
-        data-destino={CONTACT_EMAIL}
-      >
-        Abrir no e-mail
-      </button>
-    </form>
+    <RequestAcessForm />
   </article>
 </ContentLayout>
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById(
-      "solicitacao-de-acesso",
-    ) as HTMLFormElement;
-
-    if (form) {
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        const nome = (document.getElementById("nome") as HTMLInputElement)
-          .value;
-        const emailUsuario = (
-          document.getElementById("email-usuario") as HTMLInputElement
-        ).value;
-        const motivo = (
-          document.getElementById("motivo") as HTMLTextAreaElement
-        ).value;
-
-        const btn = form.querySelector("[data-destino]") as HTMLButtonElement;
-        const emailDestino = btn.getAttribute("data-destino");
-
-        const subject = encodeURIComponent(
-          `Solicitação de Acesso ao Acervo - ${nome}`,
-        );
-        const body = encodeURIComponent(
-          `Nome: ${nome}\nE-mail de Contato: ${emailUsuario}\n\nMotivo da solicitação e documentos de interesse:\n${motivo}`,
-        );
-
-        window.open(
-          `mailto:${emailDestino}?subject=${subject}&body=${body}`,
-          "_blank",
-        );
-      });
-    }
-  });
-</script>
