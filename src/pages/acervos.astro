@@ -14,32 +14,32 @@ const dadosFixos = {
   title="Acesso ao Acervo Físico"
   description="Instruções, horários de funcionamento e formulário de solicitação formal para acessar o acervo físico do Laboratório de História e Memória da Luta de Classes."
 >
-    <div class="grid grid-cols-[1.2fr_1fr] gap-12 mb-12 max-[720px]:grid-cols-1">
-      <h2 class="text-2xl font-bold text-accent-600 mb-6">
-        Instruções para o Pedido Formal
-      </h2>
-      <p>
-        Para solicitar o acesso ao acervo físico do laboratório,
-        preencha o formulário abaixo detalhando os objetivos da sua pesquisa e
-        quais grupos de documentos você pretende consultar.
-        <br />
-        Nossa equipe analisará o pedido e responderá via e-mail.
-      </p>
-
-      <aside
-        class="bg-surface p-6 rounded-xl h-fit"
-        aria-label="Informações de Contato e Funcionamento"
-      >
-        <h2 class="text-2xl font-bold text-accent-600 mb-6">
-          Contato e Funcionamento
-        </h2>
-        <ul class="list-none p-0 m-0 flex flex-col gap-3">
-          <li><strong>📍 Localização:</strong> {LOCATION}</li>
-          <li><strong>🕒 Horários:</strong> {dadosFixos.horarios}</li>
-          <li><strong>✉️ E-mail:</strong> {CONTACT_EMAIL}</li>
-        </ul>
-      </aside>
-    </div>
+  <section id="instruções">
+    <h2 class="text-2xl font-bold text-accent-600 mb-6">
+      Instruções para o Pedido Formal
+    </h2>
+    <p>
+      Para solicitar o acesso ao acervo físico do laboratório,
+      preencha o formulário abaixo detalhando os objetivos da sua pesquisa e
+      quais grupos de documentos você pretende consultar.
+      <br />
+      Nossa equipe analisará o pedido e responderá via e-mail.
+    </p>
+  </section>
+  <section
+    id="contatos-e-funcionamento"
+    class="bg-surface p-6 rounded-xl h-fit"
+    aria-label="Informações de Contato e Funcionamento"
+  >
+    <h2 class="text-2xl font-bold text-accent-600 mb-6">
+      Contato e Funcionamento
+    </h2>
+    <ul class="list-none p-0 m-0 flex flex-col gap-3">
+      <li><strong>📍 Localização:</strong> {LOCATION}</li>
+      <li><strong>🕒 Horários:</strong> {dadosFixos.horarios}</li>
+      <li><strong>✉️ E-mail:</strong> {CONTACT_EMAIL}</li>
+    </ul>
+  </section>
 
     <hr class="border-t border-border my-10" />
 
