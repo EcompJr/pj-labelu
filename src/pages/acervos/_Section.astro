@@ -1,0 +1,10 @@
+---
+const {id, title } = Astro.props;
+---
+
+<section id={id} aria-labelledby={id}>
+  <h2 class="text-2xl font-bold text-accent-600 mb-6">
+    {title}
+  </h2>
+  <slot />
+</section>
