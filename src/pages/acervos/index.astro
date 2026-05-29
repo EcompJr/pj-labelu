@@ -30,11 +30,24 @@ const dadosFixos = {
     </Section>
 
     <Section id="endereço" title="Contato e Funcionamento">
-      <ul class="list-none p-0 m-0 flex flex-col gap-3">
-        <li><strong>Localização:</strong> {LOCATION}</li>
-        <li><strong>Horários:</strong> {dadosFixos.horarios}</li>
-        <li><strong>E-mail:</strong> {CONTACT_EMAIL}</li>
-      </ul>
+      <address class="flex flex-col gap-3">
+        <a
+          href="https://maps.app.goo.gl/9qCDBbf8MXFwN5hw9"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <strong>Localização:</strong>
+          {LOCATION}
+        </a>
+        <a>
+          <strong>Horários:</strong>
+          {dadosFixos.horarios}
+        </a>
+        <a href={`mailto:${CONTACT_EMAIL}`}>
+          <strong>E-mail:</strong>
+          {CONTACT_EMAIL}
+        </a>
+      </address>
     </Section>
 
     <Hr />
