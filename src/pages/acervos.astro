@@ -59,80 +59,77 @@ const dadosFixos = {
 
   <hr class="border-t border-border my-10" />
 
-    <div>
-      <h2 class="text-2xl font-bold text-accent-600 mb-3">
-        Solicitação de Acesso
-      </h2>
-      <p class="mb-6">
-        Preencha os dados abaixo. Ao clicar em enviar, seu aplicativo de e-mail
-        será aberto com o pedido formatado.
-      </p>
+  <form id="solicitacao-de-acesso" aria-label="Formulário de Solicitação de Acesso ao Acervo">
+    <h2 class="text-2xl font-bold text-accent-600 mb-3">
+      Solicitação de Acesso
+    </h2>
+    <p class="mb-6">
+      Preencha os dados abaixo. Ao clicar em enviar, seu aplicativo de e-mail
+      será aberto com o pedido formatado.
+    </p>
 
-      <form id="acervo-form" class="flex flex-col gap-6">
-        <div class="flex flex-col gap-2">
-          <label for="nome" class="font-semibold">Nome Completo</label>
-          <input
-            type="text"
-            id="nome"
-            name="nome"
-            required
-            class="px-3 py-3 border border-border rounded-md bg-white
-                   focus:outline-none focus:ring-2 focus:ring-accent-500
-                   focus:border-accent-500 transition-shadow duration-150
-                   placeholder:text-secondary-text"
-            placeholder="Digite seu nome completo"
-          />
-        </div>
+    <section class="flex flex-col gap-2">
+      <label for="nome" class="font-semibold">Nome Completo</label>
+      <input
+        type="text"
+        id="nome"
+        name="nome"
+        required
+        class="px-3 py-3 border border-border rounded-md bg-white
+                focus:outline-none focus:ring-2 focus:ring-accent-500
+                focus:border-accent-500 transition-shadow duration-150
+                placeholder:text-secondary-text"
+        placeholder="Digite seu nome completo"
+      />
+    </section>
 
-        <div class="flex flex-col gap-2">
-          <label for="email-usuario" class="font-semibold">Seu E-mail</label>
-          <input
-            type="email"
-            id="email-usuario"
-            name="email-usuario"
-            required
-            class="px-3 py-3 border border-border rounded-md bg-white
-                   focus:outline-none focus:ring-2 focus:ring-accent-500
-                   focus:border-accent-500 transition-shadow duration-150
-                   placeholder:text-secondary-text"
-            placeholder="seu.email@exemplo.com"
-          />
-        </div>
+    <section class="flex flex-col gap-2">
+      <label for="email-usuario" class="font-semibold">Seu E-mail</label>
+      <input
+        type="email"
+        id="email-usuario"
+        name="email-usuario"
+        required
+        class="px-3 py-3 border border-border rounded-md bg-white
+                focus:outline-none focus:ring-2 focus:ring-accent-500
+                focus:border-accent-500 transition-shadow duration-150
+                placeholder:text-secondary-text"
+        placeholder="seu.email@exemplo.com"
+      />
+    </section>
 
-        <div class="flex flex-col gap-2">
-          <label for="motivo" class="font-semibold">
-            Motivo do Interesse / Pesquisa
-          </label>
-          <textarea
-            id="motivo"
-            name="motivo"
-            rows="5"
-            required
-            class="px-3 py-3 border border-border rounded-md bg-white
-                   focus:outline-none focus:ring-2 focus:ring-accent-500
-                   focus:border-accent-500 transition-shadow duration-150
-                   placeholder:text-secondary-text resize-y"
-            placeholder="Explique brevemente sua pesquisa e quais documentos deseja consultar..."
-          ></textarea>
-        </div>
+    <section class="flex flex-col gap-2">
+      <label for="motivo" class="font-semibold">
+        Motivo do Interesse / Pesquisa
+      </label>
+      <textarea
+        id="motivo"
+        name="motivo"
+        rows="5"
+        required
+        class="px-3 py-3 border border-border rounded-md bg-white
+                focus:outline-none focus:ring-2 focus:ring-accent-500
+                focus:border-accent-500 transition-shadow duration-150
+                placeholder:text-secondary-text resize-y"
+        placeholder="Explique brevemente sua pesquisa e quais documentos deseja consultar..."
+      ></textarea>
+    </section>
 
-        <button
-          type="submit"
-          class="bg-accent-600 text-white rounded-lg px-6 py-3 font-bold
-                 cursor-pointer w-max transition-colors duration-200
-                 hover:bg-accent-800 border-none max-[720px]:w-full"
-          data-destino={CONTACT_EMAIL}
-        >
-          Abrir no e-mail
-        </button>
-      </form>
-    </div>
-  </section>
+    <button
+      type="submit"
+      class="bg-accent-600 text-white rounded-lg px-6 py-3 font-bold
+              cursor-pointer w-max transition-colors duration-200
+              hover:bg-accent-800 border-none max-[720px]:w-full"
+      data-destino={CONTACT_EMAIL}
+    >
+      Abrir no e-mail
+    </button>
+  </form>
 </ContentLayout>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("acervo-form") as HTMLFormElement;
+    const form = document.getElementById("solicitacao-de-acesso") as HTMLFormElement;
 
     if (form) {
       form.addEventListener("submit", (e) => {
