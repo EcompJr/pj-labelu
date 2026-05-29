@@ -4,6 +4,7 @@ import ContentLayout from "../../layouts/ContentLayout.astro";
 import { getCollection } from "astro:content";
 
 import Section from "./_Section.astro";
+import Hr from "./_Hr.astro";
 
 const grupos = await getCollection("archive");
 
@@ -35,7 +36,7 @@ const dadosFixos = {
       </ul>
     </Section>
 
-    <hr class="border-t border-border my-10" />
+    <Hr/>
 
     <Section id="acervos-disponiveis" title="Acervos disponíveis para consulta">
       <ul class="flex flex-col gap-10">
@@ -52,7 +53,7 @@ const dadosFixos = {
       </ul>
     </Section>
 
-    <hr class="border-t border-border my-10" />
+    <Hr/>
 
     <form
       id="solicitacao-de-acesso"
