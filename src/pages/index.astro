@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
+import YouTubeSection from "../components/YouTubeSection.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 ---
 
@@ -8,6 +9,6 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
   <Hero slot="hero" />
 
   <article class="mx-auto w-full flex flex-col gap-12">
-    {/* As requested, replacing previous content. This space can be used for Notícias later. */}
+    <YouTubeSection />
   </article>
 </BaseLayout>
