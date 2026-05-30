@@ -19,8 +19,6 @@ const { member } = Astro.props;
 
 const { fullname, role, lattes, orcid, linkedin, profile } = member.data;
 const body = member.body;
-
-const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <Layout title={fullname} description={role}>
@@ -65,7 +63,7 @@ const baseUrl = import.meta.env.BASE_URL;
             {role}
           </p>
           <a
-            href={`${baseUrl}/equipe/`}
+            href={`../equipe/`}
             class="text-sm text-accent-600 font-semibold no-underline hover:underline"
           >
             ← Voltar para a equipe
