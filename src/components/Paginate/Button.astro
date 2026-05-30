@@ -1,11 +1,9 @@
 ---
 interface Props {
-  label: string;
   href?: string;
-  disabled?: boolean;
 }
 
-const { label, href } = Astro.props;
+const { href } = Astro.props;
 const shouldHide = !href;
 ---
 
@@ -17,6 +15,6 @@ const shouldHide = !href;
     hidden={shouldHide}
     aria-hidden={shouldHide}
   >
-    {label}
+    <slot />
   </button>
 </a>
