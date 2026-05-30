@@ -2,8 +2,6 @@
 fullname: Jamile Silva Silveira
 role: Pesquisadora
 lattes: https://lattes.cnpq.br/8902602305003264
-orcid: ''
-linkedin: ''
 layout: researcher
 ---
 
