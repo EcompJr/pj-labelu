@@ -12,7 +12,7 @@ export const getStaticPaths = (async ({ paginate }) => {
   const PAGE_SIZE = 20;
 
   const pesquisas = (await getCollection("research")).sort(
-    (a, b) => b.data.endYear - a.data.endYear,
+    (a, b) => (b.data.endYear ?? 0) - (a.data.endYear ?? 0),
   );
 
   return paginate(pesquisas, { pageSize: PAGE_SIZE });
