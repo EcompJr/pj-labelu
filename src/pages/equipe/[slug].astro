@@ -113,7 +113,9 @@ const baseUrl = import.meta.env.BASE_URL;
         </div>
 
         {/* Body Content */}
-        <div class="prose prose-invert max-w-none text-body leading-relaxed">
+        <div
+          class="prose prose-invert max-w-none text-body leading-relaxed text-justify"
+        >
           <Fragment set:html={body} />
         </div>
       </div>
