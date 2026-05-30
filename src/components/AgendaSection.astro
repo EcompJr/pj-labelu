@@ -27,11 +27,11 @@ const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <section class="w-full mx-auto py-12 px-6">
-  <div class="flex items-center justify-between mb-10">
-    <h2 class="text-4xl font-bold text-accent-800 font-heading">Agenda</h2>
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-8 md:mb-10">
+    <h2 class="text-2xl sm:text-4xl font-bold text-accent-800 font-heading">Agenda</h2>
     <a
       href={`${baseUrl}agenda`}
-      class="text-sm font-semibold text-accent-600 hover:text-accent-800 uppercase tracking-wider flex items-center gap-1"
+      class="shrink-0 text-xs sm:text-sm font-semibold text-accent-600 hover:text-accent-800 uppercase tracking-wider flex items-center gap-1"
     >
       VER MAIS <span aria-hidden="true">&rarr;</span>
     </a>
@@ -48,13 +48,13 @@ const baseUrl = import.meta.env.BASE_URL;
           .replace(".", "");
 
         return (
-          <article class="flex flex-row items-start gap-6 md:gap-10">
+          <article class="flex flex-row items-start gap-4 sm:gap-6 md:gap-10">
             {/* Left Column: Date */}
-            <div class="flex flex-col items-center justify-center shrink-0 w-20 text-accent-800">
-              <span class="text-5xl font-bold leading-none font-heading">
+            <div class="flex flex-col items-center justify-center shrink-0 w-14 sm:w-20 text-accent-800">
+              <span class="text-3xl sm:text-5xl font-bold leading-none font-heading">
                 {day}
               </span>
-              <span class="text-xl font-bold uppercase tracking-widest mt-1 font-heading">
+              <span class="text-sm sm:text-xl font-bold uppercase tracking-widest mt-1 font-heading">
                 {month}
               </span>
             </div>
@@ -110,7 +110,7 @@ const baseUrl = import.meta.env.BASE_URL;
                 </div>
               )}
 
-              <h3 class="text-lg font-bold text-title mt-1 uppercase leading-snug max-w-xl">
+              <h3 class="text-base sm:text-lg font-bold text-title mt-1 uppercase leading-snug max-w-xl">
                 <a
                   href={`${baseUrl}agenda/${event.id}`}
                   class="hover:text-accent-600 transition-colors"

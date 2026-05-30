@@ -1,56 +1,61 @@
 ---
 ---
 
-<section class="w-full pt-8 pb-16 flex flex-col gap-8">
-  <div class="flex items-center justify-between border-b border-accent-600 pb-2 mb-4">
-    <h2 class="text-3xl font-bold text-accent-800 font-heading">Nosso Canal no YouTube</h2>
-    <a 
-      href="https://www.youtube.com/watch?v=PwDJJGOYVSE" 
-      target="_blank" 
-      rel="noopener noreferrer" 
-      class="text-sm font-semibold text-accent-600 hover:text-accent-800 uppercase tracking-wider flex items-center gap-1"
+<section class="w-full pt-8 pb-16 flex flex-col gap-6">
+  {/* Header */}
+  <div class="flex flex-wrap items-center justify-between gap-2 border-b border-accent-600 pb-2">
+    <h2 class="text-2xl sm:text-3xl font-bold text-accent-800 font-heading">Nosso Canal no YouTube</h2>
+    <a
+      href="https://www.youtube.com/@LABELUuefs"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="shrink-0 text-xs sm:text-sm font-semibold text-accent-600 hover:text-accent-800 uppercase tracking-wider flex items-center gap-1"
     >
       VER CANAL <span aria-hidden="true">&rarr;</span>
     </a>
   </div>
 
-  <div class="flex flex-col md:flex-row gap-8 items-center bg-gray-50 rounded-2xl p-6 shadow-sm border border-gray-100">
-    <div class="w-full md:w-3/5 aspect-video rounded-xl overflow-hidden shadow-md bg-black">
-      <iframe 
-        width="100%" 
-        height="100%" 
-        src="https://www.youtube.com/embed/PwDJJGOYVSE" 
-        title="YouTube video player" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        allowfullscreen
-        class="w-full h-full border-none"
-      ></iframe>
-    </div>
+  {/* Content */}
+  <div class="flex flex-col md:flex-row gap-6 items-stretch bg-gray-50 rounded-2xl p-4 sm:p-6 shadow-sm border border-gray-100">
     
-    <div class="w-full md:w-2/5 flex flex-col gap-4">
-      <div class="flex items-center gap-3 mb-2">
-        <div class="w-12 h-12 rounded-full bg-accent-600 text-white flex items-center justify-center font-bold text-xl shrink-0 shadow-sm">
+    {/* Video — full width on mobile, 3/5 on desktop */}
+    <div class="w-full md:w-3/5 rounded-xl overflow-hidden shadow-md bg-black">
+      <div class="relative w-full" style="padding-top: 56.25%;">
+        <iframe
+          src="https://www.youtube.com/embed/PwDJJGOYVSE"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          class="absolute inset-0 w-full h-full border-none"
+        ></iframe>
+      </div>
+    </div>
+
+    {/* Info card — full width on mobile, 2/5 on desktop */}
+    <div class="w-full md:w-2/5 flex flex-col gap-4 justify-center">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-accent-600 text-white flex items-center justify-center font-bold text-lg sm:text-xl shrink-0 shadow-sm">
           L
         </div>
         <div>
-          <h3 class="text-lg font-bold text-title leading-tight">Labelu - Laboratório de História</h3>
-          <p class="text-sm text-body">Canal Oficial</p>
+          <h3 class="text-base sm:text-lg font-bold text-title leading-tight">Labelu - Laboratório de História</h3>
+          <p class="text-xs sm:text-sm text-body">Canal Oficial</p>
         </div>
       </div>
-      
-      <p class="text-body text-base leading-relaxed">
+
+      <p class="text-body text-sm sm:text-base leading-relaxed">
         Acompanhe nossos debates, seminários, defesas e conteúdos exclusivos produzidos pelo laboratório. Inscreva-se para ficar por dentro de tudo o que acontece no Labelu e fortalecer a memória da luta de classes!
       </p>
-      
-      <div class="mt-4">
-        <a 
-          href="https://www.youtube.com/watch?v=PwDJJGOYVSE" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="inline-flex items-center justify-center px-6 py-2.5 bg-[#FF0000] text-white rounded-md font-bold hover:bg-red-700 transition-colors gap-2 shadow-sm"
+
+      <div>
+        <a
+          href="https://www.youtube.com/@LABELUuefs"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center w-full sm:w-auto px-5 py-2.5 bg-[#FF0000] text-white rounded-md font-bold hover:bg-red-700 transition-colors gap-2 shadow-sm text-sm sm:text-base"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
             <path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.86-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M9.667,14.667V9.333L15.333,12L9.667,14.667z"/>
           </svg>
           Inscrever-se no Canal
