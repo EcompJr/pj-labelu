@@ -5,6 +5,7 @@ import { getCollection } from "astro:content";
 
 import ContentLayout from "../../layouts/ContentLayout.astro";
 import PesquisaCard from "../../components/PesquisaCard.astro";
+import Paginate from "../../components/Paginate.astro";
 
 type Research = CollectionEntry<"research">;
 
@@ -38,49 +39,5 @@ const { page } = Astro.props;
       ))
     }
   </ul>
-
-  {/* Pagination */}
-  {
-    (page.url.prev || page.url.next) && (
-      <nav
-        class="flex justify-between items-center py-6 border-t border-border
-              mt-4 max-[720px]:flex-col max-[720px]:gap-3"
-        aria-label="Paginação das pesquisas"
-      >
-        {page.url.prev ? (
-          <a
-            href={page.url.prev}
-            class="text-sm font-semibold px-4 py-2 rounded-lg no-underline
-                  text-accent-600 bg-raised transition-colors duration-150
-                  hover:bg-border hover:text-accent-800"
-          >
-            ← Mais recentes
-          </a>
-        ) : (
-          <span class="text-sm font-semibold px-4 py-2 text-secondary-text opacity-40 cursor-default">
-            ← Mais recentes
-          </span>
-        )}
-
-        <span class="text-sm font-semibold text-secondary-text">
-          Página {page.currentPage} de {page.lastPage}
-        </span>
-
-        {page.url.next ? (
-          <a
-            href={page.url.next}
-            class="text-sm font-semibold px-4 py-2 rounded-lg no-underline
-                  text-accent-600 bg-raised transition-colors duration-150
-                  hover:bg-border hover:text-accent-800"
-          >
-            Mais antigas →
-          </a>
-        ) : (
-          <span class="text-sm font-semibold px-4 py-2 text-secondary-text opacity-40 cursor-default">
-            Mais antigas →
-          </span>
-        )}
-      </nav>
-    )
-  }
+  <Paginate page={page} />
 </ContentLayout>
