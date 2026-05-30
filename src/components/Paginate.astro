@@ -1,0 +1,30 @@
+---
+import type { Page } from "astro";
+import Button from "./Paginate/Button.astro";
+
+interface Props {
+  page: Page;
+}
+
+const { page } = Astro.props;
+
+const isVisible = page.url.prev || page.url.next;
+const current = page.currentPage;
+const total = page.lastPage;
+---
+
+{
+  isVisible ? (
+    <nav
+      class="flex justify-around items-center py-6 border-t border-border
+            mt-4 max-[720px]:flex-col max-[720px]:gap-3"
+      aria-label="Paginação das pesquisas"
+    >
+      <Button label="← Mais recentes" href={page.url.prev} />
+      <span class="text-sm font-semibold text-secondary-text">
+        Página {current} de {total}
+      </span>
+      <Button label="Mais antigas →" href={page.url.next} />
+    </nav>
+  ) : null
+}

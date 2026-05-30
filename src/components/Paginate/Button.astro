@@ -1,0 +1,22 @@
+---
+interface Props {
+  label: string;
+  href?: string;
+  disabled?: boolean;
+}
+
+const { label, href } = Astro.props;
+const shouldHide = !href;
+---
+
+<a href={href ?? "#"}>
+  <button
+    class="text-sm font-semibold px-4 py-2
+      cursor-pointer text-accent-500
+      hover:underline hover:text-accent-800"
+    hidden={shouldHide}
+    aria-hidden={shouldHide}
+  >
+    {label}
+  </button>
+</a>
