@@ -105,12 +105,15 @@ const jsonLd = {
           }
         </div>
 
-        <span
+        <a
+          href={`${baseUrl}/pesquisas/linhas#${line}`}
           class="text-[0.7rem] uppercase tracking-wider px-2.5 py-0.5
-                     rounded-full font-semibold bg-raised text-body shrink-0"
+                     rounded-full font-semibold bg-raised text-body shrink-0
+                     no-underline hover:bg-accent-100 transition-colors duration-150"
+          title={`Ver linha de pesquisa: ${researchLineTitle}`}
         >
           {researchLineTitle}
-        </span>
+        </a>
       </div>
 
       <h1 class="text-4xl mb-3 max-[720px]:text-3xl">{title}</h1>
