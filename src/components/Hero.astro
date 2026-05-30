@@ -1,0 +1,34 @@
+---
+import { Image } from "astro:assets";
+import bgImage from "../assets/images/img_pagina_inicial2.jpg";
+import logoImage from "../assets/logo-labelu-header.png";
+---
+
+<section class="relative w-full h-[350px] md:h-[450px] flex items-center justify-center overflow-hidden">
+  {/* Background Image */}
+  <div class="absolute inset-0 z-0">
+    <Image 
+      src={bgImage} 
+      alt="Fundo página inicial" 
+      class="w-full h-full object-cover object-center"
+      quality="high"
+    />
+    <div class="absolute inset-0 bg-black/60"></div>
+  </div>
+
+  {/* Content */}
+  <div class="relative z-10 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 px-6 max-w-6xl mx-auto w-full">
+    <div class="shrink-0">
+      <Image 
+        src={logoImage} 
+        alt="Logo Labelu" 
+        class="w-[280px] md:w-[380px] h-auto drop-shadow-lg"
+      />
+    </div>
+    <div class="text-white text-center md:text-left max-w-lg">
+      <h1 class="text-3xl text-white md:text-5xl font-bold leading-tight drop-shadow-md" style="font-family: 'Inter', sans-serif;">
+        Laboratório de <br /> História e <br /> Memória da <br /> Luta de Classes
+      </h1>
+    </div>
+  </div>
+</section>

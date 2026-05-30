@@ -1,18 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <article class="prose mx-auto py-12">
-    <h1 class="text-3xl font-bold text-accent-600">
-      Bem-vindo ao Labelu
-    </h1>
-    <p>
-      Somos, o nome diz, um laboratório – um espaço para o exercício de um
-      trabalho (labor) intelectual: a pesquisa histórica. Existimos há 21 anos
-      anos fazendo pesquisa e ajudando a formar bons pesquisadores em História.
-      Apresentamos abaixo algumas informações sobre o nosso laboratório.
-    </p>
+  <Hero slot="hero" />
+
+  <article class="mx-auto w-full flex flex-col gap-12">
+    {/* As requested, replacing previous content. This space can be used for Notícias later. */}
   </article>
 </BaseLayout>
