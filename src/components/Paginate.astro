@@ -20,11 +20,11 @@ const total = page.lastPage;
             mt-4 max-[720px]:flex-col max-[720px]:gap-3"
       aria-label="Paginação das pesquisas"
     >
-      <Button label="← Mais recentes" href={page.url.prev} />
+      <Button href={page.url.prev}>← Mais recentes</Button>
       <span class="text-sm font-semibold text-secondary-text">
         Página {current} de {total}
       </span>
-      <Button label="Mais antigas →" href={page.url.next} />
+      <Button href={page.url.next}>Mais antigas →</Button>
     </nav>
   ) : null
 }
