@@ -24,13 +24,24 @@ interface Props {
 }
 
 const { page } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <ContentLayout
   title="Pesquisas"
   description="Conheça as pesquisas desenvolvidas pelo Laboratório de História e Memória da Luta de Classes"
 >
-  <ul class="space-y-6 mt-8 pb-24" role="list">
+  <nav class="mb-8" aria-label="Navegação de pesquisas">
+    <a
+      href={`${baseUrl}/pesquisas/linhas`}
+      class="text-sm font-semibold text-accent-600 no-underline
+             transition-colors duration-150 hover:text-accent-800 hover:underline"
+    >
+      Ver linhas de pesquisa →
+    </a>
+  </nav>
+
+  <ul class="space-y-6 pb-24" role="list">
     {
       page.data.map((pesquisa) => (
         <li>
