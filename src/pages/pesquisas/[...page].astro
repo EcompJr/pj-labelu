@@ -9,7 +9,7 @@ import PesquisaCard from "../../components/PesquisaCard.astro";
 type Research = CollectionEntry<"research">;
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const PAGE_SIZE = 20;
+  const PAGE_SIZE = 10;
 
   const pesquisas = (await getCollection("research")).sort(
     (a, b) => (b.data.endYear ?? 0) - (a.data.endYear ?? 0),
