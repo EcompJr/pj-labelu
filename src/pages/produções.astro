@@ -1,8 +1,124 @@
 ---
+import { getCollection, getEntry, render } from "astro:content";
 import ContentLayout from "../layouts/ContentLayout.astro";
+
+const allProductions = await getCollection("productions");
+
+// Sort by year descending (most recent first)
+const productions = allProductions.sort((a, b) => b.data.year - a.data.year);
+
+// Group by year
+const byYear: Record<number, typeof productions> = {};
+for (const prod of productions) {
+  if (!byYear[prod.data.year]) byYear[prod.data.year] = [];
+  byYear[prod.data.year].push(prod);
+}
+const years = Object.keys(byYear)
+  .map(Number)
+  .sort((a, b) => b - a);
+
+const baseUrl = import.meta.env.BASE_URL;
+
+// Pre-resolve all authors for all productions
+const resolvedAuthorsMap = new Map<string, Awaited<ReturnType<typeof getEntry>>[]>();
+for (const prod of productions) {
+  const authors = await Promise.all(
+    (prod.data.authors ?? []).map((id) => getEntry("team", id))
+  );
+  resolvedAuthorsMap.set(prod.id, authors.filter(Boolean) as any);
+}
+
+// Pre-render body content for all productions
+const renderedMap = new Map<string, any>();
+for (const prod of productions) {
+  const { Content } = await render(prod);
+  renderedMap.set(prod.id, Content);
+}
 ---
 
 <ContentLayout
   title="Produções"
   description="Conheça as produções acadêmicas e culturais do nosso laboratório."
-/>
+>
+  {productions.length === 0 ? (
+    <p class="text-secondary-text text-base mt-4">
+      Nenhuma produção cadastrada ainda.
+    </p>
+  ) : (
+    <div class="flex flex-col gap-12 mt-4">
+      {years.map((year) => (
+        <section>
+          <h2 class="text-2xl font-bold text-accent-600 font-heading mb-6 pb-2 border-b-2 border-accent-600 inline-block">
+            {year}
+          </h2>
+
+          <ol class="flex flex-col gap-6 list-none p-0">
+            {byYear[year].map((prod) => {
+              const authors = resolvedAuthorsMap.get(prod.id) ?? [];
+              const Content = renderedMap.get(prod.id);
+              return (
+                <li class="bg-surface rounded-xl px-6 py-5 shadow-sm hover:-translate-y-0.5 hover:shadow-md transition-all duration-200">
+                  {/* Referência ABNT */}
+                  <p class="text-title font-medium leading-relaxed mb-3">
+                    {prod.data.reference}
+                  </p>
+
+                  {/* Autores associados */}
+                  {authors.length > 0 && (
+                    <div class="flex items-start gap-1.5 text-sm text-secondary-text mb-3">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="shrink-0 opacity-60 mt-0.5"
+                        aria-hidden="true"
+                      >
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                      </svg>
+                      <div class="flex flex-wrap gap-x-1 gap-y-0.5">
+                        {authors.map((author, i) => (
+                          <>
+                            <a
+                              href={`${baseUrl}equipe/${author?.id}`}
+                              class="text-accent-600 no-underline hover:underline font-medium"
+                            >
+                              {author?.data.fullname}
+                            </a>
+                            {i < authors.length - 1 && (
+                              <span class="text-border" aria-hidden="true">·</span>
+                            )}
+                          </>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Descrição em Rich Text (opcional) */}
+                  {Content && (
+                    <details class="mt-2">
+                      <summary class="text-sm text-accent-600 cursor-pointer font-semibold py-1 hover:underline list-none">
+                        Ver descrição
+                      </summary>
+                      <div class="prose mt-4 pt-4 border-t border-border text-sm">
+                        <Content />
+                      </div>
+                    </details>
+                  )}
+                </li>
+              );
+            })}
+          </ol>
+        </section>
+      ))}
+    </div>
+  )}
+</ContentLayout>

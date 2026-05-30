@@ -262,3 +262,48 @@ collections:
       - label: Descrição
         name: body
         widget: markdown
+
+  - name: productions
+    label: "Produções"
+    folder: "src/content/producoes"
+    create: true
+    slug: "{{year}}-{{slug}}"
+    identifier_field: reference
+    summary: "{{reference}} ({{year}})"
+
+    sortable_fields:
+      fields:
+        - year
+        - reference
+      default:
+        field: year
+        direction: descending
+
+    fields:
+      - label: Referência Bibliográfica (ABNT)
+        name: reference
+        widget: string
+        hint: "Referência completa no formato ABNT"
+        minlength: 10
+
+      - label: Ano
+        name: year
+        widget: number
+        value_type: int
+        min: 1900
+        max: 2100
+
+      - label: Autores Associados
+        name: authors
+        widget: relation
+        collection: team
+        search_fields: ["fullname"]
+        value_field: "{{slug}}"
+        display_fields: ["fullname"]
+        multiple: true
+        required: false
+
+      - label: Descrição
+        name: body
+        widget: markdown
+        required: false

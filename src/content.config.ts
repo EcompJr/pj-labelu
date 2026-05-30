@@ -55,4 +55,13 @@ const researchLine = defineCollection({
   }),
 })
 
-export const collections = { team, schedule, archive, research, researchLine }
+const productions = defineCollection({
+  loader: glob({ base: './src/content/producoes', pattern: '**/*.{md,mdx}' }),
+  schema: z.object({
+    reference: z.string(),
+    year: z.number(),
+    authors: z.array(z.string()).optional(),
+  }),
+})
+
+export const collections = { team, schedule, archive, research, researchLine, productions }
