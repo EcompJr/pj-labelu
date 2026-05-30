@@ -11,8 +11,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig( {
   // Deploying to GitHub Pages under the repository subpath
   site: 'https://ecompjr.github.io',
-
-  base: '/pj-labelu/',
+  base: '/pj-labelu',
   integrations: [ icon(), mdx(), sitemap() ],
 
   fonts: [
