@@ -1,0 +1,87 @@
+---
+import { getCollection } from "astro:content";
+
+const schedule = await getCollection("schedule");
+
+// Sort events by date (ascending for future events so the closest is first)
+const sortedEvents = schedule.sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+
+// Filter future events
+const now = new Date().valueOf();
+let displayEvents = sortedEvents.filter(event => event.data.date.valueOf() >= now);
+
+// If there are no future events, just show the most recent past ones
+if (displayEvents.length === 0) {
+  displayEvents = schedule.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
+} else {
+  displayEvents = displayEvents.slice(0, 3);
+}
+
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<section class="w-full max-w-6xl mx-auto py-12 px-6">
+  <div class="flex items-center justify-between mb-10">
+    <h2 class="text-4xl font-bold text-accent-800 font-heading">Agenda</h2>
+    <a 
+      href={`${baseUrl}agenda`}
+      class="text-sm font-semibold text-accent-600 hover:text-accent-800 uppercase tracking-wider flex items-center gap-1"
+    >
+      VER MAIS <span aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+
+  <div class="flex flex-col gap-10">
+    {displayEvents.map((event) => {
+      const dateObj = event.data.date;
+      const day = dateObj.toLocaleDateString("pt-BR", { day: "2-digit" });
+      const month = dateObj.toLocaleDateString("pt-BR", { month: "short" }).toUpperCase().replace('.', '');
+      
+      return (
+        <article class="flex flex-row items-start gap-6 md:gap-10">
+          {/* Left Column: Date */}
+          <div class="flex flex-col items-center justify-center shrink-0 w-20 text-accent-800">
+            <span class="text-5xl font-bold leading-none font-heading">{day}</span>
+            <span class="text-xl font-bold uppercase tracking-widest mt-1 font-heading">{month}</span>
+          </div>
+
+          {/* Right Column: Event Details */}
+          <div class="flex flex-col gap-2 pt-1">
+            <div class="flex items-center flex-wrap gap-4 text-sm font-semibold text-secondary-text">
+              {event.data.time && (
+                <div class="flex items-center gap-1.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-70">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  {event.data.time}
+                </div>
+              )}
+              {event.data.category && (
+                <div class="px-3 py-0.5 rounded-full bg-gray-200 text-gray-700 text-xs font-bold uppercase tracking-wider">
+                  {event.data.category}
+                </div>
+              )}
+            </div>
+
+            {event.data.local && (
+              <div class="flex items-center gap-1.5 text-sm font-bold text-secondary-text">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-70">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                {event.data.local}
+              </div>
+            )}
+
+            <h3 class="text-lg font-bold text-title mt-1 uppercase leading-snug max-w-xl">
+              <a href={`${baseUrl}agenda/${event.id}`} class="hover:text-accent-600 transition-colors">
+                {event.data.title}
+              </a>
+            </h3>
+          </div>
+        </article>
+      );
+    })}
+  </div>
+</section>
