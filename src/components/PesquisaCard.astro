@@ -19,7 +19,7 @@ const hasBothYears = hasStartYear && hasEndYear;
 const isOngoing = hasBothYears ? endYear >= currentYear : hasStartYear;
 
 const baseUrl = import.meta.env.BASE_URL;
-const pesquisaUrl = `/pesquisas/${pesquisa.id}/`;
+const pesquisaUrl = `${baseUrl}/pesquisas/${pesquisa.id}/`;
 
 // Resolve research line to get full title
 const researchLineEntry = await getEntry("researchLine", line);
