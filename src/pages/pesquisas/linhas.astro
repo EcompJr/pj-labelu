@@ -22,7 +22,7 @@ const orderedLines = await Promise.all(
                   before:content-[''] before:absolute before:-left-6 before:inset-y-0
                   before:w-0.5 before:bg-accent-600 before:scale-y-0 before:origin-top
                   before:transition-transform before:duration-300
-                  hover:before:scale-y-100"
+                  hover:before:scale-y-100 auto-show"
         >
           <span
             class="pointer-events-none absolute right-0 top-8 font-heading font-bold
@@ -36,7 +36,7 @@ const orderedLines = await Promise.all(
           <article class="flex-1 min-w-0 pr-24">
             <h2
               id={line.id}
-              class="font-heading text-2xl font-bold text-accent-600 mb-6"
+              class="font-heading text-2xl font-bold text-accent-600 mb-6 scroll-mt-32"
             >
               {line.data.title}
             </h2>
