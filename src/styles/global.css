@@ -120,19 +120,19 @@
 }
 
 .auto-show {
-  animation: appear both;
+  animation: appear linear both;
   animation-timeline: view();
-  animation-range: entry 5% cover 80vh;
+  animation-range: entry 0% exit 50vh;
 }
 
 @keyframes appear {
-  from {
+  0%, 100% {
     opacity: 0;
     transform: translateY(1.5rem);
     filter: blur(2px);
     scale: 0.95
   }
-  to {
+  50% {
     opacity: 1;
     transform: translateY(0);
     filter: blur(0);
