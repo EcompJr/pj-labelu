@@ -68,13 +68,13 @@ const jsonLd = {
 <BaseLayout title={`${title} — Pesquisas — Labelu`} description={summary}>
   <article class="max-w-180 mx-auto px-4 py-8">
     <nav class="mb-8" aria-label="Navegação estrutural">
-      <a
-        href={`${baseUrl}/pesquisas/`}
+      <button
+        onclick="history.back()"
         class="text-sm font-semibold text-accent-600 no-underline
                transition-colors duration-150 hover:text-accent-800 hover:underline"
       >
         ← Voltar para Pesquisas
-      </a>
+      </button>
     </nav>
 
     <header class="mb-6">
