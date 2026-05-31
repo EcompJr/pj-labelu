@@ -44,6 +44,7 @@ if (mayOpen) {
       <time
         datetime={date.toISOString().split("T")[0]}
         class="text-sm text-secondary-text font-bold"
+        transition:name={`time-${event.id}`}
       >
         {localDate}
         {time && <span class="font-normal"> · {time}</span>}
@@ -52,20 +53,27 @@ if (mayOpen) {
       <div class="flex gap-1.5 flex-wrap">
         {
           hasFinished && (
-            <span class="text-xs uppercase tracking-wide px-2.5 py-0.5 rounded-full font-semibold whitespace-nowrap bg-accent-800 text-white">
+            <span
+              transition:name={`finished-${event.id}`}
+              class="text-xs uppercase tracking-wide px-2.5 py-0.5 rounded-full font-semibold whitespace-nowrap bg-accent-800 text-white"
+            >
               Realizado
             </span>
           )
         }
         <span
           class="text-xs uppercase tracking-wide px-2.5 py-0.5 rounded-full font-semibold whitespace-nowrap bg-raised text-body"
+          transition:name={`category-${event.id}`}
         >
           {category}
         </span>
       </div>
     </header>
 
-    <h2 class="text-xl font-semibold mt-1 mb-2">
+    <h2
+      class="text-xl font-semibold mt-1 mb-2"
+      transition:name={`title-${event.id}`}
+    >
       <a
         href={eventUrl}
         class="text-title no-underline hover:text-accent-500 transition-colors duration-150"
@@ -74,11 +82,19 @@ if (mayOpen) {
       </a>
     </h2>
 
-    <p class="text-sm text-secondary-text mb-3 leading-relaxed">{agenda}</p>
+    <p
+      class="text-sm text-secondary-text mb-3 leading-relaxed"
+      transition:name={`description-${event.id}`}
+    >
+      {agenda}
+    </p>
 
     {
       local && (
-        <p class="flex items-center gap-1.5 text-sm text-secondary-text mb-2">
+        <p
+          transition:name={`location-${event.id}`}
+          class="flex items-center gap-1.5 text-sm text-secondary-text mb-2"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="14"

@@ -58,6 +58,7 @@ const jsonLd = {
         <time
           datetime={date.toISOString().split("T")[0]}
           class="text-sm text-secondary-text font-bold"
+          transition:name={`time-${event.id}`}
         >
           {localizedDate}
           {time && <span class="font-normal"> · {time}</span>}
@@ -67,6 +68,7 @@ const jsonLd = {
           {
             hasFinished && (
               <span
+                transition:name={`finished-${event.id}`}
                 class="text-[0.7rem] uppercase tracking-wider px-2.5 py-0.5
                          rounded-full font-semibold whitespace-nowrap
                          bg-accent-800 text-white"
@@ -76,6 +78,7 @@ const jsonLd = {
             )
           }
           <span
+            transition:name={`category-${event.id}`}
             class="text-[0.7rem] uppercase tracking-wider px-2.5 py-0.5
                        rounded-full font-semibold whitespace-nowrap
                        bg-raised text-body"
@@ -86,14 +89,20 @@ const jsonLd = {
       </div>
 
       <!-- h1 font/color/tracking/leading all from @layer base -->
-      <h1 class="text-4xl mb-3 max-[720px]:text-3xl">{title}</h1>
+      <h1 class="text-4xl mb-3 max-[720px]:text-3xl" transition:name={`title-${event.id}`}>
+        {title}
+      </h1>
 
       <!-- agenda summary — leading comes from @layer base p -->
-      <p class="text-lg text-secondary-text mb-3">{agenda}</p>
+      <p class="text-lg text-secondary-text mb-3" transition:name={`description-${event.id}`}>
+        {agenda}
+      </p>
 
       {
         local && (
-          <p class="text-sm text-secondary-text flex items-center gap-1.5">
+          <p
+            transition:name={`location-${event.id}`}
+            class="text-sm text-secondary-text flex items-center gap-1.5">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
