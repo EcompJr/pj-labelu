@@ -67,12 +67,12 @@ const baseUrl = import.meta.env.BASE_URL;
           >
             {role}
           </p>
-          <a
-            href={`${baseUrl}/equipe/`}
-            class="text-sm text-accent-600 font-semibold no-underline hover:underline"
+          <button
+            onclick="history.back()"
+            class="text-sm text-accent-600 font-semibold no-underline hover:underline bg-none border-none cursor-pointer p-0"
           >
             ← Voltar para a equipe
-          </a>
+          </button>
         </div>
 
         {/* Links */}
