@@ -10,7 +10,9 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <Hero slot="hero" />
 
-  <article class="mx-auto w-full flex flex-col gap-12">
+  <article
+    class="mx-auto w-full flex flex-col gap-6 sm:gap-8 md:gap-10 lg:gap-12"
+  >
     <AboutSection />
     <div class="border-t border-border"></div>
     <YouTubeSection />

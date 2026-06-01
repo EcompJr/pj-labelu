@@ -24,7 +24,9 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
   <body class="flex flex-col min-h-screen">
     <Header />
     <slot name="hero" />
-    <main class="max-w-[80%] flex-1 py-12 mx-auto w-full">
+    <main
+      class="max-w-[80%] flex-1 py-6 sm:py-8 md:py-10 lg:py-12 mx-auto w-full"
+    >
       <slot />
     </main>
     <Footer />

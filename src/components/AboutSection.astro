@@ -17,24 +17,28 @@ const stats = [
 ];
 ---
 
-<section class="w-full py-12">
-  <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-start">
-
+<section class="w-full py-6 sm:py-8 md:py-10 lg:py-12">
+  <div
+    class="flex flex-col md:flex-row gap-6 sm:gap-8 md:gap-12 lg:gap-16 items-start"
+  >
     {/* Left: Text content */}
     <div class="flex-1 min-w-0">
-      <h2 class="text-4xl font-bold text-accent-800 font-heading mb-6">Sobre o Labelu</h2>
+      <h2 class="text-4xl font-bold text-accent-800 font-heading mb-6">
+        Sobre o Labelu
+      </h2>
 
       <p class="text-body text-base leading-relaxed mb-4">
         Somos, o nome diz, um laboratório – um espaço para o exercício de um
-        trabalho (labor) intelectual: a pesquisa histórica. Existimos há mais de 21 anos
-        fazendo pesquisa e ajudando a formar bons pesquisadores em História.
+        trabalho (labor) intelectual: a pesquisa histórica. Existimos há mais de
+        21 anos fazendo pesquisa e ajudando a formar bons pesquisadores em
+        História.
       </p>
 
       <p class="text-body text-base leading-relaxed mb-6">
-        Nosso objetivo principal é pesquisar a história e preservar a memória das lutas
-        sociais e da esquerda. Nossos estudos dialogam intensamente com a História Social,
-        investigando sujeitos, estratégias, memórias e os antagonismos que se defrontam
-        nas lutas de classes.
+        Nosso objetivo principal é pesquisar a história e preservar a memória
+        das lutas sociais e da esquerda. Nossos estudos dialogam intensamente
+        com a História Social, investigando sujeitos, estratégias, memórias e os
+        antagonismos que se defrontam nas lutas de classes.
       </p>
 
       <div class="flex flex-wrap gap-3 mt-2">
@@ -55,21 +59,37 @@ const stats = [
 
     {/* Right: Stats cards */}
     <div class="shrink-0 w-full md:w-72 flex flex-col gap-4">
-      {stats.map(({ value, label }) => (
-        <div class="flex items-center gap-5 bg-raised rounded-xl px-6 py-5 border border-border shadow-sm">
-          <span class="text-5xl font-bold text-accent-600 font-heading leading-none">{value}</span>
-          <span class="text-title font-semibold text-base leading-tight">{label}</span>
-        </div>
-      ))}
+      {
+        stats.map(({ value, label }) => (
+          <div class="flex items-center gap-5 bg-raised rounded-xl px-6 py-5 border border-border shadow-sm">
+            <span class="text-5xl font-bold text-accent-600 font-heading leading-none">
+              {value}
+            </span>
+            <span class="text-title font-semibold text-base leading-tight">
+              {label}
+            </span>
+          </div>
+        ))
+      }
 
       <div class="mt-2 px-2 text-xs text-secondary-text leading-relaxed">
-        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block mr-1 opacity-60" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="inline-block mr-1 opacity-60"
+          width="12"
+          height="12"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
           <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
           <circle cx="12" cy="10" r="3"></circle>
         </svg>
         {LOCATION}
       </div>
     </div>
-
   </div>
 </section>
