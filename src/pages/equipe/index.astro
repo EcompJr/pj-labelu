@@ -67,7 +67,7 @@ const team = (await getCollection("team"))
           </span>
 
           <div
-            class="shrink-0 w-28 overflow-hidden bg-raised max-sm:w-full max-sm:h-36 relative z-10 cursor-pointer pointer-events-none"
+            class="auto-colorize shrink-0 w-28 overflow-hidden bg-raised max-sm:w-full max-sm:h-36 relative z-10 cursor-pointer pointer-events-none"
             style="aspect-ratio: 3/4;"
             transition:name={`profile-image-${p.slug}`}
           >
@@ -75,12 +75,12 @@ const team = (await getCollection("team"))
               <Image
                 src={p.profile}
                 alt={`Foto de ${p.fullname}`}
-                class="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"
+                class="w-full h-full object-cover transition-all duration-300 group-hover:grayscale-0"
               />
             ) : (
               <img
                 src={`https://api.dicebear.com/9.x/lorelei-neutral/svg?backgroundColor=ffd5dc,ffffff,ffdfbf&backgroundType=solid,gradientLinear&backgroundRotation=0,360,-50,-30,-110,50&randomizeIds=true&seed=${p.fullname}`}
-                class="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"
+                class="w-full h-full object-cover transition-all duration-300 group-hover:grayscale-0"
                 alt="avatar"
               />
             )}

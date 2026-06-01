@@ -125,6 +125,12 @@
   animation-range: entry 0% exit 50vh;
 }
 
+.auto-colorize {
+  animation: colorize linear both;
+  animation-timeline: view();
+  animation-range: entry 0% exit 50vh;
+}
+
 @keyframes appear {
   0%, 100% {
     opacity: 0;
@@ -137,5 +143,15 @@
     transform: translateY(0);
     filter: blur(0);
     scale: 1;
+  }
+}
+
+@keyframes colorize {
+  0%, 100% {
+    filter: grayscale(100%);
+  }
+
+  50% {
+    filter: grayscale(0);
   }
 }

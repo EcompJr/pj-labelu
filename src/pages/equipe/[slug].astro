@@ -38,12 +38,12 @@ const baseUrl = import.meta.env.BASE_URL;
               <Image
                 src={profile}
                 alt={`Foto de ${fullname}`}
-                class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300"
+                class="w-full h-full object-cover hover:grayscale-0 transition-all duration-300"
               />
             ) : (
               <img
                 src={`https://api.dicebear.com/9.x/lorelei-neutral/svg?backgroundColor=ffd5dc,ffffff,ffdfbf&backgroundType=solid,gradientLinear&backgroundRotation=0,360,-50,-30,-110,50&randomizeIds=true&seed=${fullname}`}
-                class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300"
+                class="w-full h-full object-cover hover:grayscale-0 transition-all duration-300"
                 alt="avatar"
               />
             )
