@@ -4,12 +4,12 @@ import bgImage from "../assets/images/img_inicial_pagina.jpeg";
 import logoImage from "../assets/logo-labelu-header.png";
 ---
 
-<section class="relative w-full h-[350px] md:h-[450px] flex items-center justify-center overflow-hidden">
+<section class="relative w-full overflow-hidden">
   {/* Background Image */}
   <div class="absolute inset-0 z-0">
-    <Image 
-      src={bgImage} 
-      alt="Fundo página inicial" 
+    <Image
+      src={bgImage}
+      alt="Fundo página inicial"
       class="w-full h-full object-cover object-center"
       quality="high"
     />
@@ -17,18 +17,24 @@ import logoImage from "../assets/logo-labelu-header.png";
   </div>
 
   {/* Content */}
-  <div class="relative z-10 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 px-6 max-w-6xl mx-auto w-full">
-    <div class="shrink-0">
-      <Image 
-        src={logoImage} 
-        alt="Logo Labelu" 
-        class="w-[280px] md:w-[380px] h-auto drop-shadow-lg"
-      />
-    </div>
-    <div class="text-white text-center md:text-left max-w-lg">
-      <h1 class="text-3xl text-white md:text-5xl font-bold leading-tight drop-shadow-md" style="font-family: 'Inter', sans-serif;">
-        Laboratório de <br /> História e <br /> Memória da <br /> Luta de Classes
-      </h1>
+  <div class="relative z-10 px-6 py-8 md:py-20 mb-12">
+    <div
+      class="mx-auto max-w-6xl flex flex-col md:flex-row items-center md:items-center gap-8 md:gap-12 lg:gap-16"
+    >
+      <div class="shrink-0 w-1/2 md:w-2/5">
+        <Image
+          src={logoImage}
+          alt="Logo Labelu"
+          class="w-full h-auto drop-shadow-lg"
+        />
+      </div>
+      <div class="flex-1 text-center md:text-left text-white">
+        <h1
+          class="font-heading text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight drop-shadow-md"
+        >
+          Laboratório de História e Memória da Luta de Classes
+        </h1>
+      </div>
     </div>
   </div>
 </section>
