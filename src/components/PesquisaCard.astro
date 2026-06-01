@@ -41,156 +41,153 @@ const resolvedResearchers = (
 ).filter(Boolean);
 ---
 
-<a href={pesquisaUrl} aria-label={`Ver detalhes da pesquisa: ${title}`}>
-  <article
-    class="group relative bg-surface rounded-xl px-4 py-4 sm:px-6 sm:py-5 shadow-sm
-        hover:-translate-y-0.5 hover:shadow-md transition-all duration-200"
-  >
-    {
-      /*
+<article
+  class="group relative bg-surface rounded-xl px-4 py-4 sm:px-6 sm:py-5 shadow-sm"
+>
+  {
+    /*
       Mobile:  col layout → Status (order-1) · Date (order-2) · Research line (order-3)
       Desktop: row layout → [Status + Date stacked] left (sm:order-1) | Research line right (sm:order-2)
     */
-    }
-    <header
-      class="flex flex-col gap-2 mb-3 sm:flex-row sm:justify-between sm:items-start sm:gap-4"
-    >
-      {/* Status + Date — mobile: order-1 top; desktop: left column */}
-      {
-        hasStartYear && (
-          <div class="flex flex-row items-center gap-2 sm:flex-col sm:items-start sm:gap-1.5 order-1 sm:order-1">
-            {isOngoing ? (
-              <span
-                transition:name={`research-ongoing-${pesquisa.id}`}
-                class="text-xs uppercase tracking-wide px-2.5 py-0.5 rounded-full font-semibold whitespace-nowrap bg-accent-500 text-white shrink-0"
-              >
-                Em andamento
-              </span>
-            ) : (
-              <span
-                transition:name={`research-finished-${pesquisa.id}`}
-                class="text-xs uppercase tracking-wide px-2.5 py-0.5 rounded-full font-semibold whitespace-nowrap bg-accent-800 text-white shrink-0"
-              >
-                Finalizada
-              </span>
-            )}
-            {dateDisplay && (
-              <span
-                transition:name={`research-date-${pesquisa.id}`}
-                class="text-xs sm:text-sm text-secondary-text font-bold whitespace-nowrap"
-              >
-                {dateDisplay}
-              </span>
-            )}
-          </div>
-        )
-      }
-
-      {
-        /* Research line — mobile: order-2 (below status/date); desktop: right column */
-      }
-      <a
-        href={`${baseUrl}/pesquisas/linhas#${line}`}
-        class="text-xs uppercase tracking-wide px-2 py-1 sm:px-2.5 sm:py-0.5 rounded-full
-        font-semibold bg-raised text-body
-        no-underline hover:bg-accent-100 transition-colors duration-150
-        block truncate max-w-full sm:max-w-[16rem] sm:w-fit
-        order-2 sm:order-2 sm:shrink-0"
-        title={`Ver linha de pesquisa: ${researchLineTitle}`}
-      >
-        {researchLineTitle}
-      </a>
-    </header>
-
-    <h2
-      transition:name={`research-title-${pesquisa.id}`}
-      class="text-lg sm:text-xl font-semibold mt-1 mb-2"
-    >
-      <a
-        href={pesquisaUrl}
-        class="text-title no-underline hover:text-accent-500 transition-colors duration-150"
-      >
-        {title}
-      </a>
-    </h2>
-
-    <p
-      transition:name={`research-summary-${pesquisa.id}`}
-      class="text-sm text-secondary-text mb-3 leading-relaxed line-clamp-1"
-    >
-      {summary}
-    </p>
-
-    {/* Pesquisadores */}
+  }
+  <header
+    class="flex flex-col gap-2 mb-3 sm:flex-row sm:justify-between sm:items-start sm:gap-4"
+  >
+    {/* Status + Date — mobile: order-1 top; desktop: left column */}
     {
-      resolvedResearchers.length > 0 && (
-        <div
-          transition:name={`research-researchers-${pesquisa.id}`}
-          class="flex items-start gap-1.5 text-xs sm:text-sm text-secondary-text mb-3"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="shrink-0 opacity-60 mt-0.5"
-            aria-hidden="true"
-          >
-            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-            <circle cx="9" cy="7" r="4" />
-            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-          </svg>
-          <div class="flex flex-col gap-0.5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-1 sm:gap-y-0.5">
-            {resolvedResearchers.map((r, i) => (
-              <>
-                <a
-                  href={`${baseUrl}/equipe/${r?.id}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-accent-600 no-underline hover:underline font-medium"
-                  title={`Currículo Lattes de ${r?.data.fullname}`}
-                >
-                  {r?.data.fullname}
-                </a>
-                {i < resolvedResearchers.length - 1 && (
-                  <span class="text-border hidden sm:inline" aria-hidden="true">
-                    ·
-                  </span>
-                )}
-              </>
-            ))}
-          </div>
+      hasStartYear && (
+        <div class="flex flex-row items-center gap-2 sm:flex-col sm:items-start sm:gap-1.5 order-1 sm:order-1">
+          {isOngoing ? (
+            <span
+              transition:name={`research-ongoing-${pesquisa.id}`}
+              class="text-xs uppercase tracking-wide px-2.5 py-0.5 rounded-full font-semibold whitespace-nowrap bg-accent-500 text-white shrink-0"
+            >
+              Em andamento
+            </span>
+          ) : (
+            <span
+              transition:name={`research-finished-${pesquisa.id}`}
+              class="text-xs uppercase tracking-wide px-2.5 py-0.5 rounded-full font-semibold whitespace-nowrap bg-accent-800 text-white shrink-0"
+            >
+              Finalizada
+            </span>
+          )}
+          {dateDisplay && (
+            <span
+              transition:name={`research-date-${pesquisa.id}`}
+              class="text-xs sm:text-sm text-secondary-text font-bold whitespace-nowrap"
+            >
+              {dateDisplay}
+            </span>
+          )}
         </div>
       )
     }
 
-    <div
-      class="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4"
+    {
+      /* Research line — mobile: order-2 (below status/date); desktop: right column */
+    }
+    <a
+      href={`${baseUrl}/pesquisas/linhas#${line}`}
+      class="text-xs uppercase tracking-wide px-2 py-1 sm:px-2.5 sm:py-0.5 rounded-full
+        font-semibold bg-raised text-body
+        no-underline hover:bg-accent-100 transition-colors duration-150
+        block truncate max-w-full sm:max-w-[16rem] sm:w-fit
+        order-2 sm:order-2 sm:shrink-0"
+      title={`Ver linha de pesquisa: ${researchLineTitle}`}
     >
-      <a
-        href={pesquisaUrl}
-        class="text-xs sm:text-sm text-accent-600 font-semibold no-underline hover:underline inline-block"
-      >
-        Ver detalhes →
-      </a>
+      {researchLineTitle}
+    </a>
+  </header>
 
-      {
-        publication && (
-          <a
-            href={publication}
-            class="text-xs sm:text-sm text-secondary-text font-semibold no-underline
+  <h2
+    transition:name={`research-title-${pesquisa.id}`}
+    class="text-lg sm:text-xl font-semibold mt-1 mb-2"
+  >
+    <a
+      href={pesquisaUrl}
+      class="text-title no-underline hover:text-accent-500 transition-colors duration-150"
+    >
+      {title}
+    </a>
+  </h2>
+
+  <p
+    transition:name={`research-summary-${pesquisa.id}`}
+    class="text-sm text-secondary-text mb-3 leading-relaxed line-clamp-1"
+  >
+    {summary}
+  </p>
+
+  {/* Pesquisadores */}
+  {
+    resolvedResearchers.length > 0 && (
+      <div
+        transition:name={`research-researchers-${pesquisa.id}`}
+        class="flex items-start gap-1.5 text-xs sm:text-sm text-secondary-text mb-3"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="shrink-0 opacity-60 mt-0.5"
+          aria-hidden="true"
+        >
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+        <div class="flex flex-col gap-0.5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-1 sm:gap-y-0.5">
+          {resolvedResearchers.map((r, i) => (
+            <>
+              <a
+                href={`${baseUrl}/equipe/${r?.id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-accent-600 no-underline hover:underline font-medium"
+                title={`Currículo Lattes de ${r?.data.fullname}`}
+              >
+                {r?.data.fullname}
+              </a>
+              {i < resolvedResearchers.length - 1 && (
+                <span class="text-border hidden sm:inline" aria-hidden="true">
+                  ·
+                </span>
+              )}
+            </>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  <div
+    class="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4"
+  >
+    <a
+      href={pesquisaUrl}
+      class="text-xs sm:text-sm text-accent-600 font-semibold no-underline hover:underline inline-block"
+    >
+      Ver detalhes →
+    </a>
+
+    {
+      publication && (
+        <a
+          href={publication}
+          class="text-xs sm:text-sm text-secondary-text font-semibold no-underline
                 hover:text-accent-600 hover:underline inline-block"
-          >
-            Ver publicação ↗
-          </a>
-        )
-      }
-    </div>
-  </article>
-</a>
+        >
+          Ver publicação ↗
+        </a>
+      )
+    }
+  </div>
+</article>
