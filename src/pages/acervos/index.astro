@@ -59,14 +59,30 @@ const dadosFixos = {
     <Hr />
 
     <Section id="acervos-disponiveis" title="Acervos disponíveis para consulta">
-      <ul class="flex flex-col gap-2">
+      <ul class="flex flex-col gap-8">
         {
           grupos.map((grupo) => (
-            <li>
-              <h3 class="text-xl font-bold text-accent-600 mb-1">
-                {grupo.data.title}
-              </h3>
-              <p class="mb-4 text-justify" set:html={grupo.body} />
+            <li class="flex flex-col md:flex-row gap-6 items-start">
+              
+              {/* IMPLEMENTAÇÃO DA FOTO DO ACERVO */}
+              {grupo.data.coverImage && (
+                <div class="w-full md:w-1/3 shrink-0">
+                  <img
+                    src={grupo.data.coverImage.src}
+                    alt={grupo.data.altText || `Imagem representativa do acervo: ${grupo.data.title}`}
+                    class="w-full h-auto object-cover rounded-xl shadow-sm border border-border"
+                    loading="lazy"
+                  />
+                </div>
+              )}
+
+              <div class="flex-1">
+                <h3 class="text-xl font-bold text-accent-600 mb-1">
+                  {grupo.data.title}
+                </h3>
+                <p class="mb-4 text-justify" set:html={grupo.body} />
+              </div>
+              
             </li>
           ))
         }

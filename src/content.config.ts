@@ -29,8 +29,10 @@ const schedule = defineCollection({
 
 const archive = defineCollection({
   loader: glob({ base: './src/content/acervo', pattern: '**/*.{md,mdx}' }),
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
+    coverImage: image().optional(),
+    altText: z.string().optional(),
   }),
 })
 

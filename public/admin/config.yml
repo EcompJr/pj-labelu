@@ -175,10 +175,21 @@ collections:
         name: title
         widget: string
 
+      - label: Imagem de Capa
+        name: coverImage
+        widget: image
+        required: false
+
+      - label: Texto Alternativo (Acessibilidade)
+        name: altText
+        widget: string
+        required: false
+        hint: "Breve descrição da imagem para leitores de tela"
+
       - label: Descrição
         name: body
         widget: markdown
-
+        
   - name: research
     label: Pesquisas
     folder: src/content/pesquisas
