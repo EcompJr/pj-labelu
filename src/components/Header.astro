@@ -59,44 +59,56 @@ import logoLabelu from "../assets/logo-labelu-header.png";
 </header>
 
 <script>
-  const toggle = document.getElementById("menu-toggle");
-  const navLinks = document.getElementById("nav-links");
-  const line1 = document.getElementById("line-1");
-  const line2 = document.getElementById("line-2");
-  const line3 = document.getElementById("line-3");
+  function initMenu() {
+    const toggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+    const line1 = document.getElementById("line-1");
+    const line2 = document.getElementById("line-2");
+    const line3 = document.getElementById("line-3");
 
-  function openMenu() {
-    navLinks?.classList.remove("hidden");
-    toggle?.setAttribute("aria-expanded", "true");
-    toggle?.setAttribute("aria-label", "Fechar menu");
-    line1?.classList.add("rotate-45", "translate-y-[7px]");
-    line2?.classList.add("opacity-0");
-    line3?.classList.add("-rotate-45", "-translate-y-[7px]");
-  }
+    if (!toggle || !navLinks) return;
 
-  function closeMenu() {
-    navLinks?.classList.add("hidden");
-    toggle?.setAttribute("aria-expanded", "false");
-    toggle?.setAttribute("aria-label", "Abrir menu");
-    line1?.classList.remove("rotate-45", "translate-y-[7px]");
-    line2?.classList.remove("opacity-0");
-    line3?.classList.remove("-rotate-45", "-translate-y-[7px]");
-  }
-
-  toggle?.addEventListener("click", () => {
-    toggle.getAttribute("aria-expanded") === "false" ? openMenu() : closeMenu();
-  });
-
-  document.addEventListener("click", (e) => {
-    if (
-      !toggle?.contains(e.target as Node) &&
-      !navLinks?.contains(e.target as Node)
-    ) {
-      closeMenu();
+    function openMenu() {
+      navLinks?.classList.remove("hidden");
+      toggle?.setAttribute("aria-expanded", "true");
+      toggle?.setAttribute("aria-label", "Fechar menu");
+      line1?.classList.add("rotate-45", "translate-y-[7px]");
+      line2?.classList.add("opacity-0");
+      line3?.classList.add("-rotate-45", "-translate-y-[7px]");
     }
-  });
 
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeMenu();
-  });
+    function closeMenu() {
+      navLinks?.classList.add("hidden");
+      toggle?.setAttribute("aria-expanded", "false");
+      toggle?.setAttribute("aria-label", "Abrir menu");
+      line1?.classList.remove("rotate-45", "translate-y-[7px]");
+      line2?.classList.remove("opacity-0");
+      line3?.classList.remove("-rotate-45", "-translate-y-[7px]");
+    }
+
+    toggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggle.getAttribute("aria-expanded") === "false"
+        ? openMenu()
+        : closeMenu();
+    });
+
+    document.addEventListener("click", (e) => {
+      if (
+        !toggle.contains(e.target as Node) &&
+        !navLinks.contains(e.target as Node)
+      ) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeMenu();
+    });
+  }
+
+  initMenu();
+
+  // Handle View Transitions
+  document.addEventListener("astro:after-swap", initMenu);
 </script>
