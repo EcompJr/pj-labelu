@@ -10,13 +10,19 @@ const { title, description } = Astro.props as Props;
 ---
 
 <BaseLayout title={`${title} — Labelu`} description={description}>
-  <section class="max-w-200 mx-auto px-4 py-8" aria-labelledby={title}>
-    <h1 id={`${title}-heading`} class="text-4xl mb-3 max-[720px]:text-3xl">
+  <section
+    class="mx-auto max-w-4xl py-4 max-[720px]:py-3"
+    aria-labelledby={title}
+  >
+    <h1
+      id={`${title}-heading`}
+      class="text-4xl mb-2 max-[720px]:text-3xl max-[480px]:text-2xl"
+    >
       {title}
     </h1>
     {
       description ? (
-        <p class="text-secondary-text text-lg mb-6 max-[720px]:text-base">
+        <p class="text-secondary-text text-lg mb-4 max-[720px]:text-base max-[480px]:text-sm">
           {description}
         </p>
       ) : null
