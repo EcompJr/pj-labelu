@@ -5,7 +5,7 @@ lattes: https://lattes.cnpq.br/6348750511590536
 
 
 
-profile: ./profile.png
+profile: ./profile.webp
 layout: researcher
 ---
 

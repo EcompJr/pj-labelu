@@ -4,7 +4,7 @@ role: Pesquisadora
 lattes: https://lattes.cnpq.br/5512130452380551
 orcid: ''
 linkedin: ''
-profile: ./profile.jpeg
+profile: ./profile.webp
 layout: researcher
 ---
 

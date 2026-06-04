@@ -5,7 +5,7 @@ lattes: https://lattes.cnpq.br/0814794308226075
 orcid: https://orcid.org/0000-0002-6393-7488
 
 
-profile: ./profile.png
+profile: ./profile.webp
 layout: researcher
 ---
 
