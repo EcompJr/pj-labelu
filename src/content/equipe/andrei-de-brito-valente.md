@@ -5,7 +5,7 @@ lattes: https://lattes.cnpq.br/6348750511590536
 
 
 
-profile: /src/assets/images/foto andrei.jpeg
+profile: /src/content/uploads/equipe/foto andrei.jpeg
 layout: researcher
 ---
 

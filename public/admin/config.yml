@@ -26,8 +26,8 @@ backend:
 # === Files & Media configuration
 
 # Media: https://sveltiacms.app/en/docs/media/internal#top-level-configuration
-media_folder: "src/assets/images"
-public_folder: "src/assets/images"
+media_folder: "src/content/uploads"
+public_folder: "/src/content/uploads"
 
 app_title: LABELU
 logo:
@@ -106,6 +106,8 @@ collections:
       - label: Perfil
         name: profile
         widget: image
+        media_folder: src/content/uploads/equipe
+        public_folder: /src/content/uploads/equipe
         required: false
 
       - label: Resumo
@@ -178,6 +180,8 @@ collections:
       - label: Imagem de Capa
         name: coverImage
         widget: image
+        media_folder: src/content/uploads/acervo
+        public_folder: /src/content/uploads/acervo
         required: false
 
       - label: Texto Alternativo (Acessibilidade)
@@ -189,7 +193,7 @@ collections:
       - label: Descrição
         name: body
         widget: markdown
-        
+
   - name: research
     label: Pesquisas
     folder: src/content/pesquisas

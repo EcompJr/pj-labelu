@@ -5,7 +5,7 @@ lattes: https://lattes.cnpq.br/9345579254151910
 orcid: https://orcid.org/0000-0002-2655-0225
 
 
-profile: /src/assets/images/Coelho em Belem.png
+profile: /src/content/uploads/equipe/Coelho em Belem.png
 layout: researcher
 ---
 

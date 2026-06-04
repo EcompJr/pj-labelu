@@ -5,7 +5,7 @@ lattes: https://lattes.cnpq.br/0027618985851578
 
 
 
-profile: /src/assets/images/foto_Renan.jpg
+profile: /src/content/uploads/equipe/foto_Renan.jpg
 layout: researcher
 ---
 

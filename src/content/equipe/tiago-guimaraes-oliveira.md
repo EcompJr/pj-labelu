@@ -5,7 +5,7 @@ lattes: https://lattes.cnpq.br/2654878543540203
 
 
 
-profile: /src/assets/images/Foto - Tiago.jpeg
+profile: /src/content/uploads/equipe/Foto - Tiago.jpeg
 layout: researcher
 ---
 

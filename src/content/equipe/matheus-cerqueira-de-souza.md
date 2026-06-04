@@ -5,7 +5,7 @@ lattes: https://lattes.cnpq.br/5479543741022326
 
 
 
-profile: /src/assets/images/foto matheus.jpg
+profile: /src/content/uploads/equipe/foto matheus.jpg
 layout: researcher
 ---
 
