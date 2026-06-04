@@ -1,9 +1,0 @@
----
-layout: researcher
-fullname: Aruã Silva de Lima
-role: Pesquisador
-lattes: https://lattes.cnpq.br/7366450114058190
-orcid: https://orcid.org/0000-0002-3083-9873
----
-
-Possui graduação em História pela Universidade Federal da Bahia (UFBA) (2006), mestrado em História pela Universidade Estadual de Feira de Santana (UEFS) (2009) e doutor em História Social pela Universidade de São Paulo (2015). Interessa-se pelos processos de hegemonia na América Latina contemporânea, pelas organizações políticas de esquerda, história do comunismo e história transnacional dos movimentos anti-racistas. Os projetos de pesquisa ativos e em curso tratam dos seguintes temas: história da CHESF (Companhia Hidro Elétrica do São Francisco) e dos atingidos por barragens na região; movimento comunista internacional, colonialismo e antirrascimo; a onda conservadora na América Latina. Desde 2011 é professor da Universidade Federal de Alagoas.

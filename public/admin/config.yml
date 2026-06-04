@@ -52,7 +52,9 @@ collections:
   - name: team
     label: Equipe
     folder: src/content/equipe
+    path: "{{slug}}/index"
     create: true
+    slug: "{{fullname}}"
     identifier_field: fullname
     thumbnail: profile
 
@@ -106,12 +108,8 @@ collections:
       - label: Perfil
         name: profile
         widget: image
-        media_folder: src/content/uploads/equipe
-        public_folder: /src/content/uploads/equipe
-        media_library:
-          name: default
-          config:
-            slugify_filename: true
+        media_folder: /src/content/researchers/{{slug}}
+        public_folder: .
         required: false
 
       - label: Resumo

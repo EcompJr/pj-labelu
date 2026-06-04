@@ -1,0 +1,8 @@
+---
+layout: researcher
+fullname: Maíza Ferreira dos Santos
+role: Pesquisadora
+lattes: https://lattes.cnpq.br/4002174528072415
+---
+
+Graduada em História pela Universidade Estadual de Santa Cruz (UESC) 2. Mestra em História pela Universidade Estadual de Feira de Santana (UEFS).

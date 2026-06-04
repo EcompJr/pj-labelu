@@ -1,0 +1,8 @@
+---
+layout: researcher
+fullname: João Gabriel de Oliveira Souza Nunes
+role: Pesquisador
+lattes: https://lattes.cnpq.br/8871631405427213
+---
+
+Sou graduando em Licenciatura em História pela Universidade Estadual de Feira de Santana (UEFS) e atuo como bolsista de iniciação à docência pelo Programa Institucional de Bolsas de Iniciação à Docência (PIBID). Tenho interesse nas áreas de História da América Latina e História Contemporânea, com ênfase nos estudos sobre discursos e propagandas americanistas.

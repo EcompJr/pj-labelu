@@ -1,0 +1,8 @@
+---
+fullname: Jamile Silva Silveira
+role: Pesquisadora
+lattes: https://lattes.cnpq.br/8902602305003264
+layout: researcher
+---
+
+Docente em regime de dedicação exclusiva da Universidade do Estado da Bahia (UNEB), Campus VIII - Paulo Afonso, desde 2011. Ministra aulas nos cursos de graduação em Arqueologia, Pedagogia e Direito. Graduada em História pela Universidade Estadual de Feira de Santana (2007), Mestre em História Social pela Universidade Federal da Bahia (2010) e Doutora em História pela Universidade de Coimbra - Portugal (2025). Coordena na UNEB o Laboratório "Rio de Lutas: história, memória e patrimônio de Paulo Afonso e região". É Investigadora Colaboradora do Centro de Estudos Interdisciplinares do Século XX (CEIS20) e desenvolve a pesquisa sobre a História da Companhia Hidrelétrica do São Francisco (CHESF).

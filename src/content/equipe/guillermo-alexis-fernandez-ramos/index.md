@@ -1,0 +1,8 @@
+---
+layout: researcher
+fullname: Guillermo Alexís Fernandez Ramos
+role: Pesquisador
+lattes: https://lattes.cnpq.br/6699780953939601
+---
+
+Graduado em História pela Universidad Nacional Mayor de San Marcos e mestre em História pela Universidade Estadual de Feira de Santana. Atualmente integro o Laboratório de História e Memória da Luta de Classes (Bahia, Brasil) e sou editor da Apostilla Revista Crítica de Lecturas Históricas e do blog Grupo de Trabajo Historia del Siglo XX. Estou interessado na história dos intelectuais latino-americanos e na história da historiografia.

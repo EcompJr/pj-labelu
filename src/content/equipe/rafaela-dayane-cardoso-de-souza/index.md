@@ -1,0 +1,8 @@
+---
+layout: researcher
+fullname: Rafaela Dayane Cardoso de Souza
+role: Pesquisadora
+lattes: https://lattes.cnpq.br/9222067015297620
+---
+
+Mestra em História pela Universidade Estadual de Feira de Santana, Especialista em Impactos da Violência na Escola pela FioCruz e Graduada em História pela Universidade Federal da Bahia. Tenho interesse nos estudos sobre História Política, sobretudo nos movimentos sociais, na área de educação e estudos de gênero.Me interesso por variados temas e metodologias, entre eles: teoria da historia, historiografia, gênero, resistências escravas, ditaduras, história oral, biografias históricas, história comparativa, "história vista de baixo", América Latina, memória e Direitos Humanos.Atualmente sou professora de História na Educação Básica.

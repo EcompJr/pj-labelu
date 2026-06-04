@@ -1,8 +1,0 @@
----
-layout: researcher
-fullname: Raiane Souza Ferreira dos Santos
-role: Pesquisadora
-lattes: https://lattes.cnpq.br/5818498130243903
----
-
-Mestranda em História e Culturas Políticas pela Universidade Federal de Minas Gerais (UFMG). Graduada em História (Licenciatura) pela Universidade Estadual de Feira de Santana (UEFS), realizou intercâmbio acadêmico na Universidade de Lisboa (Portugal) por meio do Programa Institucional Bolsa Intercâmbio. Pesquisa na área de História e Culturas Políticas, com foco no Brasil Republicano e interesse em temas como história da imprensa, anticomunismo, linguagens políticas e representações de gênero. Possui formação complementar em produção audiovisual pela Escola Solano Trindade de Cultura e Economia Criativa (Escult), com experiência em memória e história ambiental, sendo autora do documentário "Margens do tempo: memórias de um Rio Cochó".

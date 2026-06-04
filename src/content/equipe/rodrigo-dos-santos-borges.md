@@ -1,8 +1,0 @@
----
-layout: researcher
-fullname: Rodrigo dos Santos Borges
-role: Pesquisador
-lattes: https://lattes.cnpq.br/2954746844731972
----
-
-Graduado em Licenciatura em História pela Universidade Estadual de Feira de Santana (UEFS) e Mestre em História pela Universidade Federal de Alagoas (UFAL). Participa, como pesquisador, do Laboratório de História e Memória da Luta de Classes (LABELU).

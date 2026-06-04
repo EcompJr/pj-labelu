@@ -1,8 +1,0 @@
----
-layout: researcher
-fullname: Roberta Lisana Rocha Santos
-role: Pesquisadora
-lattes: https://lattes.cnpq.br/3194184046798240
----
-
-Doutora em História pela Universidade Estadual do Oeste do Paraná (UNIOESTE) e mestra em História pela Universidade Estadual de Feira de Santana (UEFS). Cursou graduação em História pela Universidade Estadual do Sudoeste da Bahia (UESB). Atua como docente substituta pela Universidade do Estado da Bahia (UNEB), campus XIV. Interessa-se pelo estudo da História do Brasil República, atuando nos seguintes temas: Eleições, Imprensa, Anticomunismo e as relações entre Estado e Poder.
