@@ -1,22 +1,19 @@
 ---
-// Import the global.css file here so that it is included on
-// all pages through the use of the <BaseHead /> component.
 import "../styles/global.css";
-import type { ImageMetadata } from "astro";
-import FallbackImage from "../assets/site-images/Predio-PPGH-UEFS.jpeg";
 import { SITE_TITLE } from "../consts";
 import { Font } from "astro:assets";
 
 interface Props {
   title: string;
   description: string;
-  image?: ImageMetadata;
+  image?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const baseURL = import.meta.env.BASE_URL;
 
-const { title, description, image = FallbackImage } = Astro.props;
+const { title, description, image = "/og.webp" } = Astro.props;
+const ogImageURL = new URL(image, Astro.site).toString();
 ---
 
 <!-- Global Metadata -->
@@ -35,9 +32,23 @@ const { title, description, image = FallbackImage } = Astro.props;
 
 <!-- Favicons -->
 <link rel="icon" href={`${baseURL}/favicon.ico`} />
-<link rel="apple-touch-icon" sizes="180x180" href={`${baseURL}/apple-touch-icon.png`} />
-<link rel="icon" type="image/png" sizes="32x32" href={`${baseURL}/favicon-32x32.png`} />
-<link rel="icon" type="image/png" sizes="16x16" href={`${baseURL}/favicon-16x16.png`} />
+<link
+  rel="apple-touch-icon"
+  sizes="180x180"
+  href={`${baseURL}/apple-touch-icon.png`}
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="32x32"
+  href={`${baseURL}/favicon-32x32.png`}
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="16x16"
+  href={`${baseURL}/favicon-16x16.png`}
+/>
 <link rel="manifest" href={`${baseURL}/site.webmanifest`} />
 <meta name="msapplication-TileColor" content="#a53824" />
 <meta name="msapplication-config" content={`${baseURL}/browserconfig.xml`} />
@@ -59,11 +70,11 @@ const { title, description, image = FallbackImage } = Astro.props;
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image.src, Astro.url)} />
+<meta property="og:image" content={ogImageURL} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={canonicalURL} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image.src, Astro.url)} />
+<meta property="twitter:image" content={ogImageURL} />
