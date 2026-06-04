@@ -5,7 +5,7 @@ lattes: https://lattes.cnpq.br/6348750511590536
 
 
 
-profile: /src/content/uploads/equipe/foto andrei.jpeg
+profile: /src/content/uploads/equipe/andrei-de-brito-valente.jpeg
 layout: researcher
 ---
 

@@ -5,7 +5,7 @@ lattes: https://lattes.cnpq.br/6554886410730946
 orcid: https://orcid.org/0000-0002-9028-9674
 
 
-profile: /src/content/uploads/equipe/foto igor 2.jpeg
+profile: /src/content/uploads/equipe/igor-gomes-santos.jpeg
 layout: researcher
 ---
 

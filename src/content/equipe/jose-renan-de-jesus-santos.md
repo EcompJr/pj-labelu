@@ -5,7 +5,7 @@ lattes: https://lattes.cnpq.br/0027618985851578
 
 
 
-profile: /src/content/uploads/equipe/foto_Renan.jpg
+profile: /src/content/uploads/equipe/jose-renan-de-jesus-santos.jpg
 layout: researcher
 ---
 

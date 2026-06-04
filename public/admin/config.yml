@@ -108,6 +108,10 @@ collections:
         widget: image
         media_folder: src/content/uploads/equipe
         public_folder: /src/content/uploads/equipe
+        media_library:
+          name: default
+          config:
+            slugify_filename: true
         required: false
 
       - label: Resumo

@@ -5,7 +5,7 @@ lattes: https://lattes.cnpq.br/7804220347430590
 
 
 
-profile: /src/content/uploads/equipe/foto adriellen.jpeg
+profile: /src/content/uploads/equipe/adriellen-santos-aragao.jpeg
 layout: researcher
 ---
 

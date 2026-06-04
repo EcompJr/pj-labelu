@@ -5,7 +5,7 @@ lattes: https://lattes.cnpq.br/5479543741022326
 
 
 
-profile: /src/content/uploads/equipe/foto matheus.jpg
+profile: /src/content/uploads/equipe/matheus-cerqueira-de-souza.jpg
 layout: researcher
 ---
 

@@ -5,7 +5,7 @@ lattes: https://lattes.cnpq.br/5512130452380551
 
 
 
-profile: /src/content/uploads/equipe/foto_julia.jpeg
+profile: /src/content/uploads/equipe/julia-carneiro-de-oliveira-costa.jpeg
 layout: researcher
 ---
 
