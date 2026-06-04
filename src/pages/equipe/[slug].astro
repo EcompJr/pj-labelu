@@ -39,6 +39,8 @@ const baseUrl = import.meta.env.BASE_URL;
                 src={profile}
                 alt={`Foto de ${fullname}`}
                 class="w-full h-full object-cover hover:grayscale-0 transition-all duration-300"
+                widths={[320, 480, 640, 800]}
+                sizes="(min-width: 768px) 33vw, 100vw"
               />
             ) : (
               <img

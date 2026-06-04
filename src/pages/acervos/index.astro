@@ -2,6 +2,7 @@
 import { CONTACT_EMAIL, LOCATION } from "../../consts";
 import ContentLayout from "../../layouts/ContentLayout.astro";
 import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 import mapIcon from "../../assets/site-images/Map.svg";
 import emailIcon from "../../assets/site-images/Email.svg";
 import folderIcon from "../../assets/site-images/Folder.svg";
@@ -89,13 +90,15 @@ const dadosFixos = {
                 <li class="flex flex-col md:flex-row gap-6 items-start">
                   {grupo.data.coverImage && (
                     <div class="w-full md:w-1/3 shrink-0">
-                      <img
-                        src={grupo.data.coverImage.src}
+                      <Image
+                        src={grupo.data.coverImage}
                         alt={
                           grupo.data.altText ||
                           `Imagem representativa do acervo: ${grupo.data.title}`
                         }
                         class="w-full h-auto object-cover rounded-xl shadow-sm border border-border"
+                        widths={[360, 540, 720, 960]}
+                        sizes="(min-width: 768px) 33vw, 100vw"
                         loading="lazy"
                       />
                     </div>
@@ -112,7 +115,7 @@ const dadosFixos = {
             }
           </ul>
         </div>
-        <div class="mx-auto w-full max-w-[260px] lg:w-[42%] lg:max-w-none lg:shrink-0 lg:sticky lg:top-32">
+        <div class="mx-auto w-full max-w-65 lg:w-[42%] lg:max-w-none lg:shrink-0 lg:sticky lg:top-32">
           <img
             src={folderIcon.src}
             alt=""
@@ -131,7 +134,7 @@ const dadosFixos = {
         <div class="lg:flex-1">
           <RequestAcessForm id="solicitacao-de-acesso-form" />
         </div>
-        <div class="mx-auto w-full max-w-[260px] lg:w-[42%] lg:max-w-none lg:shrink-0 lg:sticky lg:top-32">
+        <div class="mx-auto w-full max-w-65 lg:w-[42%] lg:max-w-none lg:shrink-0 lg:sticky lg:top-32">
           <img
             src={emailIcon.src}
             alt=""

@@ -76,6 +76,8 @@ const team = (await getCollection("team"))
                 src={p.profile}
                 alt={`Foto de ${p.fullname}`}
                 class="w-full h-full object-cover transition-all duration-300 group-hover:grayscale-0"
+                widths={[160, 240, 320, 480]}
+                sizes="(max-width: 639px) 100vw, 7rem"
               />
             ) : (
               <img

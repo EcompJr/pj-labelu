@@ -11,7 +11,11 @@ import logoImage from "../assets/logos/labelu-logo-alt.svg";
       src={bgImage}
       alt="Fundo página inicial"
       class="w-full h-full object-cover object-center"
+      widths={[640, 960, 1280, 1600, 1920, 2560]}
+      sizes="100vw"
       quality="high"
+      loading="eager"
+      fetchpriority="high"
     />
     <div class="absolute inset-0 bg-black/60"></div>
   </div>
@@ -28,6 +32,8 @@ import logoImage from "../assets/logos/labelu-logo-alt.svg";
           src={logoImage}
           alt="Logo Labelu"
           class="w-full h-auto drop-shadow-2xl"
+          widths={[240, 320, 480, 640]}
+          sizes="(min-width: 768px) 40vw, 50vw"
         />
       </div>
       <div class="flex-1 text-center md:text-left text-white">

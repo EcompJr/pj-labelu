@@ -29,7 +29,13 @@ import { ClientRouter } from "astro:transitions";
           class="mx-auto max-w-6xl flex flex-col md:flex-row items-center md:items-center gap-8 md:gap-12 lg:gap-16"
         >
           <div class="shrink-0 w-1/2 md:w-2/5">
-            <Image src={logo} alt="Labelu" class="w-full h-auto" />
+            <Image
+              src={logo}
+              alt="Labelu"
+              class="w-full h-auto"
+              widths={[240, 360, 480, 640, 800]}
+              sizes="(min-width: 768px) 40vw, 50vw"
+            />
           </div>
           <div class="flex-1 text-center md:text-left">
             <h1
