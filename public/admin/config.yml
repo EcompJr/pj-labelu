@@ -253,6 +253,7 @@ collections:
       - label: Ementa
         name: summary
         widget: markdown
+        required: false
 
       - label: Publicação
         name: publication

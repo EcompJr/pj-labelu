@@ -52,7 +52,7 @@ const research = defineCollection({
     line: z.string(),
     startYear: z.number().nullable().optional(),
     endYear: z.number().nullable().optional(),
-    summary: z.string(),
+    summary: z.string().optional(),
     publication: z.string().optional(),
     researchers: z.array(z.string()).optional(),
   }),
