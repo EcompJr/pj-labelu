@@ -43,7 +43,7 @@ const dadosFixos = {
     </Section>
 
     <Section id="endereço" title="Contato e Funcionamento">
-      <div class="flex flex-col gap-8 lg:flex-row lg:items-center">
+      <div class="flex flex-col-reverse gap-8 lg:flex-row lg:items-center">
         <address class="flex flex-col gap-3 not-italic lg:flex-1">
           <a
             href="https://maps.app.goo.gl/9qCDBbf8MXFwN5hw9"
@@ -63,7 +63,7 @@ const dadosFixos = {
             {CONTACT_EMAIL}
           </a>
         </address>
-        <div class="lg:w-[42%] lg:shrink-0 lg:justify-self-end">
+        <div class="mx-auto w-full max-w-[260px] lg:w-[42%] lg:max-w-none lg:shrink-0 lg:justify-self-end">
           <img
             src={mapIcon.src}
             alt=""
@@ -78,7 +78,7 @@ const dadosFixos = {
     <Hr />
 
     <Section id="acervos-disponiveis" title="Acervos disponíveis para consulta">
-      <div class="flex flex-col gap-8 lg:flex-row lg:items-start">
+      <div class="flex flex-col-reverse gap-8 lg:flex-row lg:items-start">
         <div class="lg:flex-1">
           <p class="text-sm text-secondary-text mb-4">
             Selecione um acervo para consultar os materiais disponíveis.
@@ -112,7 +112,7 @@ const dadosFixos = {
             }
           </ul>
         </div>
-        <div class="lg:w-[42%] lg:shrink-0 lg:sticky lg:top-32">
+        <div class="mx-auto w-full max-w-[260px] lg:w-[42%] lg:max-w-none lg:shrink-0 lg:sticky lg:top-32">
           <img
             src={folderIcon.src}
             alt=""
@@ -127,11 +127,11 @@ const dadosFixos = {
     <Hr />
 
     <Section id="solicitacao-de-acesso" title="Solicitação de Acesso">
-      <div class="flex flex-col gap-8 lg:flex-row lg:items-start">
+      <div class="flex flex-col-reverse gap-8 lg:flex-row lg:items-start">
         <div class="lg:flex-1">
           <RequestAcessForm id="solicitacao-de-acesso-form" />
         </div>
-        <div class="lg:w-[42%] lg:shrink-0 lg:sticky lg:top-32">
+        <div class="mx-auto w-full max-w-[260px] lg:w-[42%] lg:max-w-none lg:shrink-0 lg:sticky lg:top-32">
           <img
             src={emailIcon.src}
             alt=""
