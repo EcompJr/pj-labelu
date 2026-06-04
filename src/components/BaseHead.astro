@@ -13,7 +13,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const baseURL = import.meta.env.BASE_URL;
 
 const { title, description, image = "/og.webp" } = Astro.props;
-const ogImageURL = new URL(image, Astro.site).toString();
+const ogImageURL = new URL(`${baseURL}/${image}`, Astro.site,).toString();
 ---
 
 <!-- Global Metadata -->
