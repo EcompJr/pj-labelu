@@ -2,10 +2,9 @@
 fullname: Júlia Carneiro de Oliveira Costa
 role: Pesquisadora
 lattes: https://lattes.cnpq.br/5512130452380551
-
-
-
-profile: ./profile.png
+orcid: ''
+linkedin: ''
+profile: ./profile.jpeg
 layout: researcher
 ---
 
