@@ -9,7 +9,7 @@
         "@astrojs/rss": "^4.0.18",
         "@astrojs/sitemap": "^3.7.3",
         "@iconify-json/mdi": "^1.2.3",
-        "@sveltia/cms": "^0.160.1",
+        "@sveltia/cms": "^0.166.0",
         "@tailwindcss/vite": "^4.3.0",
         "astro": "^6.4.4",
         "astro-icon": "^1.1.5",
@@ -255,7 +255,7 @@
 
     "@shikijs/vscode-textmate": ["@shikijs/vscode-textmate@10.0.2", "", {}, "sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg=="],
 
-    "@sveltia/cms": ["@sveltia/cms@0.160.1", "", {}, "sha512-edlV4+FpOUpTEmKwSZwI3g7U73Fem6ZsnlUz6l10mDPXnlc25dK3ed/ITKtK0OQIDTnop9R2Vi1UuixsARde4Q=="],
+    "@sveltia/cms": ["@sveltia/cms@0.166.0", "", {}, "sha512-yPBSYe+5+fmoXP7B6wOn08pcbYEsL/yKC29Mw084YmZKXiyhhZfqcAHy6RgGjbgJLBNAJRDSEvpcmGSw7qScWQ=="],
 
     "@tailwindcss/forms": ["@tailwindcss/forms@0.5.11", "", { "dependencies": { "mini-svg-data-uri": "^1.2.3" }, "peerDependencies": { "tailwindcss": ">=3.0.0 || >= 3.0.0-alpha.1 || >= 4.0.0-alpha.20 || >= 4.0.0-beta.1" } }, "sha512-h9wegbZDPurxG22xZSoWtdzc41/OlNEUQERNqI/0fOwa2aVlWGu7C35E/x6LDyD3lgtztFSSjKZyuVM0hxhbgA=="],
 
