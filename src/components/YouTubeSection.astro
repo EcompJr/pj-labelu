@@ -1,5 +1,29 @@
 ---
+import { Image } from "astro:assets";
+import logoLabelu from "../assets/logos/labelu-logo.svg";
 
+const channelUrl = "https://www.youtube.com/@LABELUuefs";
+const feedUrl =
+  "https://www.youtube.com/feeds/videos.xml?channel_id=UC2BlEZI5JZT14IMeAzaVk-w";
+
+const fallbackVideos = [
+  {
+    id: "aBczExr-WQo",
+    title:
+      "INTELECTUAIS, ESTADO E CLASSE DOMINANTE. A Bahia após a Segunda Guerra Mundial",
+  },
+  {
+    id: "WpMklLToIP0",
+    title: "Curso de Extensão: Introdução ao Pensamento de Marx",
+  },
+  {
+    id: "VRP-YafK_rw",
+    title:
+      "LABELU DEBATE - O capital-imperialismo e suas ofensivas sobre as Américas",
+  },
+];
+
+const latestVideos = fallbackVideos;
 ---
 
 <section
@@ -10,10 +34,10 @@
     class="flex flex-wrap items-center justify-between gap-2 border-b border-accent-600 pb-2"
   >
     <h2 class="text-2xl sm:text-3xl font-bold text-accent-800 font-heading">
-      Nosso Canal no YouTube
+      Últimos vídeos do YouTube
     </h2>
     <a
-      href="https://www.youtube.com/@LABELUuefs"
+      href={channelUrl}
       target="_blank"
       rel="noopener noreferrer"
       class="shrink-0 text-xs sm:text-sm font-semibold text-accent-600 hover:text-accent-800 uppercase tracking-wider flex items-center gap-1"
@@ -23,29 +47,17 @@
   </div>
 
   {/* Content */}
-  <div
-    class="flex flex-col md:flex-row gap-6 items-stretch bg-gray-50 rounded-2xl p-4 sm:p-6 shadow-sm border border-gray-100"
-  >
-    {/* Video — full width on mobile, 3/5 on desktop */}
-    <div class="w-full md:w-3/5 rounded-xl overflow-hidden shadow-md bg-black">
-      <div class="relative w-full" style="padding-top: 56.25%;">
-        <iframe
-          src="https://www.youtube.com/embed/PwDJJGOYVSE"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-          class="absolute inset-0 w-full h-full border-none"></iframe>
-      </div>
-    </div>
-
-    {/* Info card — full width on mobile, 2/5 on desktop */}
-    <div class="w-full md:w-2/5 flex flex-col gap-4 justify-center">
+  <div class="bg-surface rounded-xl p-4 sm:p-6 shadow-sm">
+    <div
+      class="mb-6 flex flex-col gap-4 border-b border-border pb-5 sm:flex-row sm:items-center sm:justify-between"
+    >
       <div class="flex items-center gap-3">
-        <div
-          class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-accent-600 text-white flex items-center justify-center font-bold text-lg sm:text-xl shrink-0 shadow-sm"
-        >
-          L
+        <div class="w-20 sm:w-24 shrink-0">
+          <Image
+            src={logoLabelu}
+            alt="Logo do Labelu"
+            class="h-auto w-full"
+          />
         </div>
         <div>
           <h3 class="text-base sm:text-lg font-bold text-title leading-tight">
@@ -54,34 +66,141 @@
           <p class="text-xs sm:text-sm text-body">Canal Oficial</p>
         </div>
       </div>
+    </div>
 
-      <p class="text-body text-sm sm:text-base leading-relaxed">
-        Acompanhe nossos debates, seminários, defesas e conteúdos exclusivos
-        produzidos pelo laboratório. Inscreva-se para ficar por dentro de tudo o
-        que acontece no Labelu e fortalecer a memória da luta de classes!
-      </p>
-
-      <div>
-        <a
-          href="https://www.youtube.com/@LABELUuefs"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center justify-center w-full sm:w-auto px-5 py-2.5 bg-[#FF0000] text-white rounded-md font-bold hover:bg-red-700 transition-colors gap-2 shadow-sm text-sm sm:text-base"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-          >
-            <path
-              d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.86-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M9.667,14.667V9.333L15.333,12L9.667,14.667z"
-            ></path>
-          </svg>
-          Inscrever-se no Canal
-        </a>
-      </div>
+    <div
+      data-youtube-videos
+      class="grid grid-cols-1 lg:grid-cols-3 gap-5"
+    >
+      {
+        latestVideos.map((video) => (
+          <article class="flex min-w-0 flex-col overflow-hidden rounded-xl bg-raised shadow-sm">
+            <div class="relative w-full bg-black" style="padding-top: 56.25%;">
+              <iframe
+                src={`https://www.youtube.com/embed/${video.id}`}
+                title={video.title}
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                class="absolute inset-0 h-full w-full border-none"
+              />
+            </div>
+            <div class="flex flex-1 flex-col gap-3 p-4">
+              <h3 class="line-clamp-3 text-sm sm:text-base font-bold leading-snug text-title">
+                {video.title}
+              </h3>
+              <a
+                href={`https://www.youtube.com/watch?v=${video.id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-auto inline-flex items-center text-xs sm:text-sm font-semibold uppercase tracking-wider text-accent-600 hover:text-accent-800"
+              >
+                Assistir no YouTube <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </article>
+        ))
+      }
     </div>
   </div>
+
+  <script define:vars={{ feedUrl, fallbackVideos }}>
+    const videosContainer = document.querySelector("[data-youtube-videos]");
+
+    const escapeHtml = (value) =>
+      value.replace(/[&<>"']/g, (char) => {
+        const entities = {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;",
+        };
+
+        return entities[char];
+      });
+
+    const parseVideosFromFeed = (feed) => {
+      const document = new DOMParser().parseFromString(feed, "text/xml");
+
+      return Array.from(document.querySelectorAll("entry"))
+        .map((entry) => {
+          const id = entry.getElementsByTagName("yt:videoId")[0]?.textContent;
+          const title = entry.querySelector("title")?.textContent;
+
+          if (!id || !title) return null;
+
+          return { id, title };
+        })
+        .filter(Boolean)
+        .slice(0, 3);
+    };
+
+    const renderVideos = (videos) => {
+      if (!videosContainer || videos.length === 0) return;
+
+      videosContainer.innerHTML = videos
+        .map((video) => {
+          const title = escapeHtml(video.title);
+          const id = encodeURIComponent(video.id);
+
+          return `
+            <article class="flex min-w-0 flex-col overflow-hidden rounded-xl bg-raised shadow-sm">
+              <div class="relative w-full bg-black" style="padding-top: 56.25%;">
+                <iframe
+                  src="https://www.youtube.com/embed/${id}"
+                  title="${title}"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                  class="absolute inset-0 h-full w-full border-none"
+                ></iframe>
+              </div>
+              <div class="flex flex-1 flex-col gap-3 p-4">
+                <h3 class="line-clamp-3 text-sm sm:text-base font-bold leading-snug text-title">
+                  ${title}
+                </h3>
+                <a
+                  href="https://www.youtube.com/watch?v=${id}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="mt-auto inline-flex items-center text-xs sm:text-sm font-semibold uppercase tracking-wider text-accent-600 hover:text-accent-800"
+                >
+                  Assistir no YouTube <span aria-hidden="true">&rarr;</span>
+                </a>
+              </div>
+            </article>
+          `;
+        })
+        .join("");
+    };
+
+    const fetchFeed = async () => {
+      const directResponse = await fetch(feedUrl);
+      if (directResponse.ok) return directResponse.text();
+
+      throw new Error("YouTube feed request failed.");
+    };
+
+    const fetchFeedWithProxy = async () => {
+      const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(feedUrl)}`;
+      const response = await fetch(proxyUrl);
+      if (!response.ok) throw new Error("Proxied YouTube feed request failed.");
+
+      return response.text();
+    };
+
+    const loadLatestVideos = async () => {
+      try {
+        const feed = await fetchFeed().catch(fetchFeedWithProxy);
+        const videos = parseVideosFromFeed(feed);
+
+        renderVideos(videos.length > 0 ? videos : fallbackVideos);
+      } catch {
+        renderVideos(fallbackVideos);
+      }
+    };
+
+    loadLatestVideos();
+  </script>
 </section>
