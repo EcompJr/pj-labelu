@@ -23,68 +23,45 @@ const imagePath = image.startsWith("/") ? image.slice(1) : image;
 const ogImageURL = new URL(`${basePath}${imagePath}`, Astro.site).toString();
 const siteURL = new URL(basePath, Astro.site).toString();
 const logoURL = new URL(`${basePath}assets/logo-labelu.png`, Astro.site).toString();
-const structuredDataGraph = [
-  {
-    "@type": "Organization",
-    "@id": `${siteURL}#organization`,
-    name: "Labelu",
-    legalName: "Laboratório de História e Memória da Luta de Classes",
-    url: siteURL,
-    logo: {
-      "@type": "ImageObject",
-      url: logoURL,
-    },
-    description: SITE_DESCRIPTION,
-    email: CONTACT_EMAIL,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress:
-        "Prédio do Programa de Pós-graduação em História, Anexo do Módulo 7 - UEFS. Av. Transnordestina, s/n",
-      addressLocality: "Feira de Santana",
-      addressRegion: "BA",
-      postalCode: "44036-900",
-      addressCountry: "BR",
-    },
-    location: LOCATION,
-  },
-  {
-    "@type": "WebSite",
-    "@id": `${siteURL}#website`,
-    name: SITE_TITLE,
-    alternateName: "Labelu",
-    url: siteURL,
-    description: SITE_DESCRIPTION,
-    inLanguage: "pt-BR",
-    publisher: {
-      "@id": `${siteURL}#organization`,
-    },
-  },
-  {
-    "@type": "WebPage",
-    "@id": `${canonicalURL.toString()}#webpage`,
-    url: canonicalURL.toString(),
-    name: title,
-    description,
-    inLanguage: "pt-BR",
-    isPartOf: {
-      "@id": `${siteURL}#website`,
-    },
-    about: {
-      "@id": `${siteURL}#organization`,
-    },
-    primaryImageOfPage: {
-      "@type": "ImageObject",
-      url: ogImageURL,
-      width: 1200,
-      height: 630,
-    },
-  },
-  ...(Array.isArray(structuredData) ? structuredData : [structuredData]),
-];
-const jsonLd = {
+const organizationStructuredData = {
   "@context": "https://schema.org",
-  "@graph": structuredDataGraph,
+  "@type": "Organization",
+  "@id": `${siteURL}#organization`,
+  name: "Labelu",
+  legalName: "Laboratório de História e Memória da Luta de Classes",
+  url: siteURL,
+  logo: {
+    "@type": "ImageObject",
+    url: logoURL,
+  },
+  image: ogImageURL,
+  description: SITE_DESCRIPTION,
+  email: CONTACT_EMAIL,
+  sameAs: [
+    "https://www.instagram.com/uefslabelu/",
+    "https://www.youtube.com/@LABELUuefs",
+  ],
+  address: {
+    "@type": "PostalAddress",
+    streetAddress:
+      "Prédio do Programa de Pós-graduação em História, Anexo do Módulo 7 - UEFS. Av. Transnordestina, s/n",
+    addressLocality: "Feira de Santana",
+    addressRegion: "BA",
+    postalCode: "44036-900",
+    addressCountry: "BR",
+  },
+  location: LOCATION,
 };
+const extraStructuredData = Array.isArray(structuredData)
+  ? structuredData
+  : [structuredData];
+const jsonLd =
+  extraStructuredData.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@graph": [organizationStructuredData, ...extraStructuredData],
+      }
+    : organizationStructuredData;
 ---
 
 <!-- Global Metadata -->
