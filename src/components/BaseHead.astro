@@ -144,10 +144,10 @@ const jsonLd =
 <!-- Structured Data -->
 <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
-<script is:inline>
+<script define:vars={{ basePath }}>
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/pj-labelu/sw.js", {
-      scope: "/pj-labelu/",
+    navigator.serviceWorker.register(`${basePath}sw.js`, {
+      scope: basePath,
     });
   }
 </script>
