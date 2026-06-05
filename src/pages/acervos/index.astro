@@ -3,6 +3,7 @@ import { CONTACT_EMAIL, LOCATION } from "../../consts";
 import ContentLayout from "../../layouts/ContentLayout.astro";
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 import mapIcon from "../../assets/site-images/Map.svg";
 import emailIcon from "../../assets/site-images/Email.svg";
 import folderIcon from "../../assets/site-images/Folder.svg";
@@ -35,9 +36,10 @@ const dadosFixos = {
           </p>
           <a
             href="#solicitacao-de-acesso"
-            class="inline-block mt-4 px-6 py-3 bg-accent-600 text-white font-semibold rounded-md hover:bg-accent-700 transition-colors duration-150 w-fit"
+            class="inline-flex items-center gap-2 mt-4 px-6 py-3 bg-accent-600 text-white font-semibold rounded-md hover:bg-accent-700 transition-colors duration-150 w-fit"
           >
-            ↓ Ir para o formulário
+            <Icon name="mdi:arrow-down" size={18} aria-hidden="true" />
+            Ir para o formulário
           </a>
         </div>
       </div>
@@ -64,7 +66,7 @@ const dadosFixos = {
             {CONTACT_EMAIL}
           </a>
         </address>
-        <div class="mx-auto w-full max-w-[260px] lg:w-[42%] lg:max-w-none lg:shrink-0 lg:justify-self-end">
+        <div class="mx-auto w-full max-w-65 lg:w-[42%] lg:max-w-none lg:shrink-0 lg:justify-self-end">
           <img
             src={mapIcon.src}
             alt=""
