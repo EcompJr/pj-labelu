@@ -3,6 +3,7 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 const configUrl = `${baseUrl}admin/config.yml`;
+const adminUrl = `${baseUrl}admin/`;
 ---
 
 <!doctype html>
@@ -14,22 +15,31 @@ const configUrl = `${baseUrl}admin/config.yml`;
     <link href={configUrl} type="text/yaml" rel="cms-config-url" />
     <title>Content Manager</title>
 
-    <link rel="manifest" href="/pj-labelu/admin/manifest.webmanifest" />
+    <link rel="icon" href={`${baseUrl}favicon.ico`} />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href={`${baseUrl}apple-touch-icon.png`}
+    />
+    <link rel="manifest" href={`${adminUrl}manifest.webmanifest`} />
     <meta name="theme-color" content="#5c1208" />
   </head>
   <body>
     <script>
       import CMS from "@sveltia/cms";
 
+      const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+        ? import.meta.env.BASE_URL
+        : `${import.meta.env.BASE_URL}/`;
+      const adminUrl = `${baseUrl}admin/`;
+
       CMS.init();
+
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register(`${adminUrl}sw.js`, {
+          scope: adminUrl,
+        });
+      }
     </script>
   </body>
 </html>
-
-<script>
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/pj-labelu/admin/sw.js", {
-      scope: "/pj-labelu/admin/",
-    });
-  }
-</script>
