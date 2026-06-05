@@ -54,6 +54,21 @@ const { id } = Astro.props;
   </section>
 
   <section class="flex flex-col gap-2 my-2">
+    <label for="target-achive" class="font-semibold">Acervo(s) de interesse</label>
+    <input
+      type="text"
+      id="target-achive"
+      name="target-achive"
+      required
+      class="px-3 py-3 border border-border rounded-md bg-white
+              focus:outline-none focus:ring-2 focus:ring-accent-500
+              focus:border-accent-500 transition-shadow duration-150
+              placeholder:text-secondary-text"
+      placeholder="Digite o nome do(s) acervo(s) que deseja acessar"
+    />
+  </section>
+
+  <section class="flex flex-col gap-2 my-2">
     <label for="motivo" class="font-semibold">
       Motivo do Interesse / Pesquisa
     </label>
@@ -94,6 +109,7 @@ const { id } = Astro.props;
         "telefone-usuario",
       ) as HTMLInputElement;
       const motivo = form.elements.namedItem("motivo") as HTMLTextAreaElement;
+      const targetAchive = form.elements.namedItem("target-achive") as HTMLInputElement;
 
       const emailDestino = form.dataset.destino;
 
@@ -106,7 +122,7 @@ const { id } = Astro.props;
         `Solicitação de Acesso ao Acervo - ${nome.value}`,
       );
       const body = encodeURIComponent(
-        `Nome Completo: ${nome.value}\nTelefone de Contato: ${telefoneUsuario.value}\n\nMotivo da solicitação e documentos de interesse:\n${motivo.value}`,
+        `Nome Completo: ${nome.value}\nTelefone de Contato: ${telefoneUsuario.value}\n\nAcervo(s) de interesse: ${targetAchive.value}\nMotivo da solicitação e documentos de interesse:\n${motivo.value}`,
       );
 
       window.location.href = `mailto:${emailDestino}?subject=${subject}&body=${body}`;
