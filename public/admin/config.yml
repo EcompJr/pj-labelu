@@ -44,7 +44,7 @@ media_libraries:
 
 app_title: LABELU
 logo:
-  src: /pj-labelu/android-chrome-512x512.png
+  src: /pj-labelu/admin/icon-512.png
   show_in_header: true
 
 slug:
