@@ -23,9 +23,8 @@ const imagePath = image.startsWith("/") ? image.slice(1) : image;
 const ogImageURL = new URL(`${basePath}${imagePath}`, Astro.site).toString();
 const siteURL = new URL(basePath, Astro.site).toString();
 const logoURL = new URL(`${basePath}assets/logo-labelu.png`, Astro.site).toString();
-const jsonLd = [
+const structuredDataGraph = [
   {
-    "@context": "https://schema.org",
     "@type": "Organization",
     "@id": `${siteURL}#organization`,
     name: "Labelu",
@@ -49,7 +48,6 @@ const jsonLd = [
     location: LOCATION,
   },
   {
-    "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": `${siteURL}#website`,
     name: SITE_TITLE,
@@ -62,7 +60,6 @@ const jsonLd = [
     },
   },
   {
-    "@context": "https://schema.org",
     "@type": "WebPage",
     "@id": `${canonicalURL.toString()}#webpage`,
     url: canonicalURL.toString(),
@@ -84,6 +81,10 @@ const jsonLd = [
   },
   ...(Array.isArray(structuredData) ? structuredData : [structuredData]),
 ];
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": structuredDataGraph,
+};
 ---
 
 <!-- Global Metadata -->
