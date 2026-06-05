@@ -8,8 +8,13 @@ const { id } = Astro.props;
 
 <form
   id={id}
+  action={`mailto:${CONTACT_EMAIL}`}
+  method="post"
+  enctype="text/plain"
   aria-label="Formulário de Solicitação de Acesso ao Acervo"
   class="flex flex-col"
+  data-request-access-form
+  data-destino={CONTACT_EMAIL}
 >
   <p>
     Preencha os dados abaixo. Ao clicar em enviar, seu aplicativo de e-mail será
@@ -70,46 +75,41 @@ const { id } = Astro.props;
     class="bg-accent-600 text-white rounded-lg px-6 my-2 py-3 font-bold
             cursor-pointer w-max transition-colors duration-200
             hover:bg-accent-800 border-none max-[720px]:w-full"
-    data-destino={CONTACT_EMAIL}
   >
     Abrir no e-mail
   </button>
 </form>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const form = document.querySelector(
-      'form[aria-label="Formulário de Solicitação de Acesso ao Acervo"]',
-    ) as HTMLFormElement;
+  const form = document.querySelector(
+    "[data-request-access-form]",
+  ) as HTMLFormElement | null;
 
-    if (form) {
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-        const nome = (document.getElementById("nome") as HTMLInputElement)
-          .value;
-        const telefoneUsuario = (
-          document.getElementById("telefone-usuario") as HTMLInputElement
-        ).value;
-        const motivo = (
-          document.getElementById("motivo") as HTMLTextAreaElement
-        ).value;
+      const nome = form.elements.namedItem("nome") as HTMLInputElement;
+      const telefoneUsuario = form.elements.namedItem(
+        "telefone-usuario",
+      ) as HTMLInputElement;
+      const motivo = form.elements.namedItem("motivo") as HTMLTextAreaElement;
 
-        const btn = form.querySelector("[data-destino]") as HTMLButtonElement;
-        const emailDestino = btn.getAttribute("data-destino");
+      const emailDestino = form.dataset.destino;
 
-        const subject = encodeURIComponent(
-          `Solicitação de Acesso ao Acervo - ${nome}`,
-        );
-        const body = encodeURIComponent(
-          `Nome: ${nome}\nTelefone de Contato: ${telefoneUsuario}\n\nMotivo da solicitação e documentos de interesse:\n${motivo}`,
-        );
+      if (!emailDestino) {
+        form.submit();
+        return;
+      }
 
-        window.open(
-          `mailto:${emailDestino}?subject=${subject}&body=${body}`,
-          "_blank",
-        );
-      });
-    }
-  });
+      const subject = encodeURIComponent(
+        `Solicitação de Acesso ao Acervo - ${nome.value}`,
+      );
+      const body = encodeURIComponent(
+        `Nome Completo: ${nome.value}\nTelefone de Contato: ${telefoneUsuario.value}\n\nMotivo da solicitação e documentos de interesse:\n${motivo.value}`,
+      );
+
+      window.location.href = `mailto:${emailDestino}?subject=${subject}&body=${body}`;
+    });
+  }
 </script>
