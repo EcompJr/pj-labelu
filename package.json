@@ -16,7 +16,7 @@
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.3",
     "@iconify-json/mdi": "^1.2.3",
-    "@sveltia/cms": "^0.166.0",
+    "@sveltia/cms": "^0.167.3",
     "@tailwindcss/vite": "^4.3.0",
     "astro": "^6.4.4",
     "astro-icon": "^1.1.5",
