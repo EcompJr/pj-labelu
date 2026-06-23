@@ -72,3 +72,15 @@ The current service workers are intentionally minimal:
 4. They do not intercept fetch requests.
 
 This means the project keeps the installation benefits of a PWA without promising offline behavior or serving stale cached pages.
+
+#### Using JPEG for the Open Graph image
+
+Most site images were converted to WebP to reduce asset size, and the Open Graph image was initially compressed as `og.webp`.
+However, I decided to keep the default share image as `og.jpg`.
+
+The reason is link preview compatibility.
+The WebP Open Graph image worked in several platforms, including Discord, but WhatsApp had issues generating previews from the WebP image.
+WhatsApp is an important sharing channel for this project, so reliable previews are more valuable than the smaller WebP file size for this specific asset.
+
+The default metadata now points to `/og.jpg` and declares the image type as `image/jpeg`.
+Other site images can still use WebP where browser rendering is controlled by the page itself, but the Open Graph image should stay in JPEG unless the target preview platforms are tested again.
