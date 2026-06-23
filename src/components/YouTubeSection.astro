@@ -1,8 +1,10 @@
 ---
 import { Image } from "astro:assets";
 import logoLabelu from "../assets/logos/labelu-logo.svg";
+import { getSiteConfig } from "../lib/site-config";
 
-const channelUrl = "https://www.youtube.com/@LABELUuefs";
+const siteConfig = await getSiteConfig();
+const channelUrl = siteConfig.youtubeUrl;
 const feedUrl =
   "https://www.youtube.com/feeds/videos.xml?channel_id=UC2BlEZI5JZT14IMeAzaVk-w";
 

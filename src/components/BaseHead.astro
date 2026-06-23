@@ -1,12 +1,8 @@
 ---
 import "../styles/global.css";
-import {
-  CONTACT_EMAIL,
-  LOCATION,
-  SITE_DESCRIPTION,
-  SITE_TITLE,
-} from "../consts";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import { Font } from "astro:assets";
+import { getSiteConfig } from "../lib/site-config";
 interface Props {
   title: string;
   description: string;
@@ -16,6 +12,7 @@ interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const baseURL = import.meta.env.BASE_URL;
+const siteConfig = await getSiteConfig();
 
 const {
   title,
@@ -44,21 +41,13 @@ const organizationStructuredData = {
   },
   image: ogImageURL,
   description: SITE_DESCRIPTION,
-  email: CONTACT_EMAIL,
-  sameAs: [
-    "https://www.instagram.com/uefslabelu/",
-    "https://www.youtube.com/@LABELUuefs",
-  ],
+  email: siteConfig.contactEmail,
+  sameAs: [siteConfig.instagramUrl, siteConfig.youtubeUrl].filter(Boolean),
   address: {
     "@type": "PostalAddress",
-    streetAddress:
-      "Prédio do Programa de Pós-graduação em História, Anexo do Módulo 7 - UEFS. Av. Transnordestina, s/n",
-    addressLocality: "Feira de Santana",
-    addressRegion: "BA",
-    postalCode: "44036-900",
-    addressCountry: "BR",
+    ...siteConfig.address,
   },
-  location: LOCATION,
+  location: siteConfig.location,
 };
 const extraStructuredData = Array.isArray(structuredData)
   ? structuredData

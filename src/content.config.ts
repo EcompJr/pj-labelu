@@ -77,7 +77,20 @@ const productions = defineCollection({
 
 const siteConfig = defineCollection({
   loader: glob({ base: './src/content/config', pattern: '**/*.{md,mdx}' }),
-  schema: z.object({}),
+  schema: z.object({
+    contactEmail: z.email(),
+    location: z.string(),
+    mapUrl: z.url(),
+    instagramUrl: z.url().optional(),
+    youtubeUrl: z.url().optional(),
+    address: z.object({
+      streetAddress: z.string(),
+      addressLocality: z.string(),
+      addressRegion: z.string(),
+      postalCode: z.string(),
+      addressCountry: z.string(),
+    }),
+  }),
 })
 
 export const collections = {

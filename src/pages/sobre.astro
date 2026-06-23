@@ -2,14 +2,12 @@
 import { Image } from "astro:assets";
 
 import BaseLayout from "../layouts/BaseLayout.astro";
-import {
-  SITE_TITLE,
-  SITE_DESCRIPTION,
-  LOCATION,
-  CONTACT_EMAIL,
-} from "../consts";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
 import logo from "../assets/logos/logo-labelu-about.webp";
+import { getSiteConfig } from "../lib/site-config";
+
+const siteConfig = await getSiteConfig();
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
@@ -177,14 +175,14 @@ import logo from "../assets/logos/logo-labelu-about.webp";
           <address class="mb-8">
             <p class="text-sm text-body mb-2">
               <span class="font-semibold">Email:</span><a
-                href={`mailto:${CONTACT_EMAIL}`}
+                href={`mailto:${siteConfig.contactEmail}`}
               >
-                {CONTACT_EMAIL}
+                {siteConfig.contactEmail}
               </a>
             </p>
             <p class="text-sm text-body">
               <span class="font-semibold">Endereço:</span>
-              {LOCATION}
+              {siteConfig.location}
             </p>
           </address>
         </section>

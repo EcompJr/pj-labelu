@@ -1,12 +1,14 @@
 ---
-import { CONTACT_EMAIL, COPYRIGHT_NAME, LOCATION } from "../consts";
+import { COPYRIGHT_NAME } from "../consts";
 import { Image } from "astro:assets";
 import logoUefs from "../assets/logos/logo-uefs.svg";
 import logoEcompjr from "../assets/logos/logo-ecompjr.svg";
 import logoPPGH from "../assets/logos/logo-ppgh.webp";
 import { Icon } from "astro-icon/components";
+import { getSiteConfig } from "../lib/site-config";
 
 const year = new Date().getFullYear();
+const siteConfig = await getSiteConfig();
 ---
 
 <footer class="mt-12 bg-accent-600 py-8 text-white">
@@ -94,7 +96,7 @@ const year = new Date().getFullYear();
     <section class="flex flex-col items-center text-center p-6">
       <div class="flex items-center gap-4">
         <a
-          href="https://www.instagram.com/uefslabelu/"
+          href={siteConfig.instagramUrl}
           target="_blank"
           rel="noopener"
           aria-label="Instagram do Labelu"
@@ -103,7 +105,7 @@ const year = new Date().getFullYear();
           <Icon name="mdi:instagram" size={28} />
         </a>
         <a
-          href="https://www.youtube.com/@LABELUuefs"
+          href={siteConfig.youtubeUrl}
           target="_blank"
           rel="noopener"
           aria-label="Youtube do Labelu"
@@ -117,18 +119,18 @@ const year = new Date().getFullYear();
       class="mb-4 flex flex-col items-center gap-2 not-italic text-sm text-white/70"
     >
       <a
-        href={`mailto:${CONTACT_EMAIL}`}
+        href={`mailto:${siteConfig.contactEmail}`}
         class="transition-colors hover:text-white"
       >
-        {CONTACT_EMAIL}
+        {siteConfig.contactEmail}
       </a>
       <a
-        href="https://maps.app.goo.gl/9qCDBbf8MXFwN5hw9"
+        href={siteConfig.mapUrl}
         target="_blank"
         rel="noopener"
         class="max-w-2xl transition-colors hover:text-white"
       >
-        {LOCATION}
+        {siteConfig.location}
       </a>
     </address>
 

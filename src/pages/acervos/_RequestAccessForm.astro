@@ -1,20 +1,21 @@
 ---
-import { CONTACT_EMAIL } from "../../consts";
+import { getSiteConfig } from "../../lib/site-config";
 
 import H2 from "./_H2.astro";
 
 const { id } = Astro.props;
+const siteConfig = await getSiteConfig();
 ---
 
 <form
   id={id}
-  action={`mailto:${CONTACT_EMAIL}`}
+  action={`mailto:${siteConfig.contactEmail}`}
   method="post"
   enctype="text/plain"
   aria-label="Formulário de Solicitação de Acesso ao Acervo"
   class="flex flex-col"
   data-request-access-form
-  data-destino={CONTACT_EMAIL}
+  data-destino={siteConfig.contactEmail}
 >
   <p>
     Preencha os dados abaixo. Ao clicar em enviar, seu aplicativo de e-mail será

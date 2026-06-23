@@ -69,6 +69,55 @@ collections:
         name: about
         file: src/content/config/about.md
         fields:
+          - label: E-mail de contato
+            name: contactEmail
+            widget: string
+
+          - label: Localização
+            name: location
+            widget: text
+
+          - label: Link do mapa
+            name: mapUrl
+            widget: string
+            pattern: ["^https?://.+", "Informe uma URL válida"]
+
+          - label: Instagram
+            name: instagramUrl
+            widget: string
+            required: false
+            pattern: ["^https?://.+", "Informe uma URL válida"]
+
+          - label: YouTube
+            name: youtubeUrl
+            widget: string
+            required: false
+            pattern: ["^https?://.+", "Informe uma URL válida"]
+
+          - label: Endereço estruturado
+            name: address
+            widget: object
+            fields:
+              - label: Logradouro
+                name: streetAddress
+                widget: string
+
+              - label: Cidade
+                name: addressLocality
+                widget: string
+
+              - label: Estado
+                name: addressRegion
+                widget: string
+
+              - label: CEP
+                name: postalCode
+                widget: string
+
+              - label: País
+                name: addressCountry
+                widget: string
+
           - label: Texto
             name: body
             widget: markdown
