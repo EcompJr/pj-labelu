@@ -62,6 +62,17 @@ slug:
 # Fields: https://sveltiacms.app/en/docs/fields
 # How-to: https://sveltiacms.app/en/docs/how-tos
 collections:
+  - name: site_config
+    label: Configurações
+    files:
+      - label: Sobre
+        name: about
+        file: src/content/config/about.md
+        fields:
+          - label: Texto
+            name: body
+            widget: markdown
+
   - name: team
     label: Equipe
     folder: src/content/equipe

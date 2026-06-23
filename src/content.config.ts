@@ -75,4 +75,17 @@ const productions = defineCollection({
   }),
 })
 
-export const collections = { team, schedule, archive, research, researchLine, productions }
+const siteConfig = defineCollection({
+  loader: glob({ base: './src/content/config', pattern: '**/*.{md,mdx}' }),
+  schema: z.object({}),
+})
+
+export const collections = {
+  team,
+  schedule,
+  archive,
+  research,
+  researchLine,
+  productions,
+  siteConfig,
+}

@@ -1,14 +1,19 @@
 ---
-import { getCollection } from "astro:content";
-import { SITE_DESCRIPTION, LOCATION, CONTACT_EMAIL } from "../consts";
+import { getCollection, getEntry, render } from "astro:content";
+import { LOCATION, CONTACT_EMAIL } from "../consts";
 
 const baseUrl = import.meta.env.BASE_URL;
 
-const [team, research, archive] = await Promise.all([
+const [team, research, archive, about] = await Promise.all([
   getCollection("team"),
   getCollection("research"),
   getCollection("archive"),
+  getEntry("siteConfig", "about"),
 ]);
+
+const { Content: AboutContent } = about
+  ? await render(about)
+  : { Content: undefined };
 
 const stats = [
   { value: team.length, label: "Pesquisadores" },
@@ -27,19 +32,30 @@ const stats = [
         Sobre o Labelu
       </h2>
 
-      <p class="text-body text-base leading-relaxed mb-4">
-        Somos, o nome diz, um laboratório – um espaço para o exercício de um
-        trabalho (labor) intelectual: a pesquisa histórica. Existimos há mais de
-        21 anos fazendo pesquisa e ajudando a formar bons pesquisadores em
-        História.
-      </p>
+      {
+        AboutContent ? (
+          <div class="about-content text-body text-base leading-relaxed mb-6">
+            <AboutContent />
+          </div>
+        ) : (
+          <>
+            <p class="text-body text-base leading-relaxed mb-4">
+              Somos, o nome diz, um laboratório – um espaço para o exercício de
+              um trabalho (labor) intelectual: a pesquisa histórica. Existimos há
+              mais de 21 anos fazendo pesquisa e ajudando a formar bons
+              pesquisadores em História.
+            </p>
 
-      <p class="text-body text-base leading-relaxed mb-6">
-        Nosso objetivo principal é pesquisar a história e preservar a memória
-        das lutas sociais e da esquerda. Nossos estudos dialogam intensamente
-        com a História Social, investigando sujeitos, estratégias, memórias e os
-        antagonismos que se defrontam nas lutas de classes.
-      </p>
+            <p class="text-body text-base leading-relaxed mb-6">
+              Nosso objetivo principal é pesquisar a história e preservar a
+              memória das lutas sociais e da esquerda. Nossos estudos dialogam
+              intensamente com a História Social, investigando sujeitos,
+              estratégias, memórias e os antagonismos que se defrontam nas lutas
+              de classes.
+            </p>
+          </>
+        )
+      }
 
       <div class="flex flex-wrap gap-3 mt-2">
         <a
@@ -93,3 +109,13 @@ const stats = [
     </div>
   </div>
 </section>
+
+<style>
+  .about-content :global(p) {
+    margin-bottom: 1rem;
+  }
+
+  .about-content :global(p:last-child) {
+    margin-bottom: 0;
+  }
+</style>
