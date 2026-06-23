@@ -3,6 +3,7 @@ import { CONTACT_EMAIL, COPYRIGHT_NAME, LOCATION } from "../consts";
 import { Image } from "astro:assets";
 import logoUefs from "../assets/logos/logo-uefs.svg";
 import logoEcompjr from "../assets/logos/logo-ecompjr.svg";
+import logoPPGH from "../assets/logos/logo-ppgh.webp";
 import { Icon } from "astro-icon/components";
 
 const year = new Date().getFullYear();
@@ -10,7 +11,7 @@ const year = new Date().getFullYear();
 
 <footer class="mt-12 bg-accent-600 py-8 text-white">
   <main
-    class="container mx-auto grid grid-cols-1 px-6 md:grid-cols-2 md:items-start"
+    class="container mx-auto grid grid-cols-1 px-6 md:grid-cols-3 md:items-start"
   >
     <section class="flex flex-col items-center gap-4 text-center">
       <a
@@ -34,6 +35,33 @@ const year = new Date().getFullYear();
         <div class="mt-4 flex flex-1 items-start">
           <p class="max-w-xs text-sm leading-8">
             Universidade Estadual de Feira de Santana
+          </p>
+        </div>
+      </a>
+    </section>
+
+    <section class="flex flex-col items-center gap-4 text-center">
+      <a
+        href="https://ppgh.uefs.br"
+        target="_blank"
+        rel="noopener"
+        aria-label="Programa de Pós-Graduação em História"
+        class="flex flex-1 flex-col items-center text-white no-underline transition-opacity hover:opacity-90"
+      >
+        <div class="flex h-20 items-center justify-center">
+          <Image
+            src={logoPPGH}
+            width={128}
+            height={64}
+            sizes="64px"
+            class="invert rounded-none brightness-125 object-center"
+            alt="Logo do Programa de Pós-Graduação em História (PPGH)"
+          />
+        </div>
+
+        <div class="mt-4 flex flex-1 items-start">
+          <p class="max-w-xs text-sm leading-8">
+            Programa de Pós-Graduação em História
           </p>
         </div>
       </a>
@@ -127,7 +155,8 @@ const year = new Date().getFullYear();
     </p>
 
     <p class="text-xs text-white/50">
-      &copy; {year} {COPYRIGHT_NAME}. Todos os direitos reservados.
+      &copy; {year}
+      {COPYRIGHT_NAME}. Todos os direitos reservados.
     </p>
   </footer>
 </footer>
