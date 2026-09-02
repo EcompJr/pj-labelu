@@ -1,7 +1,6 @@
 ---
-const baseUrl = import.meta.env.BASE_URL;
-const configUrl = new URL(`${baseUrl}admin/config.yml`, Astro.site).href;
-const adminUrl = new URL(`${baseUrl}admin/`, Astro.site).href;
+const configUrl = "./admin/config.yml";
+const adminUrl = "./admin/";
 ---
 
 <!doctype html>

@@ -21,8 +21,7 @@ const localDate = date.toLocaleDateString("pt-BR", {
 });
 
 // Build the detail page URL
-const baseUrl = import.meta.env.BASE_URL;
-const eventUrl = new URL(`${baseUrl}agenda/${event.id}/`, Astro.site).href;
+const eventUrl = `./agenda/${event.id}/`;
 
 let Content: any = null;
 if (mayOpen) {
