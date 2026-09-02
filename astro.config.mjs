@@ -10,7 +10,7 @@ import tailwindcss from '@tailwindcss/vite'
 // https://astro.build/config
 export default defineConfig( {
   // Deploying to GitHub Pages under the repository subpath
-  site: process.env.SITE_URL || 'https://labelu.uefs.br',
+  site: process.env.SITE_URL || 'https://uefslabelu.github.io',
   base: process.env.BASE_URL || '/website/',
   integrations: [ icon(), mdx(), sitemap() ],
 
