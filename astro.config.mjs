@@ -11,7 +11,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig( {
   // Deploying to GitHub Pages under the repository subpath
   site: process.env.SITE_URL || 'https://labelu.uefs.br',
-  base: process.env.BASE_URL || '/',
+  base: process.env.BASE_URL || '/website/',
   integrations: [ icon(), mdx(), sitemap() ],
 
   fonts: [

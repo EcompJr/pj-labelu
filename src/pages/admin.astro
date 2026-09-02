@@ -1,6 +1,7 @@
 ---
-const configUrl = new URL("/admin/config.yml", Astro.site).href;
-const adminUrl = new URL("/admin/", Astro.site).href;
+const baseUrl = import.meta.env.BASE_URL;
+const configUrl = new URL(`${baseUrl}admin/config.yml`, Astro.site).href;
+const adminUrl = new URL(`${baseUrl}admin/`, Astro.site).href;
 ---
 
 <!doctype html>
@@ -25,7 +26,8 @@ const adminUrl = new URL("/admin/", Astro.site).href;
     <script>
       import CMS from "@sveltia/cms";
 
-      const adminUrl = new URL("/admin/", Astro.site).href;
+      const baseUrl = import.meta.env.BASE_URL;
+      const adminUrl = new URL(`${baseUrl}admin/`, Astro.site).href;
 
       CMS.init();
 
