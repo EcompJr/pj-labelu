@@ -18,7 +18,7 @@ const hasEndYear = endYear !== null && endYear !== undefined;
 const hasBothYears = hasStartYear && hasEndYear;
 const isOngoing = hasBothYears ? endYear >= currentYear : hasStartYear;
 
-const pesquisaUrl = `./pesquisas/${pesquisa.id}/`;
+const pesquisaUrl = `./${pesquisa.id}/`;
 
 // Resolve research line to get full title
 const researchLineEntry = await getEntry("researchLine", line);
