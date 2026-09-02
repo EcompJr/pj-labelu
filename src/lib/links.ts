@@ -1,7 +1,9 @@
 
 const link = (path: string) => {
+    const base = import.meta.env.BASE_URL.replace(/\/$/, "")
+    const clean = path.replace(/^\//, "")
 
-    return new URL(path, import.meta.env.BASE_URL).href
+    return `${base}/${clean}`
 }
 
 export { link }
