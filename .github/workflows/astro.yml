@@ -62,9 +62,7 @@ jobs:
 
       - name: Build with Astro (Bun)
         run: |
-          bunx astro build \
-            --site "${{ steps.pages.outputs.origin }}" \
-            --base "${{ steps.pages.outputs.base_path }}"
+          bunx astro build
         working-directory: ${{ env.BUILD_PATH }}
 
       - name: Upload artifact
