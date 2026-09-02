@@ -18,8 +18,7 @@ const hasEndYear = endYear !== null && endYear !== undefined;
 const hasBothYears = hasStartYear && hasEndYear;
 const isOngoing = hasBothYears ? endYear >= currentYear : hasStartYear;
 
-const baseUrl = import.meta.env.BASE_URL;
-const pesquisaUrl = `${baseUrl}/pesquisas/${pesquisa.id}/`;
+const pesquisaUrl = new URL(`/pesquisas/${pesquisa.id}/`, Astro.site).href;
 
 // Resolve research line to get full title
 const researchLineEntry = await getEntry("researchLine", line);
@@ -86,7 +85,7 @@ const resolvedResearchers = (
 
     {/* Research line — right side */}
     <a
-      href={`${baseUrl}/pesquisas/linhas#${line}`}
+      href={new URL(`/pesquisas/linhas#${line}`, Astro.site).href}
       class="text-xs uppercase tracking-wide px-2 py-1 sm:px-2.5 sm:py-0.5 rounded-full
         font-semibold bg-raised text-body
         no-underline hover:bg-accent-100 transition-colors duration-150
@@ -146,7 +145,7 @@ const resolvedResearchers = (
           {resolvedResearchers.map((r, i) => (
             <>
               <a
-                href={`${baseUrl}/equipe/${r?.id}`}
+                href={new URL(`/equipe/${r?.id}`, Astro.site).href}
                 class="text-accent-600 no-underline hover:underline font-medium"
                 title={`Currículo Lattes de ${r?.data.fullname}`}
               >
