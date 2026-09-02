@@ -9,6 +9,7 @@ import TimelineEvent from "../../components/TimelineEvent.astro";
 import { sortBy } from "../../lib/vec";
 import { groupBy } from "../../lib/dict";
 import { titled } from "../../lib/text";
+import Link from "../../components/Link.astro";
 
 type Schedule = CollectionEntry<"schedule">;
 
@@ -72,14 +73,14 @@ const months = eventsByMonth(page.data);
         aria-label="Paginação da agenda"
       >
         {page.url.prev ? (
-          <a
+          <Link
             href={page.url.prev}
             class="text-sm font-semibold px-4 py-2 rounded-lg no-underline
                   text-accent-600 bg-raised transition-colors duration-150
                   hover:bg-border hover:text-accent-800"
           >
             ← Mais recentes
-          </a>
+          </Link>
         ) : (
           <span class="text-sm font-semibold px-4 py-2 text-secondary-text opacity-40 cursor-default">
             ← Mais recentes
@@ -91,14 +92,14 @@ const months = eventsByMonth(page.data);
         </span>
 
         {page.url.next ? (
-          <a
+          <Link
             href={page.url.next}
             class="text-sm font-semibold px-4 py-2 rounded-lg no-underline
                   text-accent-600 bg-raised transition-colors duration-150
                   hover:bg-border hover:text-accent-800"
           >
             Mais antigos →
-          </a>
+          </Link>
         ) : (
           <span class="text-sm font-semibold px-4 py-2 text-secondary-text opacity-40 cursor-default">
             Mais antigos →

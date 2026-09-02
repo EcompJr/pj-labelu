@@ -1,6 +1,7 @@
 ---
 import { getCollection, getEntry, render } from "astro:content";
 import { getSiteConfig } from "../lib/site-config";
+import Link from "./Link.astro";
 
 const [team, research, archive, about] = await Promise.all([
   getCollection("team"),
@@ -57,18 +58,18 @@ const stats = [
       }
 
       <div class="flex flex-wrap gap-3 mt-2">
-        <a
+        <Link
           href="sobre"
           class="inline-flex items-center gap-2 px-5 py-2.5 bg-accent-600 text-white rounded-md font-semibold text-sm hover:bg-accent-800 transition-colors"
         >
           Conheça o laboratório
-        </a>
-        <a
+        </Link>
+        <Link
           href={`mailto:${siteConfig.contactEmail}`}
           class="inline-flex items-center gap-2 px-5 py-2.5 border border-accent-600 text-accent-700 rounded-md font-semibold text-sm hover:bg-accent-50 transition-colors"
         >
           Entrar em contato
-        </a>
+        </Link>
       </div>
     </div>
 

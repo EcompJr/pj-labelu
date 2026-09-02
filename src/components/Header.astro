@@ -1,13 +1,14 @@
 ---
 import { Image } from "astro:assets";
 import logoLabelu from "../assets/logos/labelu-logo.svg";
+import Link from "./Link.astro";
 
 const BASE_URL = import.meta.env.BASE_URL || "/";
 ---
 
 <header class="bg-page border-b border-accent-600 sticky top-0 z-50">
   <nav class="flex items-center justify-between max-w-6xl mx-auto py-2 px-6">
-    <a
+    <Link
       href={BASE_URL}
       class="flex items-center shrink-0 no-underline"
     >
@@ -19,7 +20,7 @@ const BASE_URL = import.meta.env.BASE_URL || "/";
         sizes="100px"
         class="h-auto"
       />
-    </a>
+    </Link>
 
     <div
       id="nav-links"
@@ -32,13 +33,13 @@ const BASE_URL = import.meta.env.BASE_URL || "/";
         [&_a]:transition-colors [&_a]:duration-150
         max-sm:[&_a]:w-full max-sm:[&_a]:rounded-none max-sm:[&_a]:px-6 max-sm:[&_a]:py-3 max-sm:[&_a]:text-base"
     >
-      <a href={`{BASE_URL}`}>Início</a>
-      <a href={`{BASE_URL}/pesquisas`}>Pesquisas</a>
-      <a href={`{BASE_URL}/produções`}>Produções</a>
-      <a href={`{BASE_URL}/agenda`}>Agenda</a>
-      <a href={`{BASE_URL}/equipe`}>Equipe</a>
-      <a href={`{BASE_URL}/acervos`}>Acervos</a>
-      <a href={`{BASE_URL}/sobre`}>Sobre</a>
+      <Link href="/">Início</Link>
+      <Link href="/pesquisas">Pesquisas</Link>
+      <Link href="/produções">Produções</Link>
+      <Link href="/agenda">Agenda</Link>
+      <Link href="/equipe">Equipe</Link>
+      <Link href="/acervos">Acervos</Link>
+      <Link href="/sobre">Sobre</Link>
     </div>
 
     <button
