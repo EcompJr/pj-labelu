@@ -11,7 +11,6 @@ interface Props {
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const baseURL = import.meta.env.BASE_URL;
 const siteConfig = await getSiteConfig();
 
 const {
@@ -20,14 +19,14 @@ const {
   image = "/og.jpg",
   structuredData = [],
 } = Astro.props;
-const basePath = baseURL.endsWith("/") ? baseURL : `${baseURL}/`;
-const imagePath = image.startsWith("/") ? image.slice(1) : image;
-const ogImageURL = new URL(`${basePath}${imagePath}`, Astro.site).toString();
-const siteURL = new URL(basePath, Astro.site).toString();
-const logoURL = new URL(
-  `${basePath}assets/logo-labelu.png`,
-  Astro.site,
-).toString();
+
+// URLs for structured data and meta tags
+const siteURL = Astro.site?.toString().replace(/\/$/, "");
+const logoURL = `${siteURL}/assets/logo-labelu.png`;
+const imagePath = image.startsWith("/") ? image : `/${image}`;
+const ogImageURL = `${siteURL}${imagePath}`;
+const basePath = "/";
+
 const organizationStructuredData = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -76,27 +75,27 @@ const jsonLd =
 <meta name="generator" content={Astro.generator} />
 
 <!-- Favicons -->
-<link rel="icon" href={`${baseURL}/favicon.ico`} />
+<link rel="icon" href="/favicon.ico" />
 <link
   rel="apple-touch-icon"
   sizes="180x180"
-  href={`${baseURL}/apple-touch-icon.png`}
+  href="/apple-touch-icon.png"
 />
 <link
   rel="icon"
   type="image/png"
   sizes="32x32"
-  href={`${baseURL}/favicon-32x32.png`}
+  href="/favicon-32x32.png"
 />
 <link
   rel="icon"
   type="image/png"
   sizes="16x16"
-  href={`${baseURL}/favicon-16x16.png`}
+  href="/favicon-16x16.png"
 />
-<link rel="manifest" href={`${baseURL}/site.webmanifest`} />
+<link rel="manifest" href="/site.webmanifest" />
 <meta name="msapplication-TileColor" content="#7d2418" />
-<meta name="msapplication-config" content={`${baseURL}/browserconfig.xml`} />
+<meta name="msapplication-config" content="/browserconfig.xml" />
 <meta name="theme-color" content="#7d2418" />
 
 <!-- Fonts -->

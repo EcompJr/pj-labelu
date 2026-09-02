@@ -10,7 +10,6 @@ import Footer from "../components/Footer.astro";
 import { ClientRouter } from "astro:transitions";
 
 const artworks = [artwork1, artwork2, artwork3];
-const baseUrl = import.meta.env.BASE_URL || "/";
 ---
 
 <!doctype html>
@@ -45,7 +44,7 @@ const baseUrl = import.meta.env.BASE_URL || "/";
         ))
       }
       <a
-        href={baseUrl}
+        href="./"
         class="block text-center text-title underline hover:text-accent-500 transition-colors duration-150"
       >
         Volta para a página inicial
