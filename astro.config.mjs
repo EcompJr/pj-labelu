@@ -7,11 +7,14 @@ import { defineConfig, fontProviders } from 'astro/config'
 
 import tailwindcss from '@tailwindcss/vite'
 
+console.log( 'SITE_URL:', process.env.SITE_URL || 'https://labelu.uefs.br' )
+console.log( 'BASE_URL:', process.env.BASE_URL || '/' )
+
 // https://astro.build/config
 export default defineConfig( {
   // Deploying to GitHub Pages under the repository subpath
-  site: 'https://ecompjr.github.io',
-  base: '/pj-labelu',
+  site: process.env.SITE_URL || 'https://labelu.uefs.br',
+  base: process.env.BASE_URL || '',
   integrations: [ icon(), mdx(), sitemap() ],
 
   fonts: [

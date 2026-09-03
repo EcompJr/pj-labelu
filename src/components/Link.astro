@@ -1,0 +1,11 @@
+---
+
+import { link } from "../lib/links.ts";
+
+const { href, ...props } = Astro.props;
+
+---
+
+<a href={link(href)} {...props}>
+    <slot/>
+</a>

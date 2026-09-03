@@ -1,17 +1,15 @@
 ---
 import { Image } from "astro:assets";
-import HeaderLink from "./HeaderLink.astro";
 import logoLabelu from "../assets/logos/labelu-logo.svg";
+import Link from "./Link.astro";
 
-const baseUrl = import.meta.env.BASE_URL.endsWith("/")
-  ? import.meta.env.BASE_URL
-  : `${import.meta.env.BASE_URL}/`;
+const BASE_URL = import.meta.env.BASE_URL || "/";
 ---
 
 <header class="bg-page border-b border-accent-600 sticky top-0 z-50">
   <nav class="flex items-center justify-between max-w-6xl mx-auto py-2 px-6">
-    <a
-      href={baseUrl}
+    <Link
+      href="/"
       class="flex items-center shrink-0 no-underline"
     >
       <Image
@@ -22,7 +20,7 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
         sizes="100px"
         class="h-auto"
       />
-    </a>
+    </Link>
 
     <div
       id="nav-links"
@@ -35,13 +33,13 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
         [&_a]:transition-colors [&_a]:duration-150
         max-sm:[&_a]:w-full max-sm:[&_a]:rounded-none max-sm:[&_a]:px-6 max-sm:[&_a]:py-3 max-sm:[&_a]:text-base"
     >
-      <HeaderLink href="/">Início</HeaderLink>
-      <HeaderLink href="/pesquisas">Pesquisas</HeaderLink>
-      <HeaderLink href="/produções">Produções</HeaderLink>
-      <HeaderLink href="/agenda">Agenda</HeaderLink>
-      <HeaderLink href="/equipe">Equipe</HeaderLink>
-      <HeaderLink href="/acervos">Acervos</HeaderLink>
-      <HeaderLink href="/sobre">Sobre</HeaderLink>
+      <Link href="/">Início</Link>
+      <Link href="/pesquisas">Pesquisas</Link>
+      <Link href="/produções">Produções</Link>
+      <Link href="/agenda">Agenda</Link>
+      <Link href="/equipe">Equipe</Link>
+      <Link href="/acervos">Acervos</Link>
+      <Link href="/sobre">Sobre</Link>
     </div>
 
     <button

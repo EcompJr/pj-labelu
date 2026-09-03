@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import TimelineEvent from "./TimelineEvent.astro";
+import Link from "./Link.astro";
 
 const schedule = await getCollection("schedule");
 
@@ -24,7 +25,6 @@ if (displayEvents.length === 0) {
   displayEvents = displayEvents.slice(0, 3);
 }
 
-const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <section class="w-full mx-auto py-6 sm:py-8 md:py-10 lg:py-12 px-4 sm:px-6">
@@ -32,12 +32,12 @@ const baseUrl = import.meta.env.BASE_URL;
     <h2 class="text-2xl sm:text-4xl font-bold text-accent-800 font-heading">
       Próximos Eventos na Agenda
     </h2>
-    <a
-      href={`${baseUrl}/agenda`}
+    <Link
+      href="agenda"
       class="shrink-0 text-xs sm:text-sm font-semibold text-accent-600 hover:text-accent-800 uppercase tracking-wider flex items-center gap-1"
     >
       VER MAIS <span aria-hidden="true">&rarr;</span>
-    </a>
+    </Link>
   </div>
 
   <ol class="timeline list-none p-0 relative">
