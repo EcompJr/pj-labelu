@@ -43,7 +43,7 @@ media_libraries:
 
 app_title: LABELU
 logo:
-  src: /pj-labelu/admin/icon-512.png
+  src: /admin/icon-512.png
   show_in_header: true
 
 slug:
