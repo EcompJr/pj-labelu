@@ -3,16 +3,16 @@
   "short_name": "Labelu",
   "id": "visit-labelu",
   "lang": "pt-BR",
-  "start_url": "/pj-labelu/",
-  "scope": "/pj-labelu/",
+  "start_url": "/",
+  "scope": "/",
   "icons": [
     {
-      "src": "/pj-labelu/android-chrome-192x192.png",
+      "src": "/android-chrome-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/pj-labelu/android-chrome-512x512.png",
+      "src": "/android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
@@ -25,15 +25,15 @@
       "name": "Equipe",
       "short_name": "Equipe",
       "description": "Conhecer a equipe do laboratório.",
-      "url": "/pj-labelu/equipe",
+      "url": "/equipe",
       "icons": [
         {
-          "src": "/pj-labelu/android-chrome-192x192.png",
+          "src": "/android-chrome-192x192.png",
           "sizes": "192x192",
           "type": "image/png"
         },
         {
-          "src": "/pj-labelu/android-chrome-512x512.png",
+          "src": "/android-chrome-512x512.png",
           "sizes": "512x512",
           "type": "image/png"
         }
@@ -43,15 +43,15 @@
       "name": "Agenda",
       "short_name": "Agenda",
       "description": "Ver eventos e atividades do laboratório.",
-      "url": "/pj-labelu/agenda",
+      "url": "/agenda",
       "icons": [
         {
-          "src": "/pj-labelu/android-chrome-192x192.png",
+          "src": "/android-chrome-192x192.png",
           "sizes": "192x192",
           "type": "image/png"
         },
         {
-          "src": "/pj-labelu/android-chrome-512x512.png",
+          "src": "/android-chrome-512x512.png",
           "sizes": "512x512",
           "type": "image/png"
         }
@@ -61,15 +61,15 @@
       "name": "Pesquisas",
       "short_name": "Pesquisas",
       "description": "Conhecer as pesquisas do laboratório.",
-      "url": "/pj-labelu/pesquisas",
+      "url": "/pesquisas",
       "icons": [
         {
-          "src": "/pj-labelu/android-chrome-192x192.png",
+          "src": "/android-chrome-192x192.png",
           "sizes": "192x192",
           "type": "image/png"
         },
         {
-          "src": "/pj-labelu/android-chrome-512x512.png",
+          "src": "/android-chrome-512x512.png",
           "sizes": "512x512",
           "type": "image/png"
         }
@@ -79,15 +79,15 @@
       "name": "Produções",
       "short_name": "Produções",
       "description": "Consultar produções acadêmicas e culturais.",
-      "url": "/pj-labelu/produções",
+      "url": "/produções",
       "icons": [
         {
-          "src": "/pj-labelu/android-chrome-192x192.png",
+          "src": "/android-chrome-192x192.png",
           "sizes": "192x192",
           "type": "image/png"
         },
         {
-          "src": "/pj-labelu/android-chrome-512x512.png",
+          "src": "/android-chrome-512x512.png",
           "sizes": "512x512",
           "type": "image/png"
         }
@@ -97,15 +97,15 @@
       "name": "Acervos",
       "short_name": "Acervos",
       "description": "Acessar os acervos do laboratório.",
-      "url": "/pj-labelu/acervos",
+      "url": "/acervos",
       "icons": [
         {
-          "src": "/pj-labelu/android-chrome-192x192.png",
+          "src": "/android-chrome-192x192.png",
           "sizes": "192x192",
           "type": "image/png"
         },
         {
-          "src": "/pj-labelu/android-chrome-512x512.png",
+          "src": "/android-chrome-512x512.png",
           "sizes": "512x512",
           "type": "image/png"
         }
