@@ -4,7 +4,7 @@ role: Estagiário
 lattes: https://lattes.cnpq.br/ecompjr
 orcid: ''
 linkedin: ''
-profile: ''
+profile: ./logo-sem-fundo.webp
 ---
 
 Teste
