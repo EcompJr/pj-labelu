@@ -10,7 +10,6 @@ backend:
   repo: uefslabelu/website
   branch: main
   auth_methods:
-    - oauth
     - token
 
 # === Localization settings
