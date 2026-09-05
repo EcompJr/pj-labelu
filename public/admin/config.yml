@@ -25,7 +25,7 @@ locale: pt-BR
 # === Files & Media configuration
 
 # Media: https://sveltiacms.app/en/docs/media/internal#top-level-configuration
-media_folder: "src/content/uploads"
+media_folder: "/src/content/uploads"
 public_folder: "/src/content/uploads"
 
 media_libraries:
