@@ -22,15 +22,16 @@ const adminUrl = "/admin/";
     <meta name="theme-color" content="#0f2747" />
   </head>
   <body>
-    <script>
+    <script type="module">
       import CMS from "@sveltia/cms";
-
-      const baseUrl = import.meta.env.BASE_URL;
-      const adminUrl = new URL(`${baseUrl}admin/`, Astro.site).href;
 
       console.log("CMS module:", CMS);
       CMS.init();
       console.log("CMS initialized");
+    </script>
+    <script type="module">
+      const baseUrl = import.meta.env.BASE_URL;
+      const adminUrl = new URL(`${baseUrl}admin/`, Astro.site).href;
 
       if ("serviceWorker" in navigator) {
         navigator.serviceWorker.register(`${adminUrl}sw.js`, {
