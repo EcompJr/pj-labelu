@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /admin/
 Allow: /
 
-Sitemap: https://ecompjr.github.io/pj-labelu/sitemap-index.xml
+Sitemap: https://labelu.uefs.br/sitemap-index.xml
