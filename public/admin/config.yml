@@ -20,7 +20,7 @@ backend:
 # So let's wait this feature be done.
 # Ref.: https://github.com/sveltia/sveltia-cms/issues/724
 #
-# locale: pt-BR
+locale: pt-BR
 
 # === Files & Media configuration
 
