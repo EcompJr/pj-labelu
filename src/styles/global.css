@@ -118,16 +118,18 @@
   }
 }
 
-.auto-show {
-  animation: appear linear both;
-  animation-timeline: view();
-  animation-range: entry 0% exit 50vh;
-}
+@supports (animation-timeline: view()) {
+  .auto-show {
+    animation: appear linear both;
+    animation-timeline: view();
+    animation-range: entry 0% exit 50vh;
+  }
 
-.auto-colorize {
-  animation: colorize linear both;
-  animation-timeline: view();
-  animation-range: entry 0% exit 50vh;
+  .auto-colorize {
+    animation: colorize linear both;
+    animation-timeline: view();
+    animation-range: entry 0% exit 50vh;
+  }
 }
 
 @keyframes appear {
