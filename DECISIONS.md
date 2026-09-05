@@ -84,3 +84,19 @@ WhatsApp is an important sharing channel for this project, so reliable previews 
 
 The default metadata now points to `/og.jpg` and declares the image type as `image/jpeg`.
 Other site images can still use WebP where browser rendering is controlled by the page itself, but the Open Graph image should stay in JPEG unless the target preview platforms are tested again.
+
+## September 3 (Wednesday)
+
+I've created the `<Link/>` component to allow us to support multiple domains and base URL.
+Basically this happened because AEI haven't been doing a good work with their reverse proxy,
+so I decided to create a temporary website at https://labelu.ecompjr.com.br, 
+instead of being fully dependent on UEFS's proxy.
+
+After some requests, they finally fixed it. So we have 2 running environments:
+- https://ecompjr.github.io/pj-labelu -> https://labelu.ecompjr.com.br
+- https://uefslabelu.github.io/website -> https://labelu.uefs.br
+
+The customer's environment is a fork of our environment, so they are independent, 
+but may be synced when needed.
+
+Use `sync-back.sh` to syncronize from the customer's repository.
