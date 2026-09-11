@@ -3,11 +3,11 @@ import type { Status } from '../../lib/agenda/event';
 import Badge from './Badge.astro';
 
 type Props = {
-  id: string
+  eventId: string
   status: Status
 }
 
-const {id, status} = Astro.props as Props
+const {eventId, status} = Astro.props as Props
 
 const content = {
   open: "Aberto",
@@ -16,6 +16,6 @@ const content = {
 }
 ---
 
-<Badge id=`status-${id}` variant="accent">
+<Badge id={`status-${eventId}`} variant="accent">
   {content[status]}
 </Badge>

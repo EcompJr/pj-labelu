@@ -1,7 +1,7 @@
 ---
 
 type Props = {
-  id: string
+  eventId: string
   intervalDays: [start: string, end: string]
   time?: string | null
 }
@@ -14,7 +14,7 @@ const end = event.intervalDays[1];
 
 <time
   class="text-sm text-secondary-text font-bold"
-  transition:name={`time-${event.id}`}
+  transition:name={`time-${event.eventId}`}
   datetime={start}
 >
   {start}

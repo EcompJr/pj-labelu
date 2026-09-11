@@ -38,14 +38,13 @@ const event = new LabeluEvent({
       <GoBackButton />
     </nav>
     <header class="mb-6">
-      <div
-        class="flex justify-between items-center flex-wrap gap-2 mb-4 max-[720px]:flex-col max-[720px]:items-start">
-        <EventTime id={props.id} intervalDays={event.localDate} time={event.time} />
-        <div class="flex gap-1.5 flex-wrap">
-          <StatusBadge id={props.id} status={event.status} />
-          <CategoryBadge id={props.id} category={event.category} />
-        </div>
-      </div>
+      <section class="flex justify-between items-center flex-wrap gap-2 mb-4 max-[720px]:flex-col max-[720px]:items-start">
+        <EventTime eventId={props.id} intervalDays={event.localDate} time={event.time} />
+        <span class="flex gap-1.5 flex-wrap">
+          <StatusBadge eventId={props.id} status={event.status} />
+          <CategoryBadge eventId={props.id} category={event.category} />
+        </span>
+      </section>
       <h1 class="text-4xl mb-3 max-[720px]:text-3xl" transition:name={`title-${props.id}`}>
         {event.title}
       </h1>
