@@ -11,11 +11,18 @@ export const getStaticPaths = async () =>
 type Props = CollectionEntry<"schedule">;
 
 const event = Astro.props;
-const { title, category, agenda, date, time, local } = event.data;
+const { title, category, agenda, date, enddate, time, local } = event.data;
 const { Content } = await render(event);
 
-const now = new Date();
-const hasFinished = date.valueOf() < now.valueOf();
+const isOpen = enddate
+  ? enddate.valueOf() > new Date().valueOf()
+  : date.valueOf() > new Date().valueOf();
+
+const hasFinished = enddate
+  ? enddate.valueOf() < new Date().valueOf()
+  : date.valueOf() < new Date().valueOf();
+
+const isOngoing = !isOpen && !hasFinished;
 
 const localizedDate = date.toLocaleDateString("pt-BR", {
   weekday: "long",
@@ -23,8 +30,6 @@ const localizedDate = date.toLocaleDateString("pt-BR", {
   month: "long",
   year: "numeric",
 });
-
-const baseUrl = import.meta.env.BASE_URL;
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -65,18 +70,18 @@ const jsonLd = {
         </time>
 
         <div class="flex gap-1.5 flex-wrap">
-          {
-            hasFinished && (
-              <span
-                transition:name={`finished-${event.id}`}
-                class="text-[0.7rem] uppercase tracking-wider px-2.5 py-0.5
-                         rounded-full font-semibold whitespace-nowrap
-                         bg-accent-800 text-white"
-              >
-                Realizado
-              </span>
+          <span
+            transition:name={`finished-${event.id}`}
+            class="text-[0.7rem] uppercase tracking-wider px-2.5 py-0.5
+                      rounded-full font-semibold whitespace-nowrap
+                      bg-accent-800 text-white"
+          >
+            (
+              {isOpen && "Aberto"}
+              {isOngoing && "Em andamento"}
+              {hasFinished && "Finalizado"}
             )
-          }
+          </span>
           <span
             transition:name={`category-${event.id}`}
             class="text-[0.7rem] uppercase tracking-wider px-2.5 py-0.5
