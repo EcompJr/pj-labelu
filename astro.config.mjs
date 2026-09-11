@@ -15,7 +15,13 @@ export default defineConfig( {
   // Deploying to GitHub Pages under the repository subpath
   site: process.env.SITE_URL || 'https://labelu.uefs.br',
   base: process.env.BASE_URL || '',
-  integrations: [ icon(), mdx(), sitemap() ],
+  integrations: [ 
+    icon({
+      iconDir: "src/assets/icons"
+    }), 
+    mdx(), 
+    sitemap() 
+  ],
 
   fonts: [
     {
