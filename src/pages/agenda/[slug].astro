@@ -1,11 +1,14 @@
 ---
 import { type CollectionEntry, getCollection, render } from "astro:content";
-import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// Business Domain
 import { LabeluEvent } from "../../lib/agenda/event";
 import { linkedDataFromEvent } from "../../lib/agenda/metadata";
+
+// Components
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import GoBackButton from "../../components/Agenda/GoBackButton.astro";
 import Location from "../../components/Agenda/Location.astro";
-import { Icon } from "astro-icon/components";
 import EventTime from "../../components/Agenda/EventTime.astro";
 import StatusBadge from "../../components/Agenda/StatusBadge.astro";
 import CategoryBadge from "../../components/Agenda/CategoryBadge.astro";
