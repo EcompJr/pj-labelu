@@ -1,0 +1,16 @@
+---
+import { Icon } from 'astro-icon/components';
+
+type Props = {
+  eventId: string
+  local: string
+}
+
+const props = Astro.props as Props;
+---
+
+<p class="text-sm text-secondary-text flex items-center gap-1.5"
+  transition:name={`location-${props.eventId}`}>
+  <Icon name="map-pin-area" class="w-4 h-4 text-accent-600" />
+  {props.local}
+</p>

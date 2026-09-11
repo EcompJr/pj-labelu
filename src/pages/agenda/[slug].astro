@@ -4,6 +4,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { LabeluEvent } from "../../lib/agenda/event";
 import { linkedDataFromEvent } from "../../lib/agenda/metadata";
 import GoBackButton from "../../components/Agenda/GoBackButton.astro";
+import Location from "../../components/Agenda/Location.astro";
 import { Icon } from "astro-icon/components";
 import EventTime from "../../components/Agenda/EventTime.astro";
 import StatusBadge from "../../components/Agenda/StatusBadge.astro";
@@ -45,33 +46,18 @@ const event = new LabeluEvent({
           <CategoryBadge id={props.id} category={event.category} />
         </div>
       </div>
-
-      <!-- h1 font/color/tracking/leading all from @layer base -->
       <h1 class="text-4xl mb-3 max-[720px]:text-3xl" transition:name={`title-${props.id}`}>
         {event.title}
       </h1>
-
-      <!-- agenda summary — leading comes from @layer base p -->
       <p class="text-lg text-secondary-text mb-3" transition:name={`description-${props.id}`}>
         {event.agenda}
       </p>
-
-      {
-        event.local && (
-          <p
-            transition:name={`location-${props.id}`}
-            class="text-sm text-secondary-text flex items-center gap-1.5">
-            <Icon name="map-pin-area" class="w-4 h-4 text-accent-600" />
-            {event.local}
-          </p>
-        )
-      }
+      {event.local && <Location eventId={props.id} local={event.local} />}
     </header>
     <hr class="border-none border-t-2 border-border my-6" />
-    <div class="prose prose-stone max-w-none evento-body text-justify">
+    <main class="prose prose-stone max-w-none evento-body text-justify">
       <Content />
-    </div>
+    </main>
   </article>
-
   <script type="application/ld+json" set:html={JSON.stringify(linkedDataFromEvent(event))} />
 </BaseLayout>
