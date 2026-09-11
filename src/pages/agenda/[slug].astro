@@ -3,6 +3,7 @@ import { type CollectionEntry, getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { LabeluEvent } from "../../lib/agenda/event";
 import { linkedDataFromEvent } from "../../lib/agenda/metadata";
+import GoBackButton from "../../components/Agenda/GoBackButton.astro";
 
 export const getStaticPaths = async () =>
   (await getCollection("schedule")).map((evento) => ({
@@ -29,11 +30,7 @@ const event = new LabeluEvent({
 <BaseLayout title={`${event.title} — Agenda — Labelu`} description={event.agenda}>
   <article class="max-w-180 mx-auto px-4 py-8">
     <nav class="mb-8" aria-label="Navegação estrutural">
-      <button
-        class="cursor text-sm font-semibold text-accent-600 no-underline transition-colors duration-150 hover:text-accent-800 hover:underline"
-        onclick="history.back()">
-        ← Voltar para a Agenda
-      </button>
+      <GoBackButton />
     </nav>
     <header class="mb-6">
       <div
