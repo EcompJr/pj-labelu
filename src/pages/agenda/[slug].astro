@@ -13,17 +13,15 @@ import EventTime from "../../components/Agenda/EventTime.astro";
 import StatusBadge from "../../components/Agenda/StatusBadge.astro";
 import CategoryBadge from "../../components/Agenda/CategoryBadge.astro";
 
+type Props = CollectionEntry<"schedule">;
+const props = Astro.props;
+
 export const getStaticPaths = async () => (
   await getCollection("schedule")).map((evento) => ({
     params: { slug: evento.id },
     props: evento,
   })
 )
-
-type Props = CollectionEntry<"schedule">;
-
-const props = Astro.props;
-const { Content } = await render(props);
 
 const event = new LabeluEvent({
   agenda: props.data.agenda,
@@ -34,6 +32,8 @@ const event = new LabeluEvent({
   time: props.data.time,
   local: props.data.local,
 })
+
+const { Content } = await render(props);
 ---
 
 <BaseLayout title={`${event.title} — Agenda — Labelu`} description={event.agenda}>
