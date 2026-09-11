@@ -31,6 +31,7 @@ const schedule = defineCollection({
     category: z.string(),
     agenda: z.string(),
     date: z.coerce.date(),
+    enddate: z.coerce.date().optional(),
     time: z.string().optional(),
     local: z.string().optional(),
   }),
