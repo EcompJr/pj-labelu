@@ -10,11 +10,12 @@ import EventTime from "../../components/Agenda/EventTime.astro";
 import StatusBadge from "../../components/Agenda/StatusBadge.astro";
 import CategoryBadge from "../../components/Agenda/CategoryBadge.astro";
 
-export const getStaticPaths = async () =>
-  (await getCollection("schedule")).map((evento) => ({
+export const getStaticPaths = async () => (
+  await getCollection("schedule")).map((evento) => ({
     params: { slug: evento.id },
     props: evento,
-  }));
+  })
+)
 
 type Props = CollectionEntry<"schedule">;
 
