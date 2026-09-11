@@ -15,7 +15,7 @@ const end = event.intervalDays[1];
 <time
   class="text-sm text-secondary-text font-bold"
   transition:name={`time-${event.id}`}
-  datetime={start.split("T")[0]}
+  datetime={start}
 >
   {start}
   {event.time && <span class="font-normal"> · {event.time}</span>}
