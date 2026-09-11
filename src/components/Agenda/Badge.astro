@@ -5,10 +5,15 @@ type Props = {
 }
 
 const props = Astro.props as Props;
+
+const variantClasses = {
+  accent: 'bg-accent-800 text-white',
+  default: 'bg-raised text-body'
+}
 ---
 
-<span class="text-[0.7rem] uppercase tracking-wider px-2.5 py-0.5 rounded-full font-semibold whitespace-nowrap bg-accent-800 text-white" 
-  transition:name={`finished-${props.id}`}
+<span class={`text-[0.7rem] uppercase tracking-wider px-2.5 py-0.5 rounded-full font-semibold whitespace-nowrap ${variantClasses[props.variant || 'default']}`} 
+  transition:name={props.id}
 >
   <slot/>
 </span>

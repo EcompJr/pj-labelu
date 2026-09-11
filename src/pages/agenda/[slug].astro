@@ -7,6 +7,7 @@ import GoBackButton from "../../components/Agenda/GoBackButton.astro";
 import { Icon } from "astro-icon/components";
 import EventTime from "../../components/Agenda/EventTime.astro";
 import StatusBadge from "../../components/Agenda/StatusBadge.astro";
+import CategoryBadge from "../../components/Agenda/CategoryBadge.astro";
 
 export const getStaticPaths = async () =>
   (await getCollection("schedule")).map((evento) => ({
@@ -41,10 +42,7 @@ const event = new LabeluEvent({
         <EventTime id={props.id} intervalDays={event.localDate} time={event.time} />
         <div class="flex gap-1.5 flex-wrap">
           <StatusBadge id={props.id} status={event.status} />
-          <span class="text-[0.7rem] uppercase tracking-wider px-2.5 py-0.5 rounded-full font-semibold whitespace-nowrap bg-raised text-body"
-            transition:name={`category-${props.id}`}>
-            {event.category}
-          </span>
+          <CategoryBadge id={props.id} category={event.category} />
         </div>
       </div>
 

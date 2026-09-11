@@ -1,0 +1,15 @@
+---
+import Badge from './Badge.astro'
+
+type Props = {
+  id: string
+  category: string
+}
+
+const event = Astro.props as Props
+---
+
+<Badge id=`category-${event.id}` variant="default">
+  {event.category}
+</Badge>
+
