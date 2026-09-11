@@ -1,6 +1,8 @@
 ---
 import { type CollectionEntry, getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { LabeluEvent } from "../../lib/agenda/event";
+import { linkedDataFromEvent } from "../../lib/agenda/metadata";
 
 export const getStaticPaths = async () =>
   (await getCollection("schedule")).map((evento) => ({
@@ -10,103 +12,70 @@ export const getStaticPaths = async () =>
 
 type Props = CollectionEntry<"schedule">;
 
-const event = Astro.props;
-const { title, category, agenda, date, enddate, time, local } = event.data;
-const { Content } = await render(event);
+const props = Astro.props;
+const { Content } = await render(props);
 
-const isOpen = enddate
-  ? enddate.valueOf() > new Date().valueOf()
-  : date.valueOf() > new Date().valueOf();
-
-const hasFinished = enddate
-  ? enddate.valueOf() < new Date().valueOf()
-  : date.valueOf() < new Date().valueOf();
-
-const isOngoing = !isOpen && !hasFinished;
-
-const localizedDate = date.toLocaleDateString("pt-BR", {
-  weekday: "long",
-  day: "2-digit",
-  month: "long",
-  year: "numeric",
-});
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Event",
-  name: title,
-  description: agenda,
-  startDate: time
-    ? `${date.toISOString().split("T")[0]}T${time}:00`
-    : date.toISOString().split("T")[0],
-  eventStatus: "https://schema.org/EventScheduled",
-  ...(local && { location: { "@type": "Place", name: local } }),
-};
+const event = new LabeluEvent({
+  agenda: props.data.agenda,
+  category: props.data.category,
+  title: props.data.title,
+  start: props.data.date,
+  end: props.data.enddate,
+  time: props.data.time,
+  local: props.data.local,
+})
 ---
 
-<BaseLayout title={`${title} — Agenda — Labelu`} description={agenda}>
+<BaseLayout title={`${event.title} — Agenda — Labelu`} description={event.agenda}>
   <article class="max-w-180 mx-auto px-4 py-8">
     <nav class="mb-8" aria-label="Navegação estrutural">
       <button
-        onclick="history.back()"
-        class="cursor text-sm font-semibold text-accent-600 no-underline
-               transition-colors duration-150 hover:text-accent-800 hover:underline"
-      >
+        class="cursor text-sm font-semibold text-accent-600 no-underline transition-colors duration-150 hover:text-accent-800 hover:underline"
+        onclick="history.back()">
         ← Voltar para a Agenda
       </button>
     </nav>
     <header class="mb-6">
       <div
-        class="flex justify-between items-center flex-wrap gap-2 mb-4
-                  max-[720px]:flex-col max-[720px]:items-start"
-      >
+        class="flex justify-between items-center flex-wrap gap-2 mb-4 max-[720px]:flex-col max-[720px]:items-start">
         <time
-          datetime={date.toISOString().split("T")[0]}
+          datetime={event.localDate[0].split("T")[0]}
           class="text-sm text-secondary-text font-bold"
-          transition:name={`time-${event.id}`}
+          transition:name={`time-${props.id}`}
         >
-          {localizedDate}
-          {time && <span class="font-normal"> · {time}</span>}
+          {event.localDate[0]}
+          {event.time && <span class="font-normal"> · {event.time}</span>}
         </time>
-
         <div class="flex gap-1.5 flex-wrap">
-          <span
-            transition:name={`finished-${event.id}`}
-            class="text-[0.7rem] uppercase tracking-wider px-2.5 py-0.5
-                      rounded-full font-semibold whitespace-nowrap
-                      bg-accent-800 text-white"
-          >
+          <span class="text-[0.7rem] uppercase tracking-wider px-2.5 py-0.5 rounded-full font-semibold whitespace-nowrap bg-accent-800 text-white"
+            transition:name={`finished-${props.id}`}>
             (
-              {isOpen && "Aberto"}
-              {isOngoing && "Em andamento"}
-              {hasFinished && "Finalizado"}
+              {event.status == 'open' && "Aberto"}
+              {event.status == 'ongoing' && "Em andamento"}
+              {event.status == 'finished' && "Finalizado"}
             )
           </span>
-          <span
-            transition:name={`category-${event.id}`}
-            class="text-[0.7rem] uppercase tracking-wider px-2.5 py-0.5
-                       rounded-full font-semibold whitespace-nowrap
-                       bg-raised text-body"
-          >
-            {category}
+          <span class="text-[0.7rem] uppercase tracking-wider px-2.5 py-0.5 rounded-full font-semibold whitespace-nowrap bg-raised text-body"
+            transition:name={`category-${props.id}`}>
+            {event.category}
           </span>
         </div>
       </div>
 
       <!-- h1 font/color/tracking/leading all from @layer base -->
-      <h1 class="text-4xl mb-3 max-[720px]:text-3xl" transition:name={`title-${event.id}`}>
-        {title}
+      <h1 class="text-4xl mb-3 max-[720px]:text-3xl" transition:name={`title-${props.id}`}>
+        {event.title}
       </h1>
 
       <!-- agenda summary — leading comes from @layer base p -->
-      <p class="text-lg text-secondary-text mb-3" transition:name={`description-${event.id}`}>
-        {agenda}
+      <p class="text-lg text-secondary-text mb-3" transition:name={`description-${props.id}`}>
+        {event.agenda}
       </p>
 
       {
-        local && (
+        event.local && (
           <p
-            transition:name={`location-${event.id}`}
+            transition:name={`location-${props.id}`}
             class="text-sm text-secondary-text flex items-center gap-1.5">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +93,7 @@ const jsonLd = {
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
               <circle cx="12" cy="10" r="3" />
             </svg>
-            {local}
+            {event.local}
           </p>
         )
       }
@@ -135,5 +104,5 @@ const jsonLd = {
     </div>
   </article>
 
-  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(linkedDataFromEvent(event))} />
 </BaseLayout>
