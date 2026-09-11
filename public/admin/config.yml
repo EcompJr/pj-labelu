@@ -225,6 +225,13 @@ collections:
         date_format: "YYYY-MM-DD"
         time_format: false
 
+      - label: Data final (opcional)
+        name: endDate
+        widget: datetime
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        required: false
+
       - label: Hora
         name: time
         widget: string
