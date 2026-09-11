@@ -1,0 +1,14 @@
+---
+type Props = {
+  id: string
+  variant?: 'accent' | 'default'
+}
+
+const props = Astro.props as Props;
+---
+
+<span class="text-[0.7rem] uppercase tracking-wider px-2.5 py-0.5 rounded-full font-semibold whitespace-nowrap bg-accent-800 text-white" 
+  transition:name={`finished-${props.id}`}
+>
+  <slot/>
+</span>
