@@ -1,0 +1,22 @@
+---
+
+type Props = {
+  id: string
+  intervalDays: [start: string, end: string]
+  time?: string | null
+}
+
+const event = Astro.props as Props;
+const start = event.intervalDays[0];
+const end = event.intervalDays[1];
+
+---
+
+<time
+  class="text-sm text-secondary-text font-bold"
+  transition:name={`time-${event.id}`}
+  datetime={start.split("T")[0]}
+>
+  {start}
+  {event.time && <span class="font-normal"> · {event.time}</span>}
+</time>
