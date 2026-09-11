@@ -3,6 +3,7 @@ title: 'História das lutas: desafios historiográficos e políticos. 20 anos do
 category: Seminário Internacional
 agenda: O seminário ocorrerá de 9 a 12 de novembro de 2026. A programação será divulgada em breve.
 date: 2026-11-09
+endDate: 2026-11-12
 time: ''
 local: Auditório 5, Módulo VII do campus universitário da UEFS
 ---
