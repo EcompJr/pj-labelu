@@ -30,15 +30,21 @@ const { page } = Astro.props;
 type MonthsEvents = { label: string; eventos: Schedule[] }[];
 
 function eventsByMonth(events: Schedule[]): MonthsEvents {
-  const months = groupBy(events, (event) =>
+  const sorted = [...events].sort(
+    (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+  )
+
+  const months = groupBy(sorted, (event) =>
     titled(
       event.data.date.toLocaleDateString("pt-BR", {
         month: "long",
         year: "numeric",
       }),
     ),
-  );
-  return Object.entries(months).map(([label, eventos]) => ({ label, eventos }));
+  )
+
+  return Object.entries(months)
+    .map(([label, eventos]) => ({ label, eventos }));
 }
 
 const months = eventsByMonth(page.data);
