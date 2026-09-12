@@ -12,12 +12,11 @@ import Location from "./Location.astro";
 type EventEntry = CollectionEntry<"schedule">;
 
 interface Props {
-  entry: EventEntry;
-  mayOpen?: boolean;
+  entry: EventEntry
 }
 
-const { entry, mayOpen = false } = Astro.props;
-const { data } = entry;
+const { entry } = Astro.props
+const { data } = entry
 
 const event = new LabeluEvent({
   agenda: data.agenda,
@@ -30,9 +29,6 @@ const event = new LabeluEvent({
 })
 
 const eventUrl = `/agenda/${entry.id}/`
-
-let Content = (mayOpen)?
-  (await render(entry)).Content : null
 ---
 
 <li class="relative pl-8 pb-8 border-l-2 border-accent-500 timeline-item">
@@ -61,21 +57,8 @@ let Content = (mayOpen)?
     </p>
     {event.local && <Location eventId={entry.id} local={event.local} />}
 
-    {
-      mayOpen && Content ? (
-        <details>
-          <summary class="text-sm text-accent-600 cursor-pointer font-semibold py-1 hover:underline list-none">
-            Ver detalhes completos
-          </summary>
-          <div class="prose mt-4 pt-4 border-t border-border">
-            <Content />
-          </div>
-        </details>
-      ) : (
-        <a href={eventUrl} class="text-sm text-accent-600 font-semibold no-underline hover:underline inline-block">
-          Ver detalhes →
-        </a>
-      )
-    }
+    <a href={eventUrl} class="text-sm text-accent-600 font-semibold no-underline hover:underline inline-block">
+      Ver detalhes →
+    </a>
   </article>
 </li>
