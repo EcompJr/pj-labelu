@@ -4,7 +4,7 @@ import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 
 
-import { sortBy } from "../../lib/vec";
+import { sortBy, reverse } from "../../lib/vec";
 import { groupBy } from "../../lib/dict";
 import { titled } from "../../lib/text";
 
@@ -17,7 +17,7 @@ type Schedule = CollectionEntry<"schedule">;
 
 export const getStaticPaths = (async ({ paginate }) => {
   const PAGE_SIZE = 20;
-  const schedule = sortBy(await getCollection("schedule"), "data");
+  const schedule = reverse(sortBy(await getCollection("schedule"), "data"));
   return paginate(schedule, { pageSize: PAGE_SIZE });
 }) satisfies GetStaticPaths;
 
@@ -30,11 +30,7 @@ const { page } = Astro.props;
 type MonthsEvents = { label: string; eventos: Schedule[] }[];
 
 function eventsByMonth(events: Schedule[]): MonthsEvents {
-  const sorted = [...events].sort(
-    (a, b) => b.data.date.getTime() - a.data.date.getTime(),
-  )
-
-  const months = groupBy(sorted, (event) =>
+  const months = groupBy(events, (event) =>
     titled(
       event.data.date.toLocaleDateString("pt-BR", {
         month: "long",
