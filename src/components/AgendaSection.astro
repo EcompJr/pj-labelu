@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import TimelineEvent from "./TimelineEvent.astro";
+import EventPreview from "./Agenda/EventPreview.astro";
 import Link from "./Link.astro";
 
 const schedule = await getCollection("schedule");
@@ -41,7 +41,7 @@ if (displayEvents.length === 0) {
   </div>
 
   <ol class="timeline list-none p-0 relative">
-     {displayEvents.map((event) => <TimelineEvent entry={event} />)}
+     {displayEvents.map((event) => <EventPreview entry={event} />)}
   </ol>
 </section>
 

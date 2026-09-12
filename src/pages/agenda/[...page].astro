@@ -3,12 +3,14 @@ import type { GetStaticPaths, Page } from "astro";
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 
-import ContentLayout from "../../layouts/ContentLayout.astro";
-import TimelineEvent from "../../components/TimelineEvent.astro";
 
 import { sortBy } from "../../lib/vec";
 import { groupBy } from "../../lib/dict";
 import { titled } from "../../lib/text";
+
+// Components
+import ContentLayout from "../../layouts/ContentLayout.astro";
+import EventPreview from "../../components/Agenda/EventPreview.astro";
 import Link from "../../components/Link.astro";
 
 type Schedule = CollectionEntry<"schedule">;
@@ -57,7 +59,7 @@ const months = eventsByMonth(page.data);
         </h2>
         <ol class="timeline list-none p-0 mt-4 mb-8 relative" role="list">
           {month.eventos.map((event) => (
-            <TimelineEvent entry={event} />
+            <EventPreview entry={event} />
           ))}
         </ol>
       </div>

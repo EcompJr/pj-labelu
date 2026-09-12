@@ -1,12 +1,13 @@
 ---
 import { render } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-import Link from "./Link.astro";
-import { LabeluEvent } from "../lib/agenda/event";
-import EventTime from "./Agenda/EventTime.astro";
-import StatusBadge from "./Agenda/StatusBadge.astro";
-import CategoryBadge from "./Agenda/CategoryBadge.astro";
-import Location from "./Agenda/Location.astro";
+import { LabeluEvent } from "../../lib/agenda/event";
+
+import Link from "../Link.astro";
+import EventTime from "./EventTime.astro";
+import StatusBadge from "./StatusBadge.astro";
+import CategoryBadge from "./CategoryBadge.astro";
+import Location from "./Location.astro";
 
 type EventEntry = CollectionEntry<"schedule">;
 
